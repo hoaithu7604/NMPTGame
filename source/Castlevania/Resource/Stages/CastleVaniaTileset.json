@@ -1,0 +1,14 @@
+{ "columns":17,
+ "image":"..\/Textures\/tileset.png",
+ "imageheight":288,
+ "imagewidth":544,
+ "margin":0,
+ "name":"CastleVaniaTileset",
+ "spacing":0,
+ "tilecount":153,
+ "tiledversion":"1.2.1",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.2
+}
