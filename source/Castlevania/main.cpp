@@ -33,7 +33,7 @@
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
-#define BACKGROUND_COLOR D3DCOLOR_XRGB(255, 255, 200)
+#define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 
@@ -90,10 +90,13 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
-	// TO-DO: This is a "dirty" way, need a more organized way 
-	OutputDebugString(L"Stared");
-	
+	vector<LPGAMEOBJECT> coObjects;
+	for (int i = 1; i < objects.size(); i++)
+	{
+		coObjects.push_back(objects[i]);
+	}
+	for (int i = 0; i < objects.size(); i++)
+		objects[i]->Update(dt, &coObjects);
 }
 
 /*
@@ -111,8 +114,8 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-		CSprites::GetInstance()->Get(99001)->Draw(1, 1, 255);
-		CAnimations::GetInstance()->Get(9902)->Render(100, 100, 255);
+		for (int i = 0; i < objects.size(); i++)
+			objects[i]->Render();
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}
@@ -175,6 +178,9 @@ int Run()
 	DWORD frameStart = GetTickCount();
 	DWORD tickPerFrame = 1000 / MAX_FRAME_RATE;
 
+	CSimon* simon = CSimon::GetInstance();
+	objects.push_back(simon);
+
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -216,7 +222,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	keyHandler = new CKeyHandler();
 	game->InitKeyboard(keyHandler);
-
 
 	LoadResources();
 

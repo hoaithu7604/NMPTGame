@@ -63,6 +63,9 @@
     <ClInclude Include="Utility.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="MoveableObject.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Simon.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveableObject.cpp">
+      <Filter>Source Files\Framework</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

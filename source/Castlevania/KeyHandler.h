@@ -1,7 +1,6 @@
 #pragma once
 #include "Debug.h"
 #include <Windows.h>
-
 class CKeyHandler 
 {
 public:

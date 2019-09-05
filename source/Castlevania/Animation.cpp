@@ -10,6 +10,10 @@ void CAnimation::Add(int spriteId, DWORD time)
 	LPANIMATION_FRAME frame = new CAnimationFrame(sprite, t);
 	frames.push_back(frame);
 }
+void CAnimation::Reset()
+{
+	currentFrame = -1;
+}
 CAnimation::CAnimation()
 {
 	lastFrameTime = -1;

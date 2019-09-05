@@ -21,7 +21,7 @@ void CTextures::LoadResource()
 	{
 		wstring file = TEXTURE_PATH + wstring(str.begin(), str.end());
 		int texture_id = atoi(str.c_str());
-		Add(texture_id,file.c_str(), D3DCOLOR_XRGB(255, 255, 255));
+		Add(texture_id,file.c_str(), D3DCOLOR_XRGB(255, 0, 255));
 	}
 		
 

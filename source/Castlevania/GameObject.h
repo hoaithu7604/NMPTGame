@@ -39,45 +39,31 @@ struct CCollisionEvent
 
 class CGameObject
 {
-public:
+protected:
 
 	float x; 
 	float y;
-
+	int nx; // >0 right, <=0 left
 	int state;
-
-	DWORD dt; 
-
+	int currentAnim;
+	int prevAnim;
 	CAnimations* animations; //Should be fine i guess?
 
 public: 
 	static void LoadResource(string ObjectName);
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
-	
-
 	int GetState() { return this->state; }
+	virtual void SetState(int state) { this->state = state; }
 
 	void RenderBoundingBox();
 
-	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
-	void CalcPotentialCollisions(vector<LPGAMEOBJECT> *coObjects, vector<LPCOLLISIONEVENT> &coEvents);
-	void FilterCollision(
-		vector<LPCOLLISIONEVENT> &coEvents, 
-		vector<LPCOLLISIONEVENT> &coEventsResult, 
-		float &min_tx, 
-		float &min_ty, 
-		float &nx, 
-		float &ny);
-
 	CGameObject();
 
-	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) = 0;
+	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) {};
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
-	virtual void Render() = 0;
-	virtual void SetState(int state) { this->state = state; }
-
-
+	virtual void Render();
+	
 	~CGameObject();
 };
 
