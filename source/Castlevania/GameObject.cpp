@@ -1,25 +1,15 @@
-#include <d3dx9.h>
-#include <algorithm>
-
-
-#include "debug.h"
-#include "Textures.h"
-#include "Game.h"
+#pragma once
 #include "GameObject.h"
-#include "Sprites.h"
+
 
 CGameObject::CGameObject()
 {
-	x = y = 0;
-	vx = vy = 0;
-	nx = 1;	
+	animations = CAnimations::GetInstance();
 }
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	this->dt = dt;
-	dx = vx*dt;
-	dy = vy*dt;
+	
 }
 
 /*
@@ -29,28 +19,17 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT coO)
 {
 	float sl, st, sr, sb;		// static object bbox
 	float ml, mt, mr, mb;		// moving object bbox
-	float t, nx, ny;
+	float t=0, nx=0, ny=0;
 
 	coO->GetBoundingBox(sl, st, sr, sb);
 
 	// deal with moving object: m speed = original m speed - collide object speed
 	float svx, svy;
-	coO->GetSpeed(svx, svy);
 
-	float sdx = svx*dt;
-	float sdy = svy*dt;
-
-	float dx = this->dx - sdx;
-	float dy = this->dy - sdy;
 
 	GetBoundingBox(ml, mt, mr, mb);
 
-	CGame::SweptAABB(
-		ml, mt, mr, mb,
-		dx, dy,
-		sl, st, sr, sb,
-		t, nx, ny
-	);
+	
 
 	CCollisionEvent * e = new CCollisionEvent(t, nx, ny, coO);
 	return e;
@@ -111,7 +90,87 @@ void CGameObject::FilterCollision(
 	if (min_ix>=0) coEventsResult.push_back(coEvents[min_ix]);
 	if (min_iy>=0) coEventsResult.push_back(coEvents[min_iy]);
 }
+wchar_t *string2wchar_t1(const string &str) // fix later too tired now .-.
+{
+	wchar_t wchar[260];
+	int index = 0;
+	while (index < str.size())
+	{
+		wchar[index] = (wchar_t)str[index];
+		++index;
+	}
+	wchar[index] = 0;
+	return wchar;
+}
 
+void CGameObject::LoadResource(string ObjectName)
+{
+	wstring ws_ObjectName;
+	ws_ObjectName.assign(ObjectName.begin(), ObjectName.end());
+	wstring filePath = wstring(OBJECTDATA_PATH) + ws_ObjectName + L".dat";
+
+	ifstream inputFile(filePath.c_str());
+	string data = "";
+	string sign = "";
+	while (inputFile >> data)
+	{
+		if (data == "EOF")
+			break;
+		if ((sign == ""||sign!=data) && (data == "SPRITEDATA" || data == "ANIMATIONDATA")) sign = data;
+		if (sign == "SPRITEDATA")
+		{
+			inputFile >> data;
+			int texture_id = atoi(data.c_str());
+			while (inputFile >> data)
+			{
+				if (data == "SPRITEDATAEND") 
+					break;		
+				int sprite_id = atoi(data.c_str());
+				int left, top, right, bottom;
+				inputFile >> data;
+				left = atoi(data.c_str());
+				inputFile >> data;
+				top = atoi(data.c_str());
+				inputFile >> data;
+				right = atoi(data.c_str());
+				inputFile >> data;
+				bottom = atoi(data.c_str());
+				CSprites::GetInstance()->Add(sprite_id, left, top, right, bottom, CTextures::GetInstance()->Get(texture_id));
+			}
+		}
+		if (sign == "ANIMATIONDATA")
+		{
+			int previous_anim_id = -1;
+			int anim_id;
+			LPANIMATION anim = NULL;
+			while (inputFile >> data)
+			{
+
+				if (data == "ANIMATIONDATAEND") break;
+				anim_id = atoi(data.c_str());
+				if (previous_anim_id != anim_id)
+				{
+					if (anim != NULL)
+					{
+						//will make some changes here later: changing animations to pointer or just removing Animations Manager class
+						CAnimations::GetInstance()->Add(previous_anim_id, anim);
+						
+					}
+					previous_anim_id = anim_id;
+					anim = new CAnimation(100);
+				}
+				inputFile >> data;
+				int sprite_id = atoi(data.c_str());
+				inputFile >> data;
+				DWORD frametime = atoi(data.c_str());
+				anim->Add(sprite_id, frametime);
+				
+
+			}
+		}
+	}
+
+}
 
 void CGameObject::RenderBoundingBox()
 {
@@ -131,11 +190,6 @@ void CGameObject::RenderBoundingBox()
 	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 32);
 }
 
-void CGameObject::AddAnimation(int aniId)
-{
-	LPANIMATION ani = CAnimations::GetInstance()->Get(aniId);
-	animations.push_back(ani);
-}
 
 
 CGameObject::~CGameObject()

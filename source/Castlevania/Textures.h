@@ -2,6 +2,8 @@
 #include <unordered_map>
 #include <d3dx9.h>
 
+#define TEXTURE_PATH L"Resource\\Textures\\"
+
 using namespace std;
 
 /*
@@ -15,6 +17,7 @@ class CTextures
 
 public: 
 	CTextures();
+	void LoadResource();
 	void Add(int id, LPCWSTR filePath, D3DCOLOR transparentColor);
 	LPDIRECT3DTEXTURE9 Get(unsigned int i);
 

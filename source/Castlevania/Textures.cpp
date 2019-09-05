@@ -2,18 +2,30 @@
 
 #include <d3d9.h>
 #include <d3dx9.h>
-
+#include <stdlib.h>
 #include "debug.h"
 #include "Game.h"
-#include "textures.h"
-
+#include "Textures.h"
+#include "Utility.h"
 CTextures * CTextures::__instance = NULL;
 
 CTextures::CTextures()
 {
 
 }
+	
+void CTextures::LoadResource() 
+{
+	vector<string> listFiles = listFilesInDirectory("Resource\\Textures\\*.png"); // need to be fixed later
+	for each(string str in listFiles)
+	{
+		wstring file = TEXTURE_PATH + wstring(str.begin(), str.end());
+		int texture_id = atoi(str.c_str());
+		Add(texture_id,file.c_str(), D3DCOLOR_XRGB(255, 255, 255));
+	}
+		
 
+}
 CTextures *CTextures::GetInstance()
 {
 	if (__instance == NULL) __instance = new CTextures();

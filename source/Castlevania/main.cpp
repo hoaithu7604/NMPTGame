@@ -27,6 +27,8 @@
 #include "GameObject.h"
 #include "Textures.h"
 #include "KeyHandler.h"
+#include "Textures.h"
+#include "Simon.h"
 
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
@@ -71,7 +73,15 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void LoadResources()
 {
-	
+	CTextures * texture = CTextures::GetInstance();
+	CSprites * sprites = CSprites::GetInstance();
+	CAnimations * animations = CAnimations::GetInstance();
+
+	texture->LoadResource();
+	CSimon::LoadResource("simon");
+
+	//
+
 }
 
 /*
@@ -82,7 +92,7 @@ void Update(DWORD dt)
 {
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
-
+	OutputDebugString(L"Stared");
 	
 }
 
@@ -101,7 +111,8 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-
+		CSprites::GetInstance()->Get(99001)->Draw(1, 1, 255);
+		CAnimations::GetInstance()->Get(9902)->Render(100, 100, 255);
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}

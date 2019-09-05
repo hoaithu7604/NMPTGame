@@ -37,7 +37,6 @@ public:
 
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
-
 	static void SweptAABB(
 		float ml,			// move left 
 		float mt,			// move top

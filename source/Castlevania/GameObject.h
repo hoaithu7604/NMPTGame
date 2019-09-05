@@ -1,12 +1,19 @@
 #pragma once
 
+#include <algorithm>
 #include <Windows.h>
 #include <d3dx9.h>
 #include <vector>
+#include <fstream>
+#include <string>
 
 #include "Animations.h"
+#include "Sprites.h"
+#include "Game.h"
+#include "debug.h"
+#include "Textures.h"
 
-
+#define OBJECTDATA_PATH L"Resource\\Objects\\"
 using namespace std;
 
 #define ID_TEX_BBOX -100		// special texture to draw object bounding box
@@ -37,25 +44,17 @@ public:
 	float x; 
 	float y;
 
-	float dx;	// dx = vx*dt
-	float dy;	// dy = vy*dt
-
-	float vx;
-	float vy;
-
-	int nx;	 
-
 	int state;
 
 	DWORD dt; 
 
-	vector<LPANIMATION> animations;
+	CAnimations* animations; //Should be fine i guess?
 
 public: 
+	static void LoadResource(string ObjectName);
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
-	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
-	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
+	
 
 	int GetState() { return this->state; }
 
@@ -70,8 +69,6 @@ public:
 		float &min_ty, 
 		float &nx, 
 		float &ny);
-
-	void AddAnimation(int aniId);
 
 	CGameObject();
 

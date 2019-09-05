@@ -10,7 +10,18 @@ void CAnimation::Add(int spriteId, DWORD time)
 	LPANIMATION_FRAME frame = new CAnimationFrame(sprite, t);
 	frames.push_back(frame);
 }
+CAnimation::CAnimation()
+{
+	lastFrameTime = -1;
+	currentFrame = -1;
+}
 
+CAnimation::CAnimation(int defaultTime)
+{
+	this->defaultTime = defaultTime;
+	lastFrameTime = -1;
+	currentFrame = -1;
+}
 void CAnimation::Render(float x, float y, int alpha)
 {
 	DWORD now = GetTickCount();
