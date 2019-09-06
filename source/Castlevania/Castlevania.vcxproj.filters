@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{37c5a653-eabd-417a-b976-e928086c7205}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Framework\TiledJsonParser">
+      <UniqueIdentifier>{6b18fc54-cb9e-407d-8e2a-d554fb3c44a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\TiledJsonParser">
+      <UniqueIdentifier>{82c8406d-d4ef-4f9c-a3a4-b7800775736c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -68,6 +74,21 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledMap.h">
+      <Filter>Header Files\Framework\TiledJsonParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledTileset.h">
+      <Filter>Header Files\Framework\TiledJsonParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledTile.h">
+      <Filter>Header Files\Framework\TiledJsonParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledLayer.h">
+      <Filter>Header Files\Framework\TiledJsonParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledObject.h">
+      <Filter>Header Files\Framework\TiledJsonParser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

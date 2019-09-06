@@ -24,7 +24,7 @@
                  "name":"bigcandle",
                  "properties":[
                         {
-                         "name":"itemholding",
+                         "name":"itemholder",
                          "type":"string",
                          "value":"bigheart"
                         }],
@@ -41,7 +41,7 @@
                  "name":"bigcandle",
                  "properties":[
                         {
-                         "name":"itemholding",
+                         "name":"itemholder",
                          "type":"string",
                          "value":"itemrope"
                         }],
@@ -58,7 +58,7 @@
                  "name":"bigcandle",
                  "properties":[
                         {
-                         "name":"itemholding",
+                         "name":"itemholder",
                          "type":"string",
                          "value":"itemdagger"
                         }],
@@ -75,7 +75,7 @@
                  "name":"bigcandle",
                  "properties":[
                         {
-                         "name":"itemholding",
+                         "name":"itemholder",
                          "type":"string",
                          "value":"itemrope"
                         }],
@@ -92,7 +92,7 @@
                  "name":"bigcandle",
                  "properties":[
                         {
-                         "name":"itemholding",
+                         "name":"itemholder",
                          "type":"string",
                          "value":"bigheart"
                         }],
@@ -106,7 +106,7 @@
                 {
                  "height":18.7083333333333,
                  "id":98,
-                 "name":"invisiblewall",
+                 "name":"unseenforce",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -129,12 +129,6 @@
                  "height":34,
                  "id":110,
                  "name":"portal",
-                 "properties":[
-                        {
-                         "name":"Direction",
-                         "type":"int",
-                         "value":1
-                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -146,12 +140,6 @@
                  "height":62,
                  "id":111,
                  "name":"portal",
-                 "properties":[
-                        {
-                         "name":"Direction",
-                         "type":"int",
-                         "value":0
-                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -162,7 +150,7 @@
                 {
                  "height":440.167,
                  "id":267,
-                 "name":"invisiblewall",
+                 "name":"unseenforce",
                  "rotation":0,
                  "type":"",
                  "visible":true,
