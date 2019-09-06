@@ -12,6 +12,7 @@ CSimon* CSimon::GetInstance()
 CSimon::CSimon() 
 	:CMoveableObject()
 {
+	camera = CCamera::GetInstance();
 	x = 50; y = 50;
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -19,8 +20,16 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
+
+	//
+
+
+
+	//
+
 	x += dx;
 	y += dy;
+	camera->Focus(x, y);
 	UpdateCurrentAnim();
 }
 void CSimon::Render() 

@@ -1,5 +1,6 @@
 #pragma once
 #include "MoveableObject.h"
+#include "Camera.h"
 #define SIMON_WALKING_SPEED 0.05f
 #define SIMON_FALLING_SPEED 1
 #define SIMON_JUMPING_SPEED 1
@@ -40,6 +41,7 @@ enum class SimonAnimID
 
 class CSimon : public CMoveableObject
 {
+	CCamera * camera;
 	static CSimon * __instance;
 public:
 	CSimon();
@@ -51,5 +53,6 @@ public:
 
 	static CSimon * GetInstance();
 };
+
 
 

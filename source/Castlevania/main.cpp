@@ -29,20 +29,18 @@
 #include "KeyHandler.h"
 #include "Textures.h"
 #include "Simon.h"
+#include "Camera.h"
 
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
-
+#define SCREEN_WIDTH 540
+#define SCREEN_HEIGHT 480
+#define CAMERA_WIDTH 512
+#define CAMERA_HEIGH 448
 #define MAX_FRAME_RATE 120
-
-#define ID_TEX_MARIO 0
-#define ID_TEX_ENEMY 10
-#define ID_TEX_MISC 20
-
+#define SIMON_CODE "simon"
 CGame *game;
 
 
@@ -50,7 +48,10 @@ vector<LPGAMEOBJECT> objects;
 
 
 CKeyHandler * keyHandler; 
-
+CTextures * texture;
+CSprites * sprites;
+CAnimations * animations;
+CCamera * camera;
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -73,12 +74,14 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void LoadResources()
 {
-	CTextures * texture = CTextures::GetInstance();
-	CSprites * sprites = CSprites::GetInstance();
-	CAnimations * animations = CAnimations::GetInstance();
+	texture = CTextures::GetInstance();
+	sprites = CSprites::GetInstance();
+	animations = CAnimations::GetInstance();
+	camera = CCamera::GetInstance();
+	camera->SetSize(CAMERA_WIDTH, CAMERA_WIDTH);
 
 	texture->LoadResource();
-	CSimon::LoadResource("simon");
+	CSimon::LoadResource(SIMON_CODE);
 
 	//
 
@@ -114,6 +117,7 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+		animations->GetInstance()->Get(9900)->Render(100, 100, 255);
 		for (int i = 0; i < objects.size(); i++)
 			objects[i]->Render();
 		spriteHandler->End();
@@ -225,7 +229,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	LoadResources();
 
-	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*2, SCREEN_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
+	//SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*2, SCREEN_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
 	Run();
 

@@ -16,7 +16,7 @@ CTextures::CTextures()
 	
 void CTextures::LoadResource() 
 {
-	vector<string> listFiles = listFilesInDirectory("Resource\\Textures\\*.png"); // need to be fixed later
+	vector<string> listFiles = Utility::listFilesInDirectory("Resource\\Textures\\*.png"); // need to be fixed later
 	for each(string str in listFiles)
 	{
 		wstring file = TEXTURE_PATH + wstring(str.begin(), str.end());

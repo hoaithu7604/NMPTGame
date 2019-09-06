@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.h"
 
-
 CGameObject::CGameObject()
 {
 	animations = CAnimations::GetInstance();
@@ -20,19 +19,6 @@ void CGameObject::Render() {
 	}
 	animations->Get(currentAnim)->Render(x, y, 255);
 }
-
-wchar_t *string2wchar_t1(const string &str) // fix later too tired now .-.
-{
-	wchar_t wchar[260];
-	int index = 0;
-	while (index < str.size())
-	{
-		wchar[index] = (wchar_t)str[index];
-		++index;
-	}
-	wchar[index] = 0;
-	return wchar;
-} 
 
 void CGameObject::LoadResource(string ObjectName)
 {
