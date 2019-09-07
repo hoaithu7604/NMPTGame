@@ -28,6 +28,9 @@ void CTiledObject::Create()
 		CSimon* simon = CSimon::GetInstance();
 		simon->SetPosition(x, y);
 		CGameObject::AddObject(simon);
-
+	}
+	else if (name == OBJECTCODE_CAMERABOUND)
+	{
+		CCamera::GetInstance()->AddCameraBound(x, y, x + width, y + height);
 	}
 }
