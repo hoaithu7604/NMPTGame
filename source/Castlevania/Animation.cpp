@@ -33,9 +33,12 @@ void CAnimation::Render(float x, float y, int alpha)
 	{
 		currentFrame = 0;
 		lastFrameTime = now;
+		frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
 	}
 	else
 	{
+		frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
+
 		DWORD t = frames[currentFrame]->GetTime();
 		if (now - lastFrameTime > t)
 		{
@@ -46,5 +49,5 @@ void CAnimation::Render(float x, float y, int alpha)
 
 	}
 
-	frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
+	
 }

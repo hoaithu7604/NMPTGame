@@ -31,6 +31,7 @@
 #include "Simon.h"
 #include "Camera.h"
 #include "Maps.h"
+#include "SimonRope.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -40,7 +41,6 @@
 #define CAMERA_WIDTH 512
 #define CAMERA_HEIGH 448
 #define MAX_FRAME_RATE 120
-#define SIMON_CODE "simon"
 #define MAP_TO_THE_BAT_PATH L"Resource\\Stages\\ToTheBat.json"
 CGame *game;
 
@@ -80,7 +80,7 @@ void Init()
 }
 void LoadResources()
 {
-	CGameObject::Init(&objects);
+	CGameObject::Init(&objects); 
 	texture = CTextures::GetInstance();
 	sprites = CSprites::GetInstance();
 	animations = CAnimations::GetInstance();
@@ -88,7 +88,9 @@ void LoadResources()
 	camera->SetSize(CAMERA_WIDTH, CAMERA_HEIGH);
 
 	texture->LoadResource();
-	CSimon::LoadResource(SIMON_CODE);
+
+	CSimon::LoadResource(OBJECTCODE_SIMON);
+	CSimonRope::LoadResource(OBJECTCODE_SIMONROPE);
 
 	//
 	maps = CMaps::GetInstance();

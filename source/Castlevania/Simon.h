@@ -6,10 +6,10 @@
 #define SIMON_JUMPING_SPEED 1
 #define SIMON_IDLE_BBOX_HEIGHT 64
 #define SIMON_IDLE_BBOX_WIDTH 32
-
+#include "SimonRope.h"
 enum class SimonAnimID
 {
-	IDLE_RIGHT = 9900,
+	IDLE_RIGHT = 100,
 	IDLE_LEFT,
 	WALK_RIGHT,
 	WALK_LEFT,
@@ -42,6 +42,7 @@ enum class SimonAnimID
 
 class CSimon : public CMoveableObject
 {
+	LPSIMONROPE rope;
 	CCamera * camera;
 	static CSimon * __instance;
 public:

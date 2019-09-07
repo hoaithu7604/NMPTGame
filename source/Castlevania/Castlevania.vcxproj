@@ -129,6 +129,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MoveableObject.h" />
+    <ClInclude Include="SimonRope.h" />
     <ClInclude Include="TiledLayer.h" />
     <ClInclude Include="TiledMap.h" />
     <ClInclude Include="TiledObject.h" />
@@ -149,6 +150,7 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="SimonRope.cpp" />
     <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Game.cpp" />

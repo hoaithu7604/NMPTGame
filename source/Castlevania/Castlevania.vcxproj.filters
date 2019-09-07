@@ -96,6 +96,9 @@
     <ClInclude Include="UnseenForce.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="SimonRope.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -162,6 +165,9 @@
       <Filter>Source Files\Framework\TiledJsonParser</Filter>
     </ClCompile>
     <ClCompile Include="UnseenForce.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonRope.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>

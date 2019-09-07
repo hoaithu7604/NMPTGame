@@ -17,6 +17,7 @@
 #define OBJECTCODE_SIMON "simon"
 #define OBJECTCODE_CAMERABOUND "camerabound"
 #define OBJECTCODE_UNSEENFORCE "unseenforce"
+#define OBJECTCODE_SIMONROPE "simonrope"
 using json = nlohmann::json;
 using namespace std;
 /*

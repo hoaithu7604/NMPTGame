@@ -11,13 +11,13 @@ CSimon* CSimon::GetInstance()
 CSimon::CSimon() 
 	:CMoveableObject()
 {
+	rope = new CSimonRope();
 	currentAnim = (int)SimonAnimID::IDLE_RIGHT;
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
 	camera = CCamera::GetInstance();
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
@@ -56,12 +56,14 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	//
 
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	this->rope->Update(x,y,nx,dt, coObjects);
 	camera->Focus(x, y);
 	UpdateCurrentAnim();
 }
 void CSimon::Render() 
 {
-	CGameObject::Render();
+	CGameObject::Render(); 
+	this->rope->Render();
 }
 void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom) 
 {
@@ -72,7 +74,16 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 }
 void CSimon::DoAction(Action action)
 {
+	//return if simon should not be able to do action here
+	if (this->rope->isActive()) return; 
+
+
+	//------------------------------
 	switch (action) {
+		case Action::ATTACK:
+			this->vx = 0;
+			this->rope->Active();
+			break;
 		case Action::WALK_LEFT:
 			this->nx = -1;
 			this->vx = SIMON_WALKING_SPEED * this->nx;
@@ -88,7 +99,12 @@ void CSimon::DoAction(Action action)
 }
 void CSimon::UpdateCurrentAnim() 
 {
-	if (vx != 0) {
+
+	if (this->rope->isActive())
+	{
+		currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_RIGHT : (int)SimonAnimID::ATTACK_LEFT;
+	}
+	else if (vx != 0) {
 		currentAnim = nx > 0 ? (int)SimonAnimID::WALK_RIGHT : (int)SimonAnimID::WALK_LEFT;
 	}
 	else

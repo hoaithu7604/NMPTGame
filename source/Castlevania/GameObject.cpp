@@ -64,13 +64,17 @@ void CGameObject::LoadResource(string ObjectName)
 			while (inputFile >> data)
 			{
 
-				if (data == "ANIMATIONDATAEND") break;
+				if (data == "ANIMATIONDATAEND")
+				{
+					if (anim!=NULL) CAnimations::GetInstance()->Add(previous_anim_id, anim);
+					break;
+				}
 				anim_id = atoi(data.c_str());
 				if (previous_anim_id != anim_id)
 				{
 					if (anim != NULL)
 					{
-						//will make some changes here later: changing animations to pointer or just removing Animations Manager class
+						
 						CAnimations::GetInstance()->Add(previous_anim_id, anim);
 						
 					}

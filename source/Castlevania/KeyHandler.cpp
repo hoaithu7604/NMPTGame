@@ -17,15 +17,15 @@ void CKeyHandler::OnKeyUp(int KeyCode)
 }
 void CKeyHandler::KeyState(BYTE *states)
 {
-	if (CGame::GetInstance()->IsKeyDown(DIK_LEFT)) 
+	if (CGame::GetInstance()->IsKeyDown(DIK_Z)) {
+		CSimon::GetInstance()->DoAction(Action::ATTACK);
+	}
+	else if (CGame::GetInstance()->IsKeyDown(DIK_LEFT)) 
 	{
 		CSimon::GetInstance()->DoAction(Action::WALK_LEFT);
 	}
 	else if (CGame::GetInstance()->IsKeyDown(DIK_RIGHT)) {
 		CSimon::GetInstance()->DoAction(Action::WALK_RIGHT);
-	}
-	else if (0 == 1) {
-
 	}
 	else {
 		CSimon::GetInstance()->DoAction(Action::IDLE);
