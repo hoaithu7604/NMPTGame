@@ -2,9 +2,10 @@
 #include "MoveableObject.h"
 #include "Camera.h"
 #define SIMON_WALKING_SPEED 0.5f
-#define SIMON_FALLING_SPEED 1
+#define SIMON_FALLING_SPEED 0.00001f
 #define SIMON_JUMPING_SPEED 1
-
+#define SIMON_IDLE_BBOX_HEIGHT 64
+#define SIMON_IDLE_BBOX_WIDTH 32
 
 enum class SimonAnimID
 {

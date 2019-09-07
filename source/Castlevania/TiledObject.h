@@ -16,6 +16,7 @@
 #define TILED_OBJECT_HEIGHT "height"
 #define OBJECTCODE_SIMON "simon"
 #define OBJECTCODE_CAMERABOUND "camerabound"
+#define OBJECTCODE_UNSEENFORCE "unseenforce"
 using json = nlohmann::json;
 using namespace std;
 /*

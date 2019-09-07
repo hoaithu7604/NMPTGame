@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#define AVOID_OVERLAPPLING_FORCE 1f
+#define AVOID_OVERLAPPLING_FORCE 0.2f
 enum class Action
 {
 	IDLE,

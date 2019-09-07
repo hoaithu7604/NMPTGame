@@ -1,5 +1,6 @@
 #include "TiledObject.h"
 #include "Simon.h"
+#include "UnseenForce.h"
 
 CTiledObject::CTiledObject(json root)
 {
@@ -26,11 +27,15 @@ void CTiledObject::Create()
 	if (name==OBJECTCODE_SIMON)
 	{
 		CSimon* simon = CSimon::GetInstance();
-		simon->SetPosition(x, y);
-		CGameObject::AddObject(simon);
+		simon->SetPosition(x, y);		
 	}
 	else if (name == OBJECTCODE_CAMERABOUND)
 	{
 		CCamera::GetInstance()->AddCameraBound(x, y, x + width, y + height);
+	}
+	else if (name == OBJECTCODE_UNSEENFORCE)
+	{
+		CUnseenForce* obj = new CUnseenForce(x, y, width, height);
+		CGameObject::AddObject(obj);
 	}
 }

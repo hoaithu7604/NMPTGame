@@ -4,9 +4,7 @@
 vector<LPGAMEOBJECT> * CGameObject::objects = NULL;
 CGameObject::CGameObject()
 {
-	animations = CAnimations::GetInstance();
-	prevAnim = -1;
-	currentAnim = -1;
+	animations = CAnimations::GetInstance();	
 }
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -14,7 +12,9 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	
 }
 void CGameObject::Render() {
-	if (prevAnim!=-1&&prevAnim != currentAnim) {
+	if (state != GAMEOBJECT_STATE_VISIBLE&&state!= GAMEOBJECT_STATE_ACTIVE) return;
+	if (currentAnim == -1) return; //this object doesn't have animations
+	if (prevAnim != currentAnim) {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed
 		prevAnim = currentAnim;
 	}
@@ -105,7 +105,7 @@ void CGameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)b - (int)t;
 
-	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 32);
+	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 100);
 }
 
 

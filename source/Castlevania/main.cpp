@@ -47,7 +47,7 @@ CGame *game;
 
 vector<LPGAMEOBJECT> objects;
 
-
+CSimon * simon;
 CKeyHandler * keyHandler; 
 CTextures * texture;
 CSprites * sprites;
@@ -74,6 +74,10 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	TO-DO: Improve this function by loading texture,sprite,animation,object from file
 */
+void Init()
+{
+	simon = CSimon::GetInstance();
+}
 void LoadResources()
 {
 	CGameObject::Init(&objects);
@@ -100,12 +104,17 @@ void LoadResources()
 void Update(DWORD dt)
 {
 	vector<LPGAMEOBJECT> coObjects;
-	for (int i = 1; i < objects.size(); i++)
-	{
-		coObjects.push_back(objects[i]);
-	}
+	vector<LPGAMEOBJECT> upObjects;
+	upObjects.push_back(simon);
 	for (int i = 0; i < objects.size(); i++)
-		objects[i]->Update(dt, &coObjects);
+	{
+		if (objects[i]->GetState() == GAMEOBJECT_STATE_ACTIVE) {
+			coObjects.push_back(objects[i]);
+			upObjects.push_back(objects[i]);
+		}
+	}
+	for (int i = 0; i < upObjects.size(); i++)
+		upObjects[i]->Update(dt, &coObjects);
 }
 
 /*
@@ -123,10 +132,18 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+
+		//render
 		maps->GetCurrentMap()->Draw();
-		animations->GetInstance()->Get(9900)->Render(100, 100, 255);
+		simon->Render();
+		simon->RenderBoundingBox();
 		for (int i = 0; i < objects.size(); i++)
+		{
 			objects[i]->Render();
+			objects[i]->RenderBoundingBox();
+		}
+
+		//
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}
@@ -188,7 +205,7 @@ int Run()
 	int done = 0;
 	DWORD frameStart = GetTickCount();
 	DWORD tickPerFrame = 1000 / MAX_FRAME_RATE;
-
+	Init();
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))

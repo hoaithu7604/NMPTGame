@@ -93,6 +93,9 @@
     <ClInclude Include="Maps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UnseenForce.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -157,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="TiledObject.cpp">
       <Filter>Source Files\Framework\TiledJsonParser</Filter>
+    </ClCompile>
+    <ClCompile Include="UnseenForce.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

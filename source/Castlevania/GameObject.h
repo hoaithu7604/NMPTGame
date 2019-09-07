@@ -16,7 +16,12 @@
 #define OBJECTDATA_PATH L"Resource\\Objects\\"
 using namespace std;
 
-#define ID_TEX_BBOX -100		// special texture to draw object bounding box
+#define ID_TEX_BBOX 100		// special texture to draw object bounding box
+
+#define GAMEOBJECT_STATE_INVISIBLE 0 //no render, no update
+#define GAMEOBJECT_STATE_VISIBLE 1  // render only
+#define GAMEOBJECT_STATE_ACTIVE 2 //both
+
 
 class CGameObject; 
 typedef CGameObject * LPGAMEOBJECT;

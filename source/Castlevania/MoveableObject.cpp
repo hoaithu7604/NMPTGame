@@ -4,6 +4,7 @@
 CMoveableObject::CMoveableObject()
 	:CGameObject()
 {
+	state = GAMEOBJECT_STATE_ACTIVE;
 	vx = 0;
 	vy = 0;
 	nx = 1;
@@ -21,7 +22,7 @@ LPCOLLISIONEVENT CMoveableObject::SweptAABBEx(LPGAMEOBJECT coO)
 
 	// deal with moving object: m speed = original m speed - collide object speed
 	float svx=0, svy=0; 
-	//get its speed if it's moveable objects
+	//get its speed if it's moveable object
 	if(dynamic_cast<CMoveableObject *>(coO))
 		dynamic_cast<CMoveableObject *>(coO)->GetSpeed(svx, svy);
 
