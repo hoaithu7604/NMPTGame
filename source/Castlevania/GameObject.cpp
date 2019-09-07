@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
+vector<LPGAMEOBJECT> * CGameObject::objects = NULL;
 CGameObject::CGameObject()
 {
 	animations = CAnimations::GetInstance();

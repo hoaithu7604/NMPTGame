@@ -127,6 +127,7 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="Maps.h" />
     <ClInclude Include="MoveableObject.h" />
     <ClInclude Include="TiledLayer.h" />
     <ClInclude Include="TiledMap.h" />
@@ -147,6 +148,7 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -154,9 +156,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveableObject.cpp" />
     <ClCompile Include="Simon.cpp" />
+    <ClCompile Include="Maps.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="TiledMap.cpp" />
+    <ClCompile Include="TiledObject.cpp" />
+    <ClCompile Include="TiledTile.cpp" />
+    <ClCompile Include="TiledTileset.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

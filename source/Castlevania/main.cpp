@@ -30,17 +30,18 @@
 #include "Textures.h"
 #include "Simon.h"
 #include "Camera.h"
-
+#include "Maps.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
-#define SCREEN_WIDTH 512//540
-#define SCREEN_HEIGHT 448//480
+#define SCREEN_WIDTH 530//18 + 512
+#define SCREEN_HEIGHT 495//47 + 418
 #define CAMERA_WIDTH 512
 #define CAMERA_HEIGH 448
 #define MAX_FRAME_RATE 120
 #define SIMON_CODE "simon"
+#define MAP_TO_THE_BAT_PATH L"Resource\\Stages\\ToTheBat.json"
 CGame *game;
 
 
@@ -52,6 +53,7 @@ CTextures * texture;
 CSprites * sprites;
 CAnimations * animations;
 CCamera * camera;
+CMaps * maps;
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -74,17 +76,21 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void LoadResources()
 {
+	CGameObject::Init(&objects);
 	texture = CTextures::GetInstance();
 	sprites = CSprites::GetInstance();
 	animations = CAnimations::GetInstance();
 	camera = CCamera::GetInstance();
-	camera->SetSize(CAMERA_WIDTH, CAMERA_WIDTH);
+	camera->SetSize(CAMERA_WIDTH, CAMERA_HEIGH);
 
 	texture->LoadResource();
 	CSimon::LoadResource(SIMON_CODE);
 
 	//
-
+	maps = CMaps::GetInstance();
+	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
+	maps->Add(map);
+	maps->GetCurrentMap()->CreateObject();
 }
 
 /*
@@ -117,6 +123,7 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+		maps->GetCurrentMap()->Draw();
 		animations->GetInstance()->Get(9900)->Render(100, 100, 255);
 		for (int i = 0; i < objects.size(); i++)
 			objects[i]->Render();
@@ -182,9 +189,6 @@ int Run()
 	DWORD frameStart = GetTickCount();
 	DWORD tickPerFrame = 1000 / MAX_FRAME_RATE;
 
-	CSimon* simon = CSimon::GetInstance();
-	objects.push_back(simon);
-
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -229,7 +233,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	LoadResources();
 
-	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*1.5, SCREEN_HEIGHT*1.5, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
+	//SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*1.5, SCREEN_HEIGHT*1.5, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
 	Run();
 

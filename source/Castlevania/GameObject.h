@@ -39,8 +39,8 @@ struct CCollisionEvent
 
 class CGameObject
 {
+	static vector<LPGAMEOBJECT>* objects;
 protected:
-
 	float x; 
 	float y;
 	int nx; // >0 right, <=0 left
@@ -48,8 +48,9 @@ protected:
 	int currentAnim;
 	int prevAnim;
 	CAnimations* animations; //Should be fine i guess?
-
 public: 
+	static void Init(vector<LPGAMEOBJECT>*_objects) { objects = _objects; }
+	static void AddObject(LPGAMEOBJECT object) { objects->push_back(object); }
 	static void LoadResource(string ObjectName);
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }

@@ -13,7 +13,6 @@ CSimon::CSimon()
 	:CMoveableObject()
 {
 	camera = CCamera::GetInstance();
-	x = 50; y = 50;
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
