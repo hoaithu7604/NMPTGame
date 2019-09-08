@@ -1,8 +1,10 @@
 #include "SimonRope.h"
 #include "Simon.h"
+#include "Torch.h"
 CSimonRope::CSimonRope()
-	:CMoveableObject()
+	:CGameObject()
 {
+	state = GAMEOBJECT_STATE_ACTIVE;
 	level = SIMON_ROPE_LEVEL_DEFAULT;
 	currentAnim = (int)RopeAnimID::LEVEL_ONE_LEFT;
 	prevAnim = (int)RopeAnimID::LEVEL_ONE_LEFT;
@@ -38,18 +40,33 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 {
 	// update only it's actived
 	if (!_isActive) return;
+	
 	this->x = x;
 	this->y = y;
 	this->nx = nx;
+	
+
 	UpdateCurrentAnim();
 	UpdatePosition();
+
+	if (animations->Get(currentAnim)->isLastFrame()) {
+		for (int i = 0; i < coObjects->size(); i++)
+		{
+			if (isOverlapping(coObjects->at(i)))
+			{
+				if (dynamic_cast<CTorch*>(coObjects->at(i)))
+				{
+					dynamic_cast<CTorch*>(coObjects->at(i))->Destroy();
+				}
+			}
+		}
+	}
 }
 void CSimonRope::Render()
 {
 	// render only if it's actived
 	if (!_isActive) return;
 	CGameObject::Render();
-	CGameObject::RenderBoundingBox();
 }
 void CSimonRope::UpdateCurrentAnim()
 {
@@ -95,4 +112,12 @@ void CSimonRope::UpdatePosition()
 			_isActive = false;
 		}
 	}
+}
+bool CSimonRope::isOverlapping(CGameObject*obj) 
+{
+	float left, top, right, bottom;
+	obj->GetBoundingBox(left, top, right, bottom);
+	float l, t, r, b;
+	this->GetBoundingBox(l, t, r, b);
+	return l < right && r > left && t < bottom && b > top;
 }

@@ -54,6 +54,7 @@ protected:
 	int prevAnim;
 	CAnimations* animations; //Should be fine i guess?
 public: 
+	bool isOnCamera();
 	static void Init(vector<LPGAMEOBJECT>*_objects) { objects = _objects; }
 	static void AddObject(LPGAMEOBJECT object) { objects->push_back(object); }
 	static void LoadResource(string ObjectName);

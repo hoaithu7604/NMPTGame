@@ -4,7 +4,7 @@
 #include "TiledObject.h"
 #include "TiledTileset.h"
 #include <nlohmann\json.hpp>
-#define SAFE_DISTANCE 1
+#define SAFE_DISTANCE 0
 #define TILED_LAYER_TYPE_TILELAYER "tilelayer"
 #define TILED_LAYER_TYPE_OBJECTGROUP "objectgroup"
 

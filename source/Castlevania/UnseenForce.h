@@ -9,4 +9,5 @@ class CUnseenForce : public CGameObject
 public:
 	CUnseenForce(float top,float left,float width,float height);
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
+	virtual void Render() { CGameObject::Render(); CGameObject::RenderBoundingBox(); };
 };

@@ -18,6 +18,7 @@
 #define OBJECTCODE_CAMERABOUND "camerabound"
 #define OBJECTCODE_UNSEENFORCE "unseenforce"
 #define OBJECTCODE_SIMONROPE "simonrope"
+#define OBJECTCODE_TORCH "torch"
 using json = nlohmann::json;
 using namespace std;
 /*

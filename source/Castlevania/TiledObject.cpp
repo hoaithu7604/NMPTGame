@@ -1,6 +1,7 @@
 #include "TiledObject.h"
 #include "Simon.h"
 #include "UnseenForce.h"
+#include "Torch.h"
 
 CTiledObject::CTiledObject(json root)
 {
@@ -36,6 +37,19 @@ void CTiledObject::Create()
 	else if (name == OBJECTCODE_UNSEENFORCE)
 	{
 		CUnseenForce* obj = new CUnseenForce(x, y, width, height);
+		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_TORCH)
+	{
+		CTorch*obj = new CTorch();
+		obj->SetPosition(x, y);
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name==TILED_PROPERTY_ITEMHOLDER)
+			{
+				obj->AddItem(properties[i]->value);
+			}
+		}
 		CGameObject::AddObject(obj);
 	}
 }

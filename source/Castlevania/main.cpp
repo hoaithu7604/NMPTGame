@@ -32,11 +32,12 @@
 #include "Camera.h"
 #include "Maps.h"
 #include "SimonRope.h"
+#include "Torch.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
-#define SCREEN_WIDTH 530//18 + 512
+#define SCREEN_WIDTH 525 //~13
 #define SCREEN_HEIGHT 460
 #define CAMERA_WIDTH 512
 #define CAMERA_HEIGH 448
@@ -91,7 +92,7 @@ void LoadResources()
 
 	CSimon::LoadResource(OBJECTCODE_SIMON);
 	CSimonRope::LoadResource(OBJECTCODE_SIMONROPE);
-
+	CTorch::LoadResource(OBJECTCODE_TORCH);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
@@ -136,15 +137,12 @@ void Render()
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 		//render
-		maps->GetCurrentMap()->Draw();
-		simon->Render();
-		simon->RenderBoundingBox();
+		maps->GetCurrentMap()->Draw();		
 		for (int i = 0; i < objects.size(); i++)
 		{
 			objects[i]->Render();
-			objects[i]->RenderBoundingBox();
 		}
-
+		simon->Render();
 		//
 		spriteHandler->End();
 		d3ddv->EndScene();

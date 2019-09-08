@@ -21,7 +21,7 @@
                 {
                  "height":64,
                  "id":92,
-                 "name":"bigcandle",
+                 "name":"torch",
                  "properties":[
                         {
                          "name":"itemholder",
@@ -38,7 +38,7 @@
                 {
                  "height":64,
                  "id":93,
-                 "name":"bigcandle",
+                 "name":"torch",
                  "properties":[
                         {
                          "name":"itemholder",
@@ -55,7 +55,7 @@
                 {
                  "height":64,
                  "id":94,
-                 "name":"bigcandle",
+                 "name":"torch",
                  "properties":[
                         {
                          "name":"itemholder",
@@ -72,7 +72,7 @@
                 {
                  "height":64,
                  "id":95,
-                 "name":"bigcandle",
+                 "name":"torch",
                  "properties":[
                         {
                          "name":"itemholder",
@@ -89,7 +89,7 @@
                 {
                  "height":64,
                  "id":96,
-                 "name":"bigcandle",
+                 "name":"torch",
                  "properties":[
                         {
                          "name":"itemholder",

@@ -7,7 +7,6 @@ CMoveableObject::CMoveableObject()
 	state = GAMEOBJECT_STATE_ACTIVE;
 	vx = 0;
 	vy = 0;
-	nx = 1;
 }
 /*
 Extension of original SweptAABB to deal with two moving objects

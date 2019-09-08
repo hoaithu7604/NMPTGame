@@ -4,6 +4,7 @@
 vector<LPGAMEOBJECT> * CGameObject::objects = NULL;
 CGameObject::CGameObject()
 {
+	nx = 1;
 	animations = CAnimations::GetInstance();	
 }
 
@@ -11,8 +12,18 @@ void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	
 }
+bool CGameObject::isOnCamera() {
+	CCamera*camera = CCamera::GetInstance();
+	float left, top, right, bottom;
+	camera->GetViewSize(top, left, bottom, right);
+	float l, t, r, b;
+	GetBoundingBox(l, t, r, b);
+	//true only when this object completely on camera
+	return left < l && top < t && right > r && bottom > b;
+}
 void CGameObject::Render() {
 	if (state != GAMEOBJECT_STATE_VISIBLE&&state!= GAMEOBJECT_STATE_ACTIVE) return;
+	if (!isOnCamera()) return;
 	if (currentAnim == -1) return; //this object doesn't have animations
 	if (prevAnim != currentAnim) {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed
@@ -96,6 +107,7 @@ void CGameObject::LoadResource(string ObjectName)
 
 void CGameObject::RenderBoundingBox()
 {
+	if (state == GAMEOBJECT_STATE_INVISIBLE) return;
 	D3DXVECTOR3 p(x, y, 0);
 	RECT rect;
 

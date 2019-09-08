@@ -1,6 +1,7 @@
 #pragma once
 #include "Simon.h"
 #include "UnseenForce.h"
+#include "Torch.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -69,8 +70,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		// block 
 		
-		if (nx == 0) x += dx; 
-		if (ny >= 0) y += dy; //ignore collision above
+		//if (nx == 0) x += dx; 
+		//if (ny >= 0) y += dy; //ignore collision above
+		bool should_x_change = true;
+		bool should_y_change = true;
 		//
 		
 		for (UINT i = 0; i < coEventsResult.size(); i++)
@@ -81,6 +84,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				if (e->ny < 0) 
 				{
+					should_y_change = false;
 					if (isJumping)
 					{
 						isJumping = false;
@@ -93,10 +97,17 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					x += e->t * dx + nx * AVOID_OVERLAPPLING_FORCE;		
 					vx = 0;
+					should_x_change = false;
 				}
 			}
-
+			else if (dynamic_cast<CTorch *>(e->obj))
+			{
+				//do nothing
+				DebugOut(L"[INFO] TOUCHED TORCH");
+			}
 		}
+		if (should_x_change) x += dx;
+		if (should_y_change) y += dy;
 
 
 

@@ -127,6 +127,7 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MoveableObject.h" />
     <ClInclude Include="SimonRope.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="TiledTile.h" />
     <ClInclude Include="TiledTileset.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Torch.h" />
     <ClInclude Include="UnseenForce.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Game.h" />
@@ -151,6 +153,7 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="SimonRope.cpp" />
     <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -169,6 +172,7 @@
     <ClCompile Include="TiledTile.cpp" />
     <ClCompile Include="TiledTileset.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Torch.cpp" />
     <ClCompile Include="UnseenForce.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
