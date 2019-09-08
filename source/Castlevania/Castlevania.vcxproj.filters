@@ -120,9 +120,6 @@
     <ClInclude Include="FlameEffect.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="ItemObject.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="BigHeart.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
@@ -131,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="TimeFreezer.h">
       <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemObject.h">
+      <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -218,14 +218,17 @@
     <ClCompile Include="FlameEffect.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="ItemObject.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="BigHeart.cpp">
       <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
     <ClCompile Include="TimeFreezer.cpp">
       <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemObject.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="RopeItem.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

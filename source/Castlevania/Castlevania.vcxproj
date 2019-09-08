@@ -164,6 +164,7 @@
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
+    <ClCompile Include="RopeItem.cpp" />
     <ClCompile Include="SimonRope.cpp" />
     <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />

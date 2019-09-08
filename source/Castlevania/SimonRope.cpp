@@ -67,6 +67,7 @@ void CSimonRope::Render()
 	// render only if it's actived
 	if (!_isActive) return;
 	CGameObject::Render();
+	RenderBoundingBox();
 }
 void CSimonRope::UpdateCurrentAnim()
 {
@@ -112,4 +113,11 @@ void CSimonRope::UpdatePosition()
 			_isActive = false;
 		}
 	}
+}
+void CSimonRope::IncreaseLevel()
+{
+	if (level == SIMON_ROPE_LEVEL_ONE)
+		level = SIMON_ROPE_LEVEL_TWO;
+	else if (level == SIMON_ROPE_LEVEL_TWO)
+		level = SIMON_ROPE_LEVEL_THREE;
 }

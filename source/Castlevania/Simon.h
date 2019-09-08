@@ -68,6 +68,7 @@ public:
 	void StandUp();
 	void Jump();
 	void Focus();
+	void IncreaseRopeLevel();
 	static CSimon * GetInstance();
 };
 

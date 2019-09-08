@@ -4,6 +4,7 @@
 #include <vector>
 #include "Timer.h"
 #define ITEMCODE_BIGHEART "bigheart"
+#define ITEMCODE_ROPEITEM "ropeitem"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 

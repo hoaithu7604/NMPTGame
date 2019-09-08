@@ -43,7 +43,7 @@
                         {
                          "name":"itemholder",
                          "type":"string",
-                         "value":"itemrope"
+                         "value":"ropeitem"
                         }],
                  "rotation":0,
                  "type":"",
@@ -60,7 +60,7 @@
                         {
                          "name":"itemholder",
                          "type":"string",
-                         "value":"itemdagger"
+                         "value":"daggeritem"
                         }],
                  "rotation":0,
                  "type":"",
@@ -77,7 +77,7 @@
                         {
                          "name":"itemholder",
                          "type":"string",
-                         "value":"itemrope"
+                         "value":"ropeitem"
                         }],
                  "rotation":0,
                  "type":"",

@@ -11,7 +11,5 @@ public:
 	void SetPoint(int point) { this->point = point; }
 	int GetPoint() { return point; }
 	virtual void GetReward() { state = GAMEOBJECT_STATE_INVISIBLE; } //add point here later
-	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) {};
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL) {};
-	virtual void Render() {};
+	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL); //all item should be affected by game gravity, except for somes
 };

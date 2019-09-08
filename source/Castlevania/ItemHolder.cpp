@@ -1,6 +1,7 @@
 #include "ItemHolder.h"
 #include "FlameEffect.h"
 #include "BigHeart.h"
+#include "RopeItem.h"
 
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
@@ -30,6 +31,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CBigHeart* bigheart = new CBigHeart(pos_x, pos_y);
 					CGameObject::AddObject(bigheart);
+				}
+				else if (item[i] == ITEMCODE_ROPEITEM)
+				{
+					CRopeItem* ropeitem = new CRopeItem(pos_x, pos_y);
+					CGameObject::AddObject(ropeitem);
 				}
 			}
 		}

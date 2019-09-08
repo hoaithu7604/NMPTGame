@@ -5,6 +5,7 @@
 #include "FlameEffect.h"
 #include "BigHeart.h"
 #include "TimeFreezer.h"
+#include "RopeItem.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -32,10 +33,15 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 	{
 		LPGAMEOBJECT obj=coObjects->at(i);
 		if (dynamic_cast<CBigHeart *>(obj)&&isOverlapping(obj))
-		{
-			CTimeFreezer::GetInstance()->Active(SIMON_PICK_ITEM_FREEZE_TIME);
+		{			
 			dynamic_cast<CBigHeart*>(obj)->GetReward();
 			DebugOut(L"[INFO] OVERLAPPING BIG HEART");			
+		}
+		else if (dynamic_cast<CRopeItem *>(obj) && isOverlapping(obj))
+		{
+			dynamic_cast<CRopeItem *>(obj)->GetReward();
+			CTimeFreezer::GetInstance()->Active(SIMON_PICK_ITEM_FREEZE_TIME);
+			DebugOut(L"[INFO] OVERLAPPING ROPE ITEM");
 		}
 		else if (dynamic_cast<CTorch *>(obj)&&isOverlapping(obj))
 		{
@@ -268,4 +274,8 @@ void CSimon::FreezeAnimation()
 {
 	rope->FreezeAnimation();
 	CGameObject::FreezeAnimation();
+}
+void CSimon::IncreaseRopeLevel()
+{
+	rope->IncreaseLevel();
 }

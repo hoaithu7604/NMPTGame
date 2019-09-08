@@ -36,6 +36,7 @@
 #include "FlameEffect.h"
 #include "BigHeart.h"
 #include "TimeFreezer.h"
+#include "RopeItem.h"
 
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
@@ -101,6 +102,7 @@ void LoadResources()
 	CTorch::LoadResource(OBJECTCODE_TORCH);
 	CFlameEffect::LoadResource(OBJECTCODE_FLAME_EFFECT);
 	CBigHeart::LoadResource(OBJECTCODE_BIGHEART);
+	CRopeItem::LoadResource(OBJECTCODE_ROPEITEM);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
