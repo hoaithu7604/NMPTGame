@@ -9,7 +9,7 @@ class CAnimation
 public:
 	CAnimation();
 	CAnimation(int defaultTime);
-
+	void ResetCurrentFrameTime();
 	int GetCurrentFrame() { return currentFrame; }
 	int GetFramesCount() { return frames.size(); }
 	bool isLastFrame() { return currentFrame == frames.size() - 1; }

@@ -103,6 +103,13 @@ void CGameObject::LoadResource(string ObjectName)
 	}
 
 }
+void CGameObject::FreezeAnimation()
+{
+	if (currentAnim != -1)
+	{
+		animations->Get(currentAnim)->ResetCurrentFrameTime();
+	}
+}
 bool CGameObject::isOverlapping(CGameObject*obj)
 {
 	float left, top, right, bottom;

@@ -4,6 +4,7 @@
 #include "Torch.h"
 #include "FlameEffect.h"
 #include "BigHeart.h"
+#include "TimeFreezer.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -32,6 +33,7 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 		LPGAMEOBJECT obj=coObjects->at(i);
 		if (dynamic_cast<CBigHeart *>(obj)&&isOverlapping(obj))
 		{
+			CTimeFreezer::GetInstance()->Active(SIMON_PICK_ITEM_FREEZE_TIME);
 			dynamic_cast<CBigHeart*>(obj)->GetReward();
 			DebugOut(L"[INFO] OVERLAPPING BIG HEART");			
 		}
@@ -93,14 +95,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
-		// block 
-		
-		//if (nx == 0) x += dx; 
-		//if (ny >= 0) y += dy; //ignore collision above
 		bool should_x_change = true;
 		bool should_y_change = true;
-		//
-		
+			
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
@@ -165,7 +162,8 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
-	if (this->rope->isActive()) return; 
+	if (this->rope->isActive()||CTimeFreezer::GetInstance()->isOn()) return; 
+	OutputDebugString(L"Simon DO action");
 	switch (action) {
 	case Action::ATTACK:
 		if (!attack_timer.isActive())
@@ -265,4 +263,9 @@ void CSimon::Focus()
 	GetBoundingBox(left, top, right, bottom);
 	//focus camera to the center point of bbox
 	camera->Focus(int((left+right)/2), int((top + bottom)/ 2));
+}
+void CSimon::FreezeAnimation()
+{
+	rope->FreezeAnimation();
+	CGameObject::FreezeAnimation();
 }

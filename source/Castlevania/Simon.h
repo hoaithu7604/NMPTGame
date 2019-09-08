@@ -10,6 +10,7 @@
 #define SIMON_CROUCHING_BBOX_HEIGHT 46
 #define SIMON_ATTACK_COOLDOWN 600
 #define SIMON_HEART_DEFAULT 5
+#define SIMON_PICK_ITEM_FREEZE_TIME 1000
 #include "SimonRope.h"
 #include "Timer.h"
 enum class SimonAnimID
@@ -62,6 +63,7 @@ public:
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();
+	virtual void FreezeAnimation();
 	void OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT>*_objects);
 	void StandUp();
 	void Jump();

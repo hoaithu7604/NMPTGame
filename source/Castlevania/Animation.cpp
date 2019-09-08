@@ -26,6 +26,12 @@ CAnimation::CAnimation(int defaultTime)
 	lastFrameTime = -1;
 	currentFrame = -1;
 }
+void CAnimation::ResetCurrentFrameTime() {
+	if (currentFrame != -1)
+	{
+		lastFrameTime = GetTickCount();
+	}
+}
 void CAnimation::Render(float x, float y, int alpha)
 {
 	DWORD now = GetTickCount();

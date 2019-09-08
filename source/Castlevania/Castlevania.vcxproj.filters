@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Framework\TiledJsonParser">
       <UniqueIdentifier>{82c8406d-d4ef-4f9c-a3a4-b7800775736c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\items">
+      <UniqueIdentifier>{27bbf91d-cdcb-4ff2-ba51-b7aa5b4ac39f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\items">
+      <UniqueIdentifier>{28ecaf50-2aec-42e8-9a64-26fa5fd75152}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -118,7 +124,13 @@
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="BigHeart.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
+    <ClInclude Include="RopeItem.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeFreezer.h">
+      <Filter>Header Files\Framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -210,7 +222,10 @@
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="BigHeart.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeFreezer.cpp">
+      <Filter>Source Files\Framework</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

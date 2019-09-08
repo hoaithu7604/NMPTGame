@@ -35,6 +35,7 @@
 #include "Torch.h"
 #include "FlameEffect.h"
 #include "BigHeart.h"
+#include "TimeFreezer.h"
 
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
@@ -58,6 +59,7 @@ CSprites * sprites;
 CAnimations * animations;
 CCamera * camera;
 CMaps * maps;
+CTimeFreezer* freezer; // if this timer is on, no update, render only, freeze objects animation
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -85,6 +87,7 @@ void Init()
 void LoadResources()
 {
 	CGameObject::Init(&objects); 
+	freezer = CTimeFreezer::GetInstance();
 	texture = CTextures::GetInstance();
 	sprites = CSprites::GetInstance();
 	animations = CAnimations::GetInstance();
@@ -121,8 +124,16 @@ void Update(DWORD dt)
 			upObjects.push_back(objects[i]);
 		}
 	}
-	for (int i = 0; i < upObjects.size(); i++)
-		upObjects[i]->Update(dt, &coObjects);
+	if (freezer->isActive()) {
+		simon->FreezeAnimation();
+		for (int i = 0; i < objects.size(); i++)
+			objects[i]->FreezeAnimation();
+	}
+	else 
+	{
+		for (int i = 0; i < upObjects.size(); i++)
+			upObjects[i]->Update(dt, &coObjects);
+	}
 }
 
 /*

@@ -134,12 +134,14 @@
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MoveableObject.h" />
+    <ClInclude Include="RopeItem.h" />
     <ClInclude Include="SimonRope.h" />
     <ClInclude Include="TiledLayer.h" />
     <ClInclude Include="TiledMap.h" />
     <ClInclude Include="TiledObject.h" />
     <ClInclude Include="TiledTile.h" />
     <ClInclude Include="TiledTileset.h" />
+    <ClInclude Include="TimeFreezer.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Torch.h" />
     <ClInclude Include="UnseenForce.h" />
@@ -179,6 +181,7 @@
     <ClCompile Include="TiledObject.cpp" />
     <ClCompile Include="TiledTile.cpp" />
     <ClCompile Include="TiledTileset.cpp" />
+    <ClCompile Include="TimeFreezer.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="UnseenForce.cpp" />
