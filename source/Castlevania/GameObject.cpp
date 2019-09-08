@@ -5,6 +5,7 @@ vector<LPGAMEOBJECT> * CGameObject::objects = NULL;
 CGameObject::CGameObject()
 {
 	nx = 1;
+	argb = CARGB();
 	animations = CAnimations::GetInstance();	
 }
 
@@ -28,7 +29,7 @@ void CGameObject::Render() {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed
 		prevAnim = currentAnim;
 	}
-	animations->Get(currentAnim)->Render(x, y, 255);
+	animations->Get(currentAnim)->Render(x, y, argb);
 }
 
 void CGameObject::LoadResource(string ObjectName)
@@ -134,7 +135,7 @@ void CGameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)b - (int)t;
 
-	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 170);
+	//CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 170);
 }
 
 

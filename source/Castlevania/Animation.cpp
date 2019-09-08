@@ -32,18 +32,18 @@ void CAnimation::ResetCurrentFrameTime() {
 		lastFrameTime = GetTickCount();
 	}
 }
-void CAnimation::Render(float x, float y, int alpha)
+void CAnimation::Render(float x, float y, CARGB argb)
 {
 	DWORD now = GetTickCount();
 	if (currentFrame == -1)
 	{
 		currentFrame = 0;
 		lastFrameTime = now;
-		frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
+		frames[currentFrame]->GetSprite()->Draw(x, y, argb);
 	}
 	else
 	{
-		frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
+		frames[currentFrame]->GetSprite()->Draw(x, y, argb);
 
 		DWORD t = frames[currentFrame]->GetTime();
 		if (now - lastFrameTime > t)

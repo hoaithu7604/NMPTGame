@@ -1,5 +1,6 @@
 #pragma once
 #include "AnimationFrame.h"
+#include "ARGB.h"
 class CAnimation
 {
 	DWORD lastFrameTime;
@@ -16,7 +17,7 @@ public:
 	bool isFirstFrame() { return currentFrame == 0; }
 	void Add(int spriteId, DWORD time = 0);
 	void Reset();
-	void Render(float x, float y, int alpha = 255);
+	void Render(float x, float y, CARGB argb = CARGB());
 };
 
 typedef CAnimation *LPANIMATION;

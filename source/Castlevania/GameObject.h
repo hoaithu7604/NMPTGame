@@ -52,6 +52,7 @@ protected:
 	int state;
 	int currentAnim;
 	int prevAnim;
+	CARGB argb;
 	CAnimations* animations; //Should be fine i guess?
 public: 
 	bool isOnCamera();

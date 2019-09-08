@@ -66,8 +66,18 @@ void CSimonRope::Render()
 {
 	// render only if it's actived
 	if (!_isActive) return;
+	if (level == SIMON_ROPE_LEVEL_THREE)
+	{
+		if (argb == RGB_RED)
+			argb = RGB_BLUE;
+		else if (argb == RGB_BLUE)
+			argb = RGB_RED;
+		else argb = RGB_RED;
+	}
+	else
+		argb = CARGB();
 	CGameObject::Render();
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 void CSimonRope::UpdateCurrentAnim()
 {

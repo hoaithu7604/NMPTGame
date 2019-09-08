@@ -125,6 +125,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
+    <ClInclude Include="ARGB.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
