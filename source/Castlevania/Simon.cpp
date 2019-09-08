@@ -1,5 +1,6 @@
 #pragma once
 #include "Simon.h"
+#include "UnseenForce.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -26,11 +27,26 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		attack_timer.hasTicked();
 	}
 
-
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
-	vy += SIMON_FALLING_SPEED * dt;
+
+	if (isJumping)
+	{
+		if (vy >= 0)
+		{
+			isCrouching = false;
+			vy += SIMON_FALLING_SPEED * dt;
+		}
+		else 
+		{
+			if (this->rope->isActive())
+				isCrouching = false;
+			vy += SIMON_JUMPING_FALLING_SPEED * dt;
+		}
+
+	}
+	else vy += SIMON_FALLING_SPEED * dt;
 	//
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
@@ -52,11 +68,37 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
 		// block 
-		x += min_tx * dx + nx * AVOID_OVERLAPPLING_FORCE;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		y += min_ty * dy + ny * AVOID_OVERLAPPLING_FORCE;
+		
+		if (nx == 0) x += dx; 
+		if (ny >= 0) y += dy; //ignore collision above
+		//
+		
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
 
-		if (nx != 0) vx = 0;
-		if (ny != 0) vy = 0;
+			if (dynamic_cast<CUnseenForce *>(e->obj))
+			{
+				if (e->ny < 0) 
+				{
+					if (isJumping)
+					{
+						isJumping = false;
+						vx = 0;
+					}
+					vy = 0;
+					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
+				}
+				if (e->nx != 0) 
+				{
+					x += e->t * dx + nx * AVOID_OVERLAPPLING_FORCE;		
+					vx = 0;
+				}
+			}
+
+		}
+
+
 
 		//
 		
@@ -93,18 +135,23 @@ void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
 	if (this->rope->isActive()) return; 
-	
+	switch (action) {
+	case Action::ATTACK:
+		if (!attack_timer.isActive())
+		{
+			attack_timer.Active();
+			
+			this->rope->Active();
+			if (!isJumping) this->vx = 0;
+		}
+		break;
+	}
+	if (isJumping) return;
 	//------------------------------
 	switch (action) {
-		case Action::ATTACK:
-			if (!attack_timer.isActive())
-			{
-				attack_timer.Active();
-				this->vx = 0;
-				this->rope->Active();
-			}
-				break;
-			
+		case Action::JUMP:
+			Jump();
+			break;
 		case Action::CROUCH:
 			if (!isCrouching)
 			{
@@ -113,16 +160,17 @@ void CSimon::DoAction(Action action)
 				y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
 			}
 			break;
-		case Action::WALK_LEFT:
-			StandUp();
-			this->nx = -1;
-			this->vx = SIMON_WALKING_SPEED * this->nx;
-			break;
 		case Action::WALK_RIGHT:
 			StandUp();
 			this->nx = 1;
 			this->vx = SIMON_WALKING_SPEED * this->nx;
 			break;
+		case Action::WALK_LEFT:
+			StandUp();
+			this->nx = -1;
+			this->vx = SIMON_WALKING_SPEED * this->nx;
+			break;
+		
 		case Action::IDLE:
 			StandUp();
 			this->vx = 0;
@@ -139,6 +187,16 @@ void CSimon::UpdateCurrentAnim()
 		}
 		else
 		currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_RIGHT : (int)SimonAnimID::ATTACK_LEFT;
+	}
+	else if (isJumping)
+	{
+		if (this->vy < 0) {
+			currentAnim = nx > 0 ? (int)SimonAnimID::CROUCH_RIGHT : (int)SimonAnimID::CROUCH_LEFT;
+		}
+		else
+		{
+			currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_RIGHT : (int)SimonAnimID::IDLE_LEFT;
+		}
 	}
 	else if (isCrouching) {
 		currentAnim = nx > 0 ? (int)SimonAnimID::CROUCH_RIGHT : (int)SimonAnimID::CROUCH_LEFT;
@@ -157,6 +215,17 @@ void CSimon::StandUp()
 	{
 		isCrouching = false;
 		y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
+	}
+}
+void CSimon::Jump()
+{
+	//can't jump if simon is crouching or attacking or jumping 
+	if (!isJumping&&!isCrouching && !this->rope->isActive())
+	{
+		isJumping = true;
+		isCrouching = true;
+		this->vy = -SIMON_JUMPING_SPEED;
+		y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
 	}
 }
 void CSimon::Focus()
