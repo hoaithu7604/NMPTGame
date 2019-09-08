@@ -20,6 +20,7 @@
 #define OBJECTCODE_SIMONROPE "simonrope"
 #define OBJECTCODE_TORCH "torch"
 #define OBJECTCODE_FLAME_EFFECT "flameeffect"
+#define OBJECTCODE_BIGHEART "bigheart"
 using json = nlohmann::json;
 using namespace std;
 /*

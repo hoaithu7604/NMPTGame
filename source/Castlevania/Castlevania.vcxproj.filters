@@ -114,6 +114,12 @@
     <ClInclude Include="FlameEffect.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="ItemObject.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BigHeart.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -198,6 +204,12 @@
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="FlameEffect.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemObject.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BigHeart.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>

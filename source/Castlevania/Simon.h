@@ -9,6 +9,7 @@
 #define SIMON_IDLE_BBOX_WIDTH 32
 #define SIMON_CROUCHING_BBOX_HEIGHT 46
 #define SIMON_ATTACK_COOLDOWN 600
+#define SIMON_HEART_DEFAULT 5
 #include "SimonRope.h"
 #include "Timer.h"
 enum class SimonAnimID
@@ -52,10 +53,12 @@ class CSimon : public CMoveableObject
 	bool isJumping;
 	bool isCrouching;
 	CTimer attack_timer;
+	int heart;
 public:
 	CSimon();
 	void DoAction(Action action);
 	void UpdateCurrentAnim();
+	void AddHeart(int heart) { this->heart += heart; }
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();

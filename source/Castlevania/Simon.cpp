@@ -3,6 +3,7 @@
 #include "UnseenForce.h"
 #include "Torch.h"
 #include "FlameEffect.h"
+#include "BigHeart.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -15,7 +16,7 @@ CSimon::CSimon()
 	:CMoveableObject()
 {
 	attack_timer.SetTime(SIMON_ATTACK_COOLDOWN);
-
+	heart = SIMON_HEART_DEFAULT;
 	isJumping = false;
 	isCrouching = false;
 	rope = new CSimonRope();
@@ -109,6 +110,12 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else if (dynamic_cast<CFlameEffect*>(e->obj)) 
 			{
 				DebugOut(L"[INFO] TOUCHED FLAME EFFECT");
+			}
+			else if (dynamic_cast<CBigHeart*>(e->obj))
+			{
+				DebugOut(L"[INFO] TOUCHED BIG HEART");
+				dynamic_cast<CBigHeart*>(e->obj)->GetReward();
+				
 			}
 		}
 		if (should_x_change) x += dx;
