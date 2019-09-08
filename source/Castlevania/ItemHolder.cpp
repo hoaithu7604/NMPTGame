@@ -3,18 +3,35 @@
 #include "BigHeart.h"
 
 void CItemHolder::Destroy() {
-	state = GAMEOBJECT_STATE_INVISIBLE;
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
 	float pos_x = (left + right) / 2;
 	float pos_y = (top + bottom) / 2;
 	CFlameEffect* effect = new CFlameEffect(pos_x,pos_y);
-	//spawn item here 
-	for (int i = 0; i < item.size(); i++) {
-		if (item[i] == ITEMCODE_BIGHEART)
+
+	delay_timer.Active();
+	currentAnim = -1; // stop it to be rendered, but still be updated
+}
+
+void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
+{
+	if (delay_timer.isActive())
+	{
+		if (delay_timer.hasTicked())
 		{
-			CBigHeart* bigheart = new CBigHeart(pos_x, pos_y);
-			CGameObject::AddObject(bigheart);
+			state = GAMEOBJECT_STATE_INVISIBLE;
+			float left, top, right, bottom;
+			GetBoundingBox(left, top, right, bottom);
+			float pos_x = (left + right) / 2;
+			float pos_y = (top + bottom) / 2;
+			//spawn item here 
+			for (int i = 0; i < item.size(); i++) {
+				if (item[i] == ITEMCODE_BIGHEART)
+				{
+					CBigHeart* bigheart = new CBigHeart(pos_x, pos_y);
+					CGameObject::AddObject(bigheart);
+				}
+			}
 		}
 	}
 }

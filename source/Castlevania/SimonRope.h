@@ -32,7 +32,6 @@ public:
 	void Active(bool active = true) { isFirstFrame = true; _isActive = active; }
 	void UpdateCurrentAnim();
 	void UpdatePosition();
-	bool isOverlapping(CGameObject*obj);
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(float x, float y, DWORD nx, DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();

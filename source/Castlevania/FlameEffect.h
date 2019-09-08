@@ -10,7 +10,7 @@ class CFlameEffect : public CEffectObject
 {
 
 public:
-	CFlameEffect() { currentAnim = (int)FlameEffectAnim::IDLE; prevAnim = (int)FlameEffectAnim::IDLE; }
+	CFlameEffect();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	CFlameEffect(float x, float y);
 	

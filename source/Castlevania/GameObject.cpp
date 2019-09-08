@@ -103,7 +103,14 @@ void CGameObject::LoadResource(string ObjectName)
 	}
 
 }
-
+bool CGameObject::isOverlapping(CGameObject*obj)
+{
+	float left, top, right, bottom;
+	obj->GetBoundingBox(left, top, right, bottom);
+	float l, t, r, b;
+	this->GetBoundingBox(l, t, r, b);
+	return l < right && r > left && t < bottom && b > top;
+}
 void CGameObject::RenderBoundingBox()
 {
 	if (state == GAMEOBJECT_STATE_INVISIBLE) return;

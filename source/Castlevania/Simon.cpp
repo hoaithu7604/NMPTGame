@@ -24,12 +24,35 @@ CSimon::CSimon()
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
 	camera = CCamera::GetInstance();
 }
-void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
+// no collision events thing spawn on top of simon so let use this function
+void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT>*_objects)
+{
+	for (int i = 0; i < coObjects->size(); i++)
+	{
+		LPGAMEOBJECT obj=coObjects->at(i);
+		if (dynamic_cast<CBigHeart *>(obj)&&isOverlapping(obj))
+		{
+			dynamic_cast<CBigHeart*>(obj)->GetReward();
+			DebugOut(L"[INFO] OVERLAPPING BIG HEART");			
+		}
+		else if (dynamic_cast<CTorch *>(obj)&&isOverlapping(obj))
+		{
+			DebugOut(L"[INFO] OVERLAPPING TORCH");
+		}
+		else if (dynamic_cast<CFlameEffect*>(obj)&&isOverlapping(obj))
+		{
+			DebugOut(L"[INFO] OVERLAPPING FLAME EFFECT");
+		}		
+		else _objects->push_back(obj);
+	}
+}
+void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 {
 	if (attack_timer.isActive()) {
 		attack_timer.hasTicked();
 	}
-
+	vector<LPGAMEOBJECT> coObjects;
+	OverLappingLogic(Objects,&coObjects);
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
@@ -56,7 +79,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	coEvents.clear();
 
-	CalcPotentialCollisions(coObjects, coEvents);
+	CalcPotentialCollisions(&coObjects, coEvents);
 
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
@@ -102,21 +125,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					should_x_change = false;
 				}
 			}
-			else if (dynamic_cast<CTorch *>(e->obj))
-			{
-				//do nothing
-				DebugOut(L"[INFO] TOUCHED TORCH");
-			}
-			else if (dynamic_cast<CFlameEffect*>(e->obj)) 
-			{
-				DebugOut(L"[INFO] TOUCHED FLAME EFFECT");
-			}
-			else if (dynamic_cast<CBigHeart*>(e->obj))
-			{
-				DebugOut(L"[INFO] TOUCHED BIG HEART");
-				dynamic_cast<CBigHeart*>(e->obj)->GetReward();
-				
-			}
 		}
 		if (should_x_change) x += dx;
 		if (should_y_change) y += dy;
@@ -130,7 +138,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	//
 
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-	this->rope->Update(x,y,nx,dt, coObjects);
+	this->rope->Update(x,y,nx,dt, Objects);
 	Focus();
 	UpdateCurrentAnim();
 }
