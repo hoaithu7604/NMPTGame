@@ -6,7 +6,10 @@
 #define SIMON_JUMPING_SPEED 1
 #define SIMON_IDLE_BBOX_HEIGHT 64
 #define SIMON_IDLE_BBOX_WIDTH 32
+#define SIMON_CROUCHING_BBOX_HEIGHT 46
+#define SIMON_ATTACK_COOLDOWN 600
 #include "SimonRope.h"
+#include "Timer.h"
 enum class SimonAnimID
 {
 	IDLE_RIGHT = 100,
@@ -45,6 +48,9 @@ class CSimon : public CMoveableObject
 	LPSIMONROPE rope;
 	CCamera * camera;
 	static CSimon * __instance;
+	bool isJumping;
+	bool isCrouching;
+	CTimer attack_timer;
 public:
 	CSimon();
 	void DoAction(Action action);
@@ -53,6 +59,8 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();
 
+	void StandUp();
+	void Focus();
 	static CSimon * GetInstance();
 };
 

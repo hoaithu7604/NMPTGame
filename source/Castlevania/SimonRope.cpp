@@ -14,6 +14,25 @@ void CSimonRope::GetBoundingBox(float &left, float &top, float &right, float &bo
 	top = y;
 	right = x;
 	bottom = y;
+	if (animations->Get(currentAnim)->isLastFrame())
+	{
+		switch (level) 
+		{
+		case SIMON_ROPE_LEVEL_ONE:
+			right += SIMON_ROPE_LEVEL_ONE_LAST_FRAME_BBOX_WIDTH;
+			bottom += SIMON_ROPE_LEVEL_ONE_LAST_FRAME_BBOX_HEIGHT;
+			break;
+		case SIMON_ROPE_LEVEL_TWO:
+			right += SIMON_ROPE_LEVEL_TWO_LAST_FRAME_BBOX_WIDTH;
+			bottom += SIMON_ROPE_LEVEL_TWO_LAST_FRAME_BBOX_HEIGHT;
+			break;
+		case SIMON_ROPE_LEVEL_THREE:
+			right += SIMON_ROPE_LEVEL_THREE_LAST_FRAME_BBOX_WIDTH;
+			bottom += SIMON_ROPE_LEVEL_THREE_LAST_FRAME_BBOX_HEIGHT;
+			break;
+		}
+		
+	}
 }
 void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -30,6 +49,7 @@ void CSimonRope::Render()
 	// render only if it's actived
 	if (!_isActive) return;
 	CGameObject::Render();
+	CGameObject::RenderBoundingBox();
 }
 void CSimonRope::UpdateCurrentAnim()
 {

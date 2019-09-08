@@ -20,6 +20,9 @@ void CKeyHandler::KeyState(BYTE *states)
 	if (CGame::GetInstance()->IsKeyDown(DIK_Z)) {
 		CSimon::GetInstance()->DoAction(Action::ATTACK);
 	}
+	else if (CGame::GetInstance()->IsKeyDown(DIK_DOWN)) {
+		CSimon::GetInstance()->DoAction(Action::CROUCH);
+	}
 	else if (CGame::GetInstance()->IsKeyDown(DIK_LEFT)) 
 	{
 		CSimon::GetInstance()->DoAction(Action::WALK_LEFT);
