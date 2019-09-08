@@ -33,6 +33,7 @@
 #include "Maps.h"
 #include "SimonRope.h"
 #include "Torch.h"
+#include "FlameEffect.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -93,6 +94,7 @@ void LoadResources()
 	CSimon::LoadResource(OBJECTCODE_SIMON);
 	CSimonRope::LoadResource(OBJECTCODE_SIMONROPE);
 	CTorch::LoadResource(OBJECTCODE_TORCH);
+	CFlameEffect::LoadResource(OBJECTCODE_FLAME_EFFECT);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

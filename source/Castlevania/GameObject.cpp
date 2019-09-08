@@ -23,7 +23,6 @@ bool CGameObject::isOnCamera() {
 }
 void CGameObject::Render() {
 	if (state != GAMEOBJECT_STATE_VISIBLE&&state!= GAMEOBJECT_STATE_ACTIVE) return;
-	if (!isOnCamera()) return;
 	if (currentAnim == -1) return; //this object doesn't have animations
 	if (prevAnim != currentAnim) {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed

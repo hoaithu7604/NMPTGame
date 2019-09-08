@@ -127,6 +127,8 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="EffectObject.h" />
+    <ClInclude Include="FlameEffect.h" />
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MoveableObject.h" />
@@ -153,6 +155,8 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="EffectObject.cpp" />
+    <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="SimonRope.cpp" />
     <ClCompile Include="TiledLayer.cpp" />

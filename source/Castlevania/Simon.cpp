@@ -2,6 +2,7 @@
 #include "Simon.h"
 #include "UnseenForce.h"
 #include "Torch.h"
+#include "FlameEffect.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -104,6 +105,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				//do nothing
 				DebugOut(L"[INFO] TOUCHED TORCH");
+			}
+			else if (dynamic_cast<CFlameEffect*>(e->obj)) 
+			{
+				DebugOut(L"[INFO] TOUCHED FLAME EFFECT");
 			}
 		}
 		if (should_x_change) x += dx;
