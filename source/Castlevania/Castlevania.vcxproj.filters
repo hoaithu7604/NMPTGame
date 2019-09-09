@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Objects\items">
       <UniqueIdentifier>{28ecaf50-2aec-42e8-9a64-26fa5fd75152}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\overlayboard">
+      <UniqueIdentifier>{43620702-b414-42c7-afb8-4da8ea4d71b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\overlayboard">
+      <UniqueIdentifier>{0d399e35-72d3-4fbf-a9f6-55a3beb7abd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -135,6 +141,12 @@
     <ClInclude Include="ARGB.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="OverlayBoard.h">
+      <Filter>Header Files\Objects\overlayboard</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthIcon.h">
+      <Filter>Header Files\Objects\overlayboard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -232,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="RopeItem.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="OverlayBoard.cpp">
+      <Filter>Source Files\Objects\overlayboard</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

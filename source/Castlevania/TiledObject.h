@@ -22,6 +22,7 @@
 #define OBJECTCODE_FLAME_EFFECT "flameeffect"
 #define OBJECTCODE_BIGHEART "bigheart"
 #define OBJECTCODE_ROPEITEM "ropeitem"
+#define OBJECTCODE_HEALTHICON "healthicon"
 using json = nlohmann::json;
 using namespace std;
 /*

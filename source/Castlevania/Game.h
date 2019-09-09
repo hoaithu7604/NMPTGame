@@ -9,7 +9,9 @@
 #define KEYBOARD_BUFFER_SIZE 1024
 #include "Camera.h"
 #include "ARGB.h"
-
+#define FONT_SIZE 15
+#define FONT_PATH L"Resource\\Fonts\\Nintendo-NES-Font.ttf"
+#define FONT_NAME L"Nintendo NES Font"
 class CGame
 {
 	static CGame * __instance;
@@ -20,6 +22,7 @@ class CGame
 
 	LPDIRECT3DSURFACE9 backBuffer = NULL;		
 	LPD3DXSPRITE spriteHandler = NULL;			// Sprite helper library to help us draw 2D image on the screen 
+	LPD3DXFONT font = NULL;
 
 	LPDIRECTINPUT8       di;		// The DirectInput object         
 	LPDIRECTINPUTDEVICE8 didv;		// The keyboard device 
@@ -36,6 +39,9 @@ public:
 	void Init(HWND hWnd);
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, CARGB argb = CARGB());
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha=255);
+	void DrawOverlay(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, CARGB argb = CARGB());
+	void DrawOverlay(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha = 255);
+	void DrawString(float x, float y, std::string text, CARGB argb = CARGB());
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
 	static void SweptAABB(

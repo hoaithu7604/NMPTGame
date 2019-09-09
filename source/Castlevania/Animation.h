@@ -18,6 +18,7 @@ public:
 	void Add(int spriteId, DWORD time = 0);
 	void Reset();
 	void Render(float x, float y, CARGB argb = CARGB());
+	void RenderOverlay(float x, float y, CARGB argb = CARGB());
 };
 
 typedef CAnimation *LPANIMATION;

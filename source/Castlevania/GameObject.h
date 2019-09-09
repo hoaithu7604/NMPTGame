@@ -46,6 +46,7 @@ class CGameObject
 {
 	static vector<LPGAMEOBJECT>* objects;
 protected:
+	int health = 0;
 	float x; 
 	float y;
 	int nx; // >0 right, <=0 left
@@ -63,15 +64,17 @@ public:
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
 	int GetState() { return this->state; }
 	virtual void SetState(int state) { this->state = state; }
-
+	int GetHealth() { return health; }
 	void RenderBoundingBox();
 
 	CGameObject();
 	bool isOverlapping(CGameObject*obj);
+	void SetAnimation(int AnimID) { this->currentAnim = AnimID; }
 	virtual void FreezeAnimation();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) {};
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();
+	virtual void RenderOverlay();
 	
 	~CGameObject();
 };

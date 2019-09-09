@@ -131,10 +131,12 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EffectObject.h" />
     <ClInclude Include="FlameEffect.h" />
+    <ClInclude Include="HealthIcon.h" />
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MoveableObject.h" />
+    <ClInclude Include="OverlayBoard.h" />
     <ClInclude Include="RopeItem.h" />
     <ClInclude Include="SimonRope.h" />
     <ClInclude Include="TiledLayer.h" />
@@ -165,6 +167,7 @@
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
+    <ClCompile Include="OverlayBoard.cpp" />
     <ClCompile Include="RopeItem.cpp" />
     <ClCompile Include="SimonRope.cpp" />
     <ClCompile Include="TiledLayer.cpp" />

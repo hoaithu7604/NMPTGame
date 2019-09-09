@@ -49,6 +49,9 @@ void CGame::Init(HWND hWnd)
 	// Initialize sprite helper from Direct3DX helper library
 	D3DXCreateSprite(d3ddv, &spriteHandler);
 
+	AddFontResourceExW(FONT_PATH,FR_PRIVATE,0);
+	D3DXCreateFont(d3ddv, FONT_SIZE, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
+		ANTIALIASED_QUALITY, FF_DONTCARE,FONT_NAME,&font);
 	OutputDebugString(L"[INFO] InitGame done;\n");
 }
 
@@ -67,6 +70,18 @@ void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top
 	r.bottom = bottom;
 	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(argb.alpha, argb.red, argb.green, argb.blue));
 }
+void CGame::DrawOverlay(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, CARGB argb)
+{
+	float cameraX, cameraY;
+	camera->GetPosition(cameraX, cameraY);
+	D3DXVECTOR3 p(x - cameraX, y - cameraY, 0);
+	RECT r;
+	r.left = left;
+	r.top = top;
+	r.right = right;
+	r.bottom = bottom;
+	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(argb.alpha, argb.red, argb.green, argb.blue));
+}
 void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
 {
 	float cameraX, cameraY;
@@ -78,6 +93,32 @@ void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top
 	r.right = right;
 	r.bottom = bottom;
 	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255,255,255));
+}
+void CGame::DrawOverlay(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
+{
+	float cameraX, cameraY;
+	camera->GetPosition(cameraX, cameraY);
+	D3DXVECTOR3 p(x - cameraX, y - cameraY, 0);
+	RECT r;
+	r.left = left;
+	r.top = top;
+	r.right = right;
+	r.bottom = bottom;
+	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+}
+void CGame::DrawString(float x, float y, std::string text, CARGB argb)
+{
+	RECT rect;
+	rect.left = x;
+	rect.top = y;
+	rect.right = rect.left;
+	rect.bottom = rect.top;
+	// Get the correct RECT size for the string
+	font->DrawTextA(NULL, text.c_str(), -1, &rect, DT_CALCRECT, NULL);
+	// Draw string
+	int result = font->DrawTextA(NULL, text.c_str(), -1, &rect, DT_LEFT,
+		D3DCOLOR_ARGB(argb.alpha, argb.red, argb.green, argb.blue));
+	
 }
 
 int CGame::IsKeyDown(int KeyCode)

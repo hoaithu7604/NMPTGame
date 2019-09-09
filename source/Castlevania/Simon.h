@@ -11,6 +11,8 @@
 #define SIMON_ATTACK_COOLDOWN 600
 #define SIMON_HEART_DEFAULT 5
 #define SIMON_PICK_ITEM_FREEZE_TIME 1000
+#define SIMON_FABULOUS_DURATION 1000
+#define SIMON_HEALTH_DEFAULT 16
 #include "SimonRope.h"
 #include "Timer.h"
 enum class SimonAnimID
@@ -54,6 +56,7 @@ class CSimon : public CMoveableObject
 	bool isJumping;
 	bool isCrouching;
 	CTimer attack_timer;
+	CTimer fabulous_timer; // let simon stay fabulous while this timer is on lol
 	int heart;
 public:
 	CSimon();

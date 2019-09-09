@@ -37,7 +37,7 @@
 #include "BigHeart.h"
 #include "TimeFreezer.h"
 #include "RopeItem.h"
-
+#include "OverlayBoard.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -61,7 +61,7 @@ CAnimations * animations;
 CCamera * camera;
 CMaps * maps;
 CTimeFreezer* freezer; // if this timer is on, no update, render only, freeze objects animation
-
+COverlayBoard* board;
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message) {
@@ -94,7 +94,7 @@ void LoadResources()
 	animations = CAnimations::GetInstance();
 	camera = CCamera::GetInstance();
 	camera->SetSize(CAMERA_WIDTH, CAMERA_HEIGH);
-
+	board = COverlayBoard::GetInstance();
 	texture->LoadResource();
 
 	CSimon::LoadResource(OBJECTCODE_SIMON);
@@ -103,6 +103,7 @@ void LoadResources()
 	CFlameEffect::LoadResource(OBJECTCODE_FLAME_EFFECT);
 	CBigHeart::LoadResource(OBJECTCODE_BIGHEART);
 	CRopeItem::LoadResource(OBJECTCODE_ROPEITEM);
+	CHealthIcon::LoadResource(OBJECTCODE_HEALTHICON);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
@@ -135,6 +136,7 @@ void Update(DWORD dt)
 	{
 		for (int i = 0; i < upObjects.size(); i++)
 			upObjects[i]->Update(dt, &coObjects);
+		board->Update(dt);
 	}
 }
 
@@ -161,6 +163,7 @@ void Render()
 			objects[i]->Render();
 		}
 		simon->Render();
+		board->Render();
 		//
 		spriteHandler->End();
 		d3ddv->EndScene();

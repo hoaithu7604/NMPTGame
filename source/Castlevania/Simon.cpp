@@ -17,6 +17,8 @@ CSimon* CSimon::GetInstance()
 CSimon::CSimon() 
 	:CMoveableObject()
 {
+	health = SIMON_HEALTH_DEFAULT;
+	fabulous_timer.SetTime(SIMON_FABULOUS_DURATION);
 	attack_timer.SetTime(SIMON_ATTACK_COOLDOWN);
 	heart = SIMON_HEART_DEFAULT;
 	isJumping = false;
@@ -41,6 +43,8 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 		{
 			dynamic_cast<CRopeItem *>(obj)->GetReward();
 			CTimeFreezer::GetInstance()->Active(SIMON_PICK_ITEM_FREEZE_TIME);
+			fabulous_timer.Active();
+			argb = RGB_RED;
 			DebugOut(L"[INFO] OVERLAPPING ROPE ITEM");
 		}
 		else if (dynamic_cast<CTorch *>(obj)&&isOverlapping(obj))
@@ -147,6 +151,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 }
 void CSimon::Render() 
 {
+	if (fabulous_timer.isActive()&&!fabulous_timer.hasTicked()) {
+		argb.fade();
+	}
+	else argb = CARGB();
 	CGameObject::Render(); 
 	this->rope->Render();
 }
@@ -169,7 +177,6 @@ void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
 	if (this->rope->isActive()||CTimeFreezer::GetInstance()->isOn()) return; 
-	OutputDebugString(L"Simon DO action");
 	switch (action) {
 	case Action::ATTACK:
 		if (!attack_timer.isActive())

@@ -54,6 +54,27 @@ void CAnimation::Render(float x, float y, CARGB argb)
 		}
 
 	}
+}
+void CAnimation::RenderOverlay(float x, float y, CARGB argb)
+{
+	DWORD now = GetTickCount();
+	if (currentFrame == -1)
+	{
+		currentFrame = 0;
+		lastFrameTime = now;
+		frames[currentFrame]->GetSprite()->DrawOverlay(x, y, argb);
+	}
+	else
+	{
+		frames[currentFrame]->GetSprite()->DrawOverlay(x, y, argb);
 
-	
+		DWORD t = frames[currentFrame]->GetTime();
+		if (now - lastFrameTime > t)
+		{
+			currentFrame++;
+			lastFrameTime = now;
+			if (currentFrame == frames.size()) currentFrame = 0;
+		}
+
+	}
 }
