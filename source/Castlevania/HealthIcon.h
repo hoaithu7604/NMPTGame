@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
-#define HEALTHICON_BBOX_WIDTH 9
-#define HEALTHICON_BBOX_HEIGHT 15
+#define HEALTHICON_BBOX_WIDTH 8
+#define HEALTHICON_BBOX_HEIGHT 14
 enum class HealthIconAnim{
 	PLAYER=700,
 	ENEMY,
@@ -10,5 +10,5 @@ enum class HealthIconAnim{
 class CHealthIcon :public CGameObject
 {
 public:
-	CHealthIcon() { state = GAMEOBJECT_STATE_VISIBLE; }
+	CHealthIcon() { prevAnim = currentAnim = (int)HealthIconAnim::PLAYER; state = GAMEOBJECT_STATE_VISIBLE; }
 };

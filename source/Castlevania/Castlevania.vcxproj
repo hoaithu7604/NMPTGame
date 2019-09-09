@@ -132,6 +132,8 @@
     <ClInclude Include="EffectObject.h" />
     <ClInclude Include="FlameEffect.h" />
     <ClInclude Include="HealthIcon.h" />
+    <ClInclude Include="HeartIcon.h" />
+    <ClInclude Include="ItemFrame.h" />
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="Maps.h" />

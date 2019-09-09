@@ -72,9 +72,7 @@ void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top
 }
 void CGame::DrawOverlay(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, CARGB argb)
 {
-	float cameraX, cameraY;
-	camera->GetPosition(cameraX, cameraY);
-	D3DXVECTOR3 p(x - cameraX, y - cameraY, 0);
+	D3DXVECTOR3 p(x , y , 0);
 	RECT r;
 	r.left = left;
 	r.top = top;

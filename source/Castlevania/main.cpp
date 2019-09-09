@@ -38,6 +38,8 @@
 #include "TimeFreezer.h"
 #include "RopeItem.h"
 #include "OverlayBoard.h"
+#include "ItemFrame.h"
+#include "HeartIcon.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -104,6 +106,9 @@ void LoadResources()
 	CBigHeart::LoadResource(OBJECTCODE_BIGHEART);
 	CRopeItem::LoadResource(OBJECTCODE_ROPEITEM);
 	CHealthIcon::LoadResource(OBJECTCODE_HEALTHICON);
+	CItemFrame::LoadResource(OBJECTCODE_ITEMFRAME);
+	CHeartIcon::LoadResource(OBJECTCODE_HEARTICON);
+
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

@@ -23,6 +23,8 @@
 #define OBJECTCODE_BIGHEART "bigheart"
 #define OBJECTCODE_ROPEITEM "ropeitem"
 #define OBJECTCODE_HEALTHICON "healthicon"
+#define OBJECTCODE_ITEMFRAME "itemframe"
+#define OBJECTCODE_HEARTICON "hearticon"
 using json = nlohmann::json;
 using namespace std;
 /*

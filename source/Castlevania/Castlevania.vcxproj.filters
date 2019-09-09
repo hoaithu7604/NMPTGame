@@ -147,6 +147,12 @@
     <ClInclude Include="HealthIcon.h">
       <Filter>Header Files\Objects\overlayboard</Filter>
     </ClInclude>
+    <ClInclude Include="ItemFrame.h">
+      <Filter>Header Files\Objects\overlayboard</Filter>
+    </ClInclude>
+    <ClInclude Include="HeartIcon.h">
+      <Filter>Header Files\Objects\overlayboard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

@@ -63,6 +63,7 @@ public:
 	void DoAction(Action action);
 	void UpdateCurrentAnim();
 	void AddHeart(int heart) { this->heart += heart; }
+	int GetHeart() { return heart; }
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();
