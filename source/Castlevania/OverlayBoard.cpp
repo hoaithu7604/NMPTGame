@@ -8,6 +8,7 @@ COverlayBoard * COverlayBoard::GetInstance()
 }
 COverlayBoard::COverlayBoard()
 {
+	state = GAMEOBJECT_STATE_VISIBLE;
 	x = y = 10;
 	stage = 3; //lets not care about this now
 	point = OVERLAYBOARD_DEFAULT_POINT;

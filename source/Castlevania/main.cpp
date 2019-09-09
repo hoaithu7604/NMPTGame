@@ -47,7 +47,7 @@
 #define SCREEN_WIDTH 525 //~13
 #define SCREEN_HEIGHT 460
 #define CAMERA_WIDTH 512
-#define CAMERA_HEIGH 448
+#define CAMERA_HEIGH 416
 #define MAX_FRAME_RATE 120
 #define MAP_TO_THE_BAT_PATH L"Resource\\Stages\\ToTheBat.json"
 CGame *game;
@@ -127,8 +127,10 @@ void Update(DWORD dt)
 	upObjects.push_back(simon);
 	for (int i = 0; i < objects.size(); i++)
 	{
-		if (objects[i]->GetState() == GAMEOBJECT_STATE_ACTIVE) {
-			coObjects.push_back(objects[i]);
+		if (objects[i]->IsColliable()) {
+			coObjects.push_back(objects[i]);		
+		}
+		if (objects[i]->IsUpdatable()) {
 			upObjects.push_back(objects[i]);
 		}
 	}

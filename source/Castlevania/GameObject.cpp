@@ -23,8 +23,8 @@ bool CGameObject::isOnCamera() {
 	return left < l && top < t && right > r && bottom > b;
 }
 void CGameObject::Render() {
-	if (state != GAMEOBJECT_STATE_VISIBLE&&state!= GAMEOBJECT_STATE_ACTIVE) return;
-	if (currentAnim == -1) return; //this object doesn't have animations
+	if (!state.IsRenderable()) return;
+	if (currentAnim == -1) return; //this object doesn't have animations, may delete later because update state
 	if (prevAnim != currentAnim) {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed
 		prevAnim = currentAnim;
@@ -32,7 +32,7 @@ void CGameObject::Render() {
 	animations->Get(currentAnim)->Render(x, y, argb);
 }
 void CGameObject::RenderOverlay() {
-	if (state != GAMEOBJECT_STATE_VISIBLE && state != GAMEOBJECT_STATE_ACTIVE) return;
+	if (!state.IsRenderable()) return;
 	if (currentAnim == -1) return; //this object doesn't have animations
 	if (prevAnim != currentAnim) {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed
@@ -130,7 +130,7 @@ bool CGameObject::isOverlapping(CGameObject*obj)
 }
 void CGameObject::RenderBoundingBox()
 {
-	if (state == GAMEOBJECT_STATE_INVISIBLE) return;
+	if (state.IsColliable()&&state.IsRenderable()) return;
 	D3DXVECTOR3 p(x, y, 0);
 	RECT rect;
 

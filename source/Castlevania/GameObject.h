@@ -12,16 +12,26 @@
 #include "Game.h"
 #include "debug.h"
 #include "Textures.h"
-
 #define OBJECTDATA_PATH L"Resource\\Objects\\"
 using namespace std;
 
 #define ID_TEX_BBOX 100		// special texture to draw object bounding box
 
-#define GAMEOBJECT_STATE_INVISIBLE 0 //no render, no update
-#define GAMEOBJECT_STATE_VISIBLE 1  // render only
-#define GAMEOBJECT_STATE_ACTIVE 2 //both
-
+#define GAMEOBJECT_STATE_INVISIBLE State(false) //no render, no update, no collision
+#define GAMEOBJECT_STATE_VISIBLE State(1,0,0)  // render only
+#define GAMEOBJECT_STATE_COLLIDABLE State(0,0,1) //collision only
+#define GAMEOBJECT_STATE_ACTIVE State(true) // render, update, collision
+struct State
+{
+	bool renderable;
+	bool updatable;
+	bool collidable;
+	State(bool state=true) :renderable(state), updatable(state), collidable(state) {};
+	State(bool renderable, bool updatable, bool collidable) :renderable(renderable), updatable(updatable), collidable(collidable) {};
+	bool IsRenderable() { return renderable; }
+	bool IsUpdatable() { return updatable; }
+	bool IsColliable() { return collidable; }
+};
 
 class CGameObject; 
 typedef CGameObject * LPGAMEOBJECT;
@@ -46,11 +56,11 @@ class CGameObject
 {
 	static vector<LPGAMEOBJECT>* objects;
 protected:
+	State state;
 	int health = 0;
 	float x; 
 	float y;
 	int nx; // >0 right, <=0 left
-	int state;
 	int currentAnim;
 	int prevAnim;
 	CARGB argb;
@@ -62,10 +72,14 @@ public:
 	static void LoadResource(string ObjectName);
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
-	int GetState() { return this->state; }
-	virtual void SetState(int state) { this->state = state; }
+	State GetState() { return this->state; }
+	virtual void SetState(State state) { this->state = state; }
 	int GetHealth() { return health; }
 	void RenderBoundingBox();
+
+	bool IsRenderable() { return state.IsRenderable(); }
+	bool IsUpdatable() { return state.IsUpdatable(); }
+	bool IsColliable() { return state.IsColliable(); }
 
 	CGameObject();
 	bool isOverlapping(CGameObject*obj);

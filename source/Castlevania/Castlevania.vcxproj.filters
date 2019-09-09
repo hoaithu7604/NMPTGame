@@ -43,6 +43,27 @@
     <Filter Include="Source Files\Objects\overlayboard">
       <UniqueIdentifier>{0d399e35-72d3-4fbf-a9f6-55a3beb7abd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\events">
+      <UniqueIdentifier>{39fd4084-5474-4c59-8baa-48fb64b039dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\effects">
+      <UniqueIdentifier>{2583f7e2-9c06-4fb3-805b-ecd6108da4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\itemholders">
+      <UniqueIdentifier>{8830c759-b243-4d6f-a980-3d031bd7399e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\itemholders">
+      <UniqueIdentifier>{a11f45f2-a2b4-4873-aaf0-7291803a27ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\simon">
+      <UniqueIdentifier>{c9016028-6169-47be-9f76-062632c339ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\effects">
+      <UniqueIdentifier>{03cec3a1-812d-42a4-91d0-5204fafe84cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\simon">
+      <UniqueIdentifier>{2ae42964-a0f7-4211-93e3-b5dc8c97a813}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -75,9 +96,6 @@
     <ClInclude Include="Sprites.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Simon.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
@@ -108,23 +126,8 @@
     <ClInclude Include="UnseenForce.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="SimonRope.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemHolder.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Torch.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="EffectObject.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="FlameEffect.h">
-      <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="BigHeart.h">
       <Filter>Header Files\Objects\items</Filter>
@@ -152,6 +155,27 @@
     </ClInclude>
     <ClInclude Include="HeartIcon.h">
       <Filter>Header Files\Objects\overlayboard</Filter>
+    </ClInclude>
+    <ClInclude Include="EventObject.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemHolder.h">
+      <Filter>Header Files\Objects\itemholders</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>Header Files\Objects\itemholders</Filter>
+    </ClInclude>
+    <ClInclude Include="Simon.h">
+      <Filter>Header Files\Objects\simon</Filter>
+    </ClInclude>
+    <ClInclude Include="SimonRope.h">
+      <Filter>Header Files\Objects\simon</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectObject.h">
+      <Filter>Header Files\Objects\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="FlameEffect.h">
+      <Filter>Header Files\Objects\effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +212,6 @@
     <ClCompile Include="Sprites.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Simon.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="MoveableObject.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
@@ -221,23 +242,8 @@
     <ClCompile Include="UnseenForce.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="SimonRope.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files\Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemHolder.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Torch.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectObject.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="FlameEffect.cpp">
-      <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="BigHeart.cpp">
       <Filter>Source Files\Objects\items</Filter>
@@ -253,6 +259,24 @@
     </ClCompile>
     <ClCompile Include="OverlayBoard.cpp">
       <Filter>Source Files\Objects\overlayboard</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectObject.cpp">
+      <Filter>Source Files\Objects\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="FlameEffect.cpp">
+      <Filter>Source Files\Objects\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemHolder.cpp">
+      <Filter>Source Files\Objects\itemholders</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>Source Files\Objects\itemholders</Filter>
+    </ClCompile>
+    <ClCompile Include="Simon.cpp">
+      <Filter>Source Files\Objects\simon</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonRope.cpp">
+      <Filter>Source Files\Objects\simon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
