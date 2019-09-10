@@ -6,6 +6,7 @@
 #include "BigHeart.h"
 #include "TimeFreezer.h"
 #include "RopeItem.h"
+#include "DaggerItem.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -23,6 +24,8 @@ CSimon::CSimon()
 	heart = SIMON_HEART_DEFAULT;
 	isJumping = false;
 	isCrouching = false;
+	isUsingweapon = false;
+	weapon = NULL;
 	rope = new CSimonRope();
 	currentAnim = (int)SimonAnimID::IDLE_RIGHT;
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
@@ -55,6 +58,11 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 		{
 			DebugOut(L"[INFO] OVERLAPPING FLAME EFFECT");
 		}		
+		else if (dynamic_cast<CDaggerItem*>(obj) && isOverlapping(obj))
+		{
+			dynamic_cast<CDaggerItem *>(obj)->GetReward();
+			DebugOut(L"[INFO] OVERLAPPING DAGGER ITEM");
+		}
 		else _objects->push_back(obj);
 	}
 }
@@ -176,17 +184,27 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
-	if (this->rope->isActive()||CTimeFreezer::GetInstance()->isOn()) return; 
+	if (this->rope->isActive()||isUsingweapon||CTimeFreezer::GetInstance()->isOn()) return; 
 	switch (action) {
 	case Action::ATTACK:
 		if (!attack_timer.isActive())
 		{
 			attack_timer.Active();
-			
 			this->rope->Active();
-			if (!isJumping) this->vx = 0;
+			if (!isJumping)
+			{			
+				this->vx = 0;
+			}
+			//else StandUp();
 		}
 		break;
+	case Action::USE_WEAPON:
+		isUsingweapon = true;
+		weapon->Trigger();
+		if (!isJumping)
+		{
+			this->vx = 0;
+		}
 	}
 	if (isJumping) return;
 	//------------------------------
@@ -195,12 +213,7 @@ void CSimon::DoAction(Action action)
 			Jump();
 			break;
 		case Action::CROUCH:
-			if (!isCrouching)
-			{
-				this->isCrouching = true;
-				this->vx = 0;
-				y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
-			}
+			Crouch();
 			break;
 		case Action::WALK_RIGHT:
 			StandUp();
@@ -222,7 +235,7 @@ void CSimon::DoAction(Action action)
 void CSimon::UpdateCurrentAnim() 
 {
 
-	if (this->rope->isActive())
+	if (this->rope->isActive()||isUsingweapon)
 	{
 		if (isCrouching) {
 			currentAnim = nx > 0 ? (int)SimonAnimID::CROUCH_ATTACK_RIGHT : (int)SimonAnimID::CROUCH_ATTACK_LEFT;
@@ -257,6 +270,8 @@ void CSimon::StandUp()
 	{
 		isCrouching = false;
 		y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
+		if (isJumping) // fix later
+			y -= 10;
 	}
 }
 void CSimon::Jump()
@@ -267,6 +282,14 @@ void CSimon::Jump()
 		isJumping = true;
 		isCrouching = true;
 		this->vy = -SIMON_JUMPING_SPEED;
+		y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
+	}
+}
+void CSimon::Crouch() {
+	if (!isCrouching)
+	{
+		this->isCrouching = true;
+		this->vx = 0;
 		y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
 	}
 }
@@ -285,4 +308,10 @@ void CSimon::FreezeAnimation()
 void CSimon::IncreaseRopeLevel()
 {
 	rope->IncreaseLevel();
+}
+void CSimon::ChangeWeapon(LPWEAPON weapon)
+{
+	delete this->weapon;
+	this->weapon = weapon;
+
 }

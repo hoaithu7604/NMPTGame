@@ -25,6 +25,7 @@
 #define OBJECTCODE_HEALTHICON "healthicon"
 #define OBJECTCODE_ITEMFRAME "itemframe"
 #define OBJECTCODE_HEARTICON "hearticon"
+#define OBJECTCODE_DAGGER "dagger"
 using json = nlohmann::json;
 using namespace std;
 /*

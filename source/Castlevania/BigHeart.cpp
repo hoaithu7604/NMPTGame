@@ -1,3 +1,4 @@
+#pragma once
 #include "BigHeart.h"
 #include "UnseenForce.h"
 #include "Simon.h"

@@ -1,3 +1,4 @@
+#pragma once
 #include "ItemObject.h"
 #include "UnseenForce.h"
 void CItemObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -20,9 +21,6 @@ void CItemObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		float min_tx, min_ty, nx = 0, ny;
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-		bool should_x_change = true;
-		bool should_y_change = true;
-		//
 
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{

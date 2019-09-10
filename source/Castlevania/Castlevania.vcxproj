@@ -128,6 +128,9 @@
     <ClInclude Include="ARGB.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Dagger.h" />
+    <ClInclude Include="DaggerItem.h" />
+    <ClInclude Include="DaggerProjectile.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EffectObject.h" />
     <ClInclude Include="EventObject.h" />
@@ -159,6 +162,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -166,8 +170,12 @@
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Dagger.cpp" />
+    <ClCompile Include="DaggerItem.cpp" />
+    <ClCompile Include="DaggerProjectile.cpp" />
     <ClCompile Include="EffectObject.cpp" />
     <ClCompile Include="FlameEffect.cpp" />
+    <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
     <ClCompile Include="OverlayBoard.cpp" />

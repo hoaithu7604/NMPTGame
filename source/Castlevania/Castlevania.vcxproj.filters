@@ -64,6 +64,18 @@
     <Filter Include="Source Files\Objects\simon">
       <UniqueIdentifier>{2ae42964-a0f7-4211-93e3-b5dc8c97a813}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\simon\weapons">
+      <UniqueIdentifier>{e4fa19a5-c7c9-4b20-a2d6-8cd271c76057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\simon\weapons">
+      <UniqueIdentifier>{bb0b0e39-feec-42d1-9bbf-19322c5fc312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\simon\weapons\Dagger">
+      <UniqueIdentifier>{6603c984-1c49-47c7-bef3-cd3356d71b82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\simon\weapons\dagger">
+      <UniqueIdentifier>{41a90695-655e-4252-8da2-90300d0723f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -120,9 +132,6 @@
     <ClInclude Include="TiledObject.h">
       <Filter>Header Files\Framework\TiledJsonParser</Filter>
     </ClInclude>
-    <ClInclude Include="Maps.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UnseenForce.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
@@ -176,6 +185,21 @@
     </ClInclude>
     <ClInclude Include="FlameEffect.h">
       <Filter>Header Files\Objects\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Objects\simon\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Maps.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="DaggerItem.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
+    <ClInclude Include="DaggerProjectile.h">
+      <Filter>Header Files\Objects\simon\weapons\Dagger</Filter>
+    </ClInclude>
+    <ClInclude Include="Dagger.h">
+      <Filter>Header Files\Objects\simon\weapons\Dagger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +301,18 @@
     </ClCompile>
     <ClCompile Include="SimonRope.cpp">
       <Filter>Source Files\Objects\simon</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemFrame.cpp">
+      <Filter>Source Files\Objects\overlayboard</Filter>
+    </ClCompile>
+    <ClCompile Include="DaggerItem.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Dagger.cpp">
+      <Filter>Source Files\Objects\simon\weapons\dagger</Filter>
+    </ClCompile>
+    <ClCompile Include="DaggerProjectile.cpp">
+      <Filter>Source Files\Objects\simon\weapons\dagger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

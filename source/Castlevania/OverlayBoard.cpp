@@ -16,6 +16,7 @@ COverlayBoard::COverlayBoard()
 	timer.Active();
 	game = CGame::GetInstance();
 	simon = CSimon::GetInstance();
+	weapon = simon->GetWeapon();
 	itemframe = new CItemFrame();
 	itemframe->SetPosition(x + OVERLAYBOARD_ITEM_FRAME_X, y + OVERLAYBOARD_ITEM_FRAME_Y);
 	heart = new CHeartIcon();
@@ -49,6 +50,13 @@ void COverlayBoard::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 	else 
 	{
+		weapon = simon->GetWeapon();
+		if (weapon != NULL)
+		{
+			float x, y;
+			itemframe->GetCentralPoint(x, y);
+			weapon->SetPositionCentral(x, y);
+		}
 		int currentHealth = simon->GetHealth();
 		for (int i = 0; i < SIMON_HEALTH_DEFAULT; i++) 
 		{
@@ -102,6 +110,7 @@ void COverlayBoard::Render()
 	//item frame
 	itemframe->RenderOverlay();
 	//render item here later;
+	if (weapon!=NULL) weapon->RenderOverlay();
 
 	//heart
 	heart->RenderOverlay();

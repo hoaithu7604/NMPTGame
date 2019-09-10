@@ -10,4 +10,5 @@ class CItemFrame : public CGameObject
 
 public:
 	CItemFrame() { prevAnim = currentAnim = (int)ItemFrameAnim::IDLE; state = GAMEOBJECT_STATE_VISIBLE; }
+	void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };

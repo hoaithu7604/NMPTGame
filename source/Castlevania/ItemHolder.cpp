@@ -2,7 +2,7 @@
 #include "FlameEffect.h"
 #include "BigHeart.h"
 #include "RopeItem.h"
-
+#include "DaggerItem.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -36,6 +36,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CRopeItem* ropeitem = new CRopeItem(pos_x, pos_y);
 					CGameObject::AddObject(ropeitem);
+				}
+				else if (item[i] == ITEMCODE_DAGGERITEM)
+				{
+					CDaggerItem* daggeritem = new CDaggerItem(pos_x, pos_y);
+					CGameObject::AddObject(daggeritem);
 				}
 			}
 		}

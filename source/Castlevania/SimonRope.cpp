@@ -56,7 +56,7 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 			{
 				if (dynamic_cast<CTorch*>(coObjects->at(i)))
 				{
-					dynamic_cast<CTorch*>(coObjects->at(i))->Destroy();
+					dynamic_cast<CTorch*>(coObjects->at(i))->TakeDamage(1);
 				}
 			}
 		}

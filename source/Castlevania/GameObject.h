@@ -21,6 +21,10 @@ using namespace std;
 #define GAMEOBJECT_STATE_VISIBLE State(1,0,0)  // render only
 #define GAMEOBJECT_STATE_COLLIDABLE State(0,0,1) //collision only
 #define GAMEOBJECT_STATE_ACTIVE State(true) // render, update, collision
+#define GAMEOBJECT_STATE_UPDATE_ONLY State(0,1,0) // update only
+#define GAMEOBJECT_STATE_NO_UPDATE State(1,0,1)
+#define GAMEOBJECT_STATE_NO_RENDER State(0,1,1)
+#define GAMEOBJECT_STATE_NO_COLLISION State(1,1,0)
 struct State
 {
 	bool renderable;
@@ -80,16 +84,19 @@ public:
 	bool IsRenderable() { return state.IsRenderable(); }
 	bool IsUpdatable() { return state.IsUpdatable(); }
 	bool IsColliable() { return state.IsColliable(); }
-
+	
 	CGameObject();
 	bool isOverlapping(CGameObject*obj);
 	void SetAnimation(int AnimID) { this->currentAnim = AnimID; }
+	virtual void TakeDamage(int damage);
+	virtual void Destroy() {};
 	virtual void FreezeAnimation();
-	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) {};
+	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) { left = x; top = y; right = x; bottom = y; };
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();
 	virtual void RenderOverlay();
-	
+	virtual void GetCentralPoint(float &x, float&y);
+	virtual void SetPositionCentral(float x, float y);
 	~CGameObject();
 };
 

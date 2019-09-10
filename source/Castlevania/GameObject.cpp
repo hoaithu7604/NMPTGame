@@ -113,6 +113,15 @@ void CGameObject::LoadResource(string ObjectName)
 	}
 
 }
+void CGameObject::TakeDamage(int damage)
+{
+	health -= damage;
+	if (health <= 0)
+	{
+		health = 0;
+		Destroy();
+	}
+}
 void CGameObject::FreezeAnimation()
 {
 	if (currentAnim != -1)
@@ -127,6 +136,20 @@ bool CGameObject::isOverlapping(CGameObject*obj)
 	float l, t, r, b;
 	this->GetBoundingBox(l, t, r, b);
 	return l < right && r > left && t < bottom && b > top;
+}
+void CGameObject::GetCentralPoint(float &x, float&y)
+{
+	float left, top, right, bottom;
+	GetBoundingBox(left, top, right, bottom);
+	x = (left + right) / 2;
+	y = (top + bottom) / 2;
+};
+void CGameObject::SetPositionCentral(float x, float y)
+{
+	float left, top, right, bottom;
+	GetBoundingBox(left, top, right, bottom);
+	this->x = x - (right - left) / 2;
+	this->y = y - (bottom-top) / 2;
 }
 void CGameObject::RenderBoundingBox()
 {
@@ -146,8 +169,6 @@ void CGameObject::RenderBoundingBox()
 
 	//CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 170);
 }
-
-
 
 CGameObject::~CGameObject()
 {

@@ -10,11 +10,12 @@
 #define SIMON_CROUCHING_BBOX_HEIGHT 46
 #define SIMON_ATTACK_COOLDOWN 600
 #define SIMON_HEART_DEFAULT 5
-#define SIMON_PICK_ITEM_FREEZE_TIME 1000
-#define SIMON_FABULOUS_DURATION 1000
+#define SIMON_PICK_ITEM_FREEZE_TIME 500
+#define SIMON_FABULOUS_DURATION 500
 #define SIMON_HEALTH_DEFAULT 16
 #include "SimonRope.h"
 #include "Timer.h"
+#include "Dagger.h"
 enum class SimonAnimID
 {
 	IDLE_RIGHT = 100,
@@ -55,11 +56,15 @@ class CSimon : public CMoveableObject
 	static CSimon * __instance;
 	bool isJumping;
 	bool isCrouching;
+	bool isUsingweapon;
 	CTimer attack_timer;
 	CTimer fabulous_timer; // let simon stay fabulous while this timer is on lol
 	int heart;
+	LPWEAPON weapon;
 public:
 	CSimon();
+	bool CanUseWeapon() { return weapon != NULL && heart > 0 && !weapon->isOnCooldown(); }
+	void ChangeWeapon(LPWEAPON weapon);
 	void DoAction(Action action);
 	void UpdateCurrentAnim();
 	void AddHeart(int heart) { this->heart += heart; }
@@ -71,8 +76,10 @@ public:
 	void OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT>*_objects);
 	void StandUp();
 	void Jump();
+	void Crouch();
 	void Focus();
 	void IncreaseRopeLevel();
+	LPWEAPON GetWeapon() { return weapon; }
 	static CSimon * GetInstance();
 };
 

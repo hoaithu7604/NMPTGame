@@ -5,6 +5,7 @@
 #include "Timer.h"
 #define ITEMCODE_BIGHEART "bigheart"
 #define ITEMCODE_ROPEITEM "ropeitem"
+#define ITEMCODE_DAGGERITEM "daggeritem"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 
@@ -15,7 +16,7 @@ protected:
 	CTimer delay_timer;
 public:
 	CItemHolder() { delay_timer.SetTime(ITEM_DEFAULT_SPAWN_DELAY); state = GAMEOBJECT_STATE_ACTIVE; }
-	void Destroy();
+	virtual void Destroy();
 	void AddItem(string item) { this->item.push_back(item); }
 	virtual void Render() { if (isOnCamera()) CGameObject::Render(); }
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) {};

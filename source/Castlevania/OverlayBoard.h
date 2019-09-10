@@ -55,6 +55,7 @@ class COverlayBoard:CGameObject {
 	// make life easier
 	CGame* game; 
 	CSimon* simon;
+	LPWEAPON weapon;
 	CItemFrame* itemframe;
 	CHeartIcon* heart;
 	vector<CHealthIcon*> playerHealth;
