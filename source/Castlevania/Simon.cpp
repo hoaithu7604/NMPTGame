@@ -7,6 +7,7 @@
 #include "TimeFreezer.h"
 #include "RopeItem.h"
 #include "DaggerItem.h"
+#include "TinyHeart.h"
 CSimon * CSimon::__instance = NULL;
 
 CSimon* CSimon::GetInstance()
@@ -42,6 +43,11 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 		{			
 			dynamic_cast<CBigHeart*>(obj)->GetReward();
 			DebugOut(L"[INFO] OVERLAPPING BIG HEART");			
+		}
+		else if (dynamic_cast<CTinyHeart *>(obj) && isOverlapping(obj))
+		{
+			dynamic_cast<CTinyHeart*>(obj)->GetReward();
+			DebugOut(L"[INFO] OVERLAPPING TINY HEART");
 		}
 		else if (dynamic_cast<CRopeItem *>(obj) && isOverlapping(obj))
 		{

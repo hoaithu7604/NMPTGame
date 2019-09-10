@@ -4,6 +4,7 @@
 #include "Torch.h"
 #include "AutoWalkEvent.h"
 #include "TeleportEvent.h"
+#include "Candle.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -97,6 +98,19 @@ void CTiledObject::Create()
 			}
 		}
 		obj->SetTargetPos(pos_x, pos_y);
+		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_CANDLE)
+	{
+		CCandle*obj = new CCandle();
+		obj->SetPosition(x, y);
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == TILED_PROPERTY_ITEMHOLDER)
+			{
+				obj->AddItem(properties[i]->value_string);
+			}
+		}
 		CGameObject::AddObject(obj);
 	}
 

@@ -41,6 +41,8 @@
 #include "ItemFrame.h"
 #include "HeartIcon.h"
 #include "Dagger.h"
+#include "Candle.h"
+#include "TinyHeart.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -110,6 +112,8 @@ void LoadResources()
 	CItemFrame::LoadResource(OBJECTCODE_ITEMFRAME);
 	CHeartIcon::LoadResource(OBJECTCODE_HEARTICON);
 	CDagger::LoadResource(OBJECTCODE_DAGGER);
+	CCandle::LoadResource(OBJECTCODE_CANDLE);
+	CTinyHeart::LoadResource(OBJECTCODE_TINYHEART);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

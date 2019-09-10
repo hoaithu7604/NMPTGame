@@ -30,6 +30,8 @@
 #define OBJECTCODE_DAGGER "dagger"
 #define OBJECTCODE_AUTOWALKEVENT "autowalkevent"
 #define OBJECTCODE_TELEPORTEVENT "teleportevent"
+#define OBJECTCODE_CANDLE "candle"
+#define OBJECTCODE_TINYHEART "tinyheart"
 using json = nlohmann::json;
 using namespace std;
 /*

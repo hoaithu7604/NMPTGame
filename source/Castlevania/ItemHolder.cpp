@@ -3,6 +3,7 @@
 #include "BigHeart.h"
 #include "RopeItem.h"
 #include "DaggerItem.h"
+#include "TinyHeart.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -11,7 +12,7 @@ void CItemHolder::Destroy() {
 	CFlameEffect* effect = new CFlameEffect(pos_x,pos_y);
 
 	delay_timer.Active();
-	currentAnim = -1; // stop it to be rendered, but still be updated
+	state = GAMEOBJECT_STATE_UPDATE_ONLY;
 }
 
 void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -40,6 +41,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CDaggerItem* daggeritem = new CDaggerItem(pos_x, pos_y);
 					CGameObject::AddObject(daggeritem);
+				}
+				else if (item[i] == ITEMCODE_TINYHEART)
+				{
+					CTinyHeart* tinyheart = new CTinyHeart(pos_x, pos_y);
+					CGameObject::AddObject(tinyheart);
 				}
 			}
 		}

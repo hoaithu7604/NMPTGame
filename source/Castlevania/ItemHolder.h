@@ -6,6 +6,7 @@
 #define ITEMCODE_BIGHEART "bigheart"
 #define ITEMCODE_ROPEITEM "ropeitem"
 #define ITEMCODE_DAGGERITEM "daggeritem"
+#define ITEMCODE_TINYHEART "tinyheart"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 
@@ -15,7 +16,7 @@ protected:
 	vector<string> item;
 	CTimer delay_timer;
 public:
-	CItemHolder() { delay_timer.SetTime(ITEM_DEFAULT_SPAWN_DELAY); state = GAMEOBJECT_STATE_ACTIVE; }
+	CItemHolder() { delay_timer.SetTime(ITEM_DEFAULT_SPAWN_DELAY); state = GAMEOBJECT_STATE_NO_UPDATE; }
 	virtual void Destroy();
 	void AddItem(string item) { this->item.push_back(item); }
 	virtual void Render() { if (isOnCamera()) CGameObject::Render(); }

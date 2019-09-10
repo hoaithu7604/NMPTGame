@@ -210,6 +210,12 @@
     <ClInclude Include="TeleportEvent.h">
       <Filter>Header Files\Objects\events</Filter>
     </ClInclude>
+    <ClInclude Include="Candle.h">
+      <Filter>Header Files\Objects\itemholders</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyHeart.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -331,6 +337,12 @@
     </ClCompile>
     <ClCompile Include="TeleportEvent.cpp">
       <Filter>Source Files\Objects\events</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle.cpp">
+      <Filter>Source Files\Objects\itemholders</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyHeart.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

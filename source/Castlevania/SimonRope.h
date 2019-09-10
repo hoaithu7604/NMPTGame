@@ -29,7 +29,7 @@ class CSimonRope : public CGameObject
 public:
 	CSimonRope();
 	bool isActive() { return _isActive; }
-	void Deactive() { _isActive = false; }
+	void Deactive() { animations->Get(currentAnim)->Reset(); _isActive = false; }
 	void Active(bool active = true) { isFirstFrame = true; _isActive = active; }
 	void UpdateCurrentAnim();
 	void UpdatePosition();

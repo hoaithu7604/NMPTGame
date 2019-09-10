@@ -129,6 +129,7 @@
     <ClInclude Include="AutoWalkEvent.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Candle.h" />
     <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
     <ClInclude Include="DaggerProjectile.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="TiledTileset.h" />
     <ClInclude Include="TimeFreezer.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TinyHeart.h" />
     <ClInclude Include="Torch.h" />
     <ClInclude Include="UnseenForce.h" />
     <ClInclude Include="Utility.h" />
@@ -185,6 +187,7 @@
     <ClCompile Include="OverlayBoard.cpp" />
     <ClCompile Include="RopeItem.cpp" />
     <ClCompile Include="SimonRope.cpp" />
+    <ClCompile Include="Candle.cpp" />
     <ClCompile Include="TeleportEvent.cpp" />
     <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -204,6 +207,7 @@
     <ClCompile Include="TiledTileset.cpp" />
     <ClCompile Include="TimeFreezer.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TinyHeart.cpp" />
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="UnseenForce.cpp" />
     <ClCompile Include="Utility.cpp" />
