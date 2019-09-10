@@ -112,7 +112,7 @@
                  "visible":true,
                  "width":1533.33333333333,
                  "x":128.003298611111,
-                 "y":385.003298611111
+                 "y":387.003298611111
                 }, 
                 {
                  "height":416,
@@ -124,28 +124,6 @@
                  "width":1534.25,
                  "x":128.003298611111,
                  "y":25
-                }, 
-                {
-                 "height":34,
-                 "id":110,
-                 "name":"portal",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":28.5,
-                 "x":1505.00329861111,
-                 "y":348.003298611111
-                }, 
-                {
-                 "height":62,
-                 "id":111,
-                 "name":"portal",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":1680.00329861111,
-                 "y":352.003298611111
                 }, 
                 {
                  "height":440.167,
@@ -179,6 +157,72 @@
                  "width":10.75,
                  "x":120.958333333333,
                  "y":-7.08349999999998
+                }, 
+                {
+                 "height":184.25,
+                 "id":292,
+                 "name":"autowalkevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":1680.1
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":352.1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":39.25,
+                 "x":1464.25,
+                 "y":214.5
+                }, 
+                {
+                 "height":104.416666666667,
+                 "id":294,
+                 "name":"teleportevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":1680.1
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":350.1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":46.5,
+                 "x":1504.75,
+                 "y":287.75
+                }, 
+                {
+                 "height":416,
+                 "id":295,
+                 "name":"camerabound",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":3089.64,
+                 "x":1662,
+                 "y":25
+                }, 
+                {
+                 "height":19.25,
+                 "id":296,
+                 "name":"unseenforce",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":5599.58,
+                 "x":1664,
+                 "y":418
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -186,8 +230,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":44,
- "nextobjectid":285,
+ "nextlayerid":45,
+ "nextobjectid":297,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

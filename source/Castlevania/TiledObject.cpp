@@ -2,7 +2,8 @@
 #include "Simon.h"
 #include "UnseenForce.h"
 #include "Torch.h"
-
+#include "AutoWalkEvent.h"
+#include "TeleportEvent.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -16,11 +17,21 @@ CTiledObject::CTiledObject(json root)
 	for (json::iterator it = propertiesRoot.begin(); it != propertiesRoot.end(); it++)
 	{
 		json propertyRoot = *it;
-		string propertyName = propertyRoot[TILED_OBJECT_PROPERTY_NAME];
-		string propertyType = propertyRoot[TILED_OBJECT_PROPERTY_TYPE];
-		string propertyValue = propertyRoot[TILED_OBJECT_PROPERTY_VALUE];
-		CTiledProperty*property = new CTiledProperty(propertyName, propertyType, propertyValue);
-		properties.push_back(property);
+		string propertyName = propertyRoot[TILED_OBJECT_PROPERTY_NAME].get<string>();
+		string propertyType = propertyRoot[TILED_OBJECT_PROPERTY_TYPE].get<string>();
+		if (propertyRoot[TILED_OBJECT_PROPERTY_VALUE].is_number_float())
+		{
+			float propertyValue = propertyRoot[TILED_OBJECT_PROPERTY_VALUE].get<float>();
+			CTiledProperty*property = new CTiledProperty(propertyName, propertyType, propertyValue);
+			properties.push_back(property);
+		}
+		else if (propertyRoot[TILED_OBJECT_PROPERTY_VALUE].is_string())
+		{
+			string propertyValue = propertyRoot[TILED_OBJECT_PROPERTY_VALUE].get<string>();
+			CTiledProperty*property = new CTiledProperty(propertyName, propertyType, propertyValue);
+			properties.push_back(property);
+		}
+		
 	}
 }
 void CTiledObject::Create()
@@ -47,9 +58,46 @@ void CTiledObject::Create()
 		{
 			if (properties[i]->name==TILED_PROPERTY_ITEMHOLDER)
 			{
-				obj->AddItem(properties[i]->value);
+				obj->AddItem(properties[i]->value_string);
 			}
 		}
 		CGameObject::AddObject(obj);
 	}
+	else if (name == OBJECTCODE_AUTOWALKEVENT)
+	{
+		CAutoWalkEvent*obj = new CAutoWalkEvent(x,y,width,height);
+		float pos_x, pos_y;
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == TILED_PROPERTY_TARGET_POS_X)
+			{
+				pos_x = properties[i]->value_float;
+			}
+			else if (properties[i]->name == TILED_PROPERTY_TARGET_POS_Y)
+			{
+				pos_y = properties[i]->value_float;
+			}
+		}
+		obj->SetTargetPos(pos_x, pos_y);
+		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_TELEPORTEVENT) 
+	{
+		CTeleportEvent*obj = new CTeleportEvent(x, y, width, height);
+		float pos_x, pos_y;
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == TILED_PROPERTY_TARGET_POS_X)
+			{
+				pos_x = properties[i]->value_float;
+			}
+			else if (properties[i]->name == TILED_PROPERTY_TARGET_POS_Y)
+			{
+				pos_y = properties[i]->value_float;
+			}
+		}
+		obj->SetTargetPos(pos_x, pos_y);
+		CGameObject::AddObject(obj);
+	}
+
 }

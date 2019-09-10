@@ -87,9 +87,10 @@ public:
 	bool IsRenderable() { return state.IsRenderable(); }
 	bool IsUpdatable() { return state.IsUpdatable(); }
 	bool IsColliable() { return state.IsColliable(); }
-	
+	void SetFacing(int nx) { this->nx = nx; }
 	CGameObject();
 	bool isOverlapping(CGameObject*obj);
+	bool isContaining(CGameObject*obj);
 	void SetAnimation(int AnimID) { this->currentAnim = AnimID; }
 	virtual void TakeDamage(int damage);
 	virtual void Destroy() {};

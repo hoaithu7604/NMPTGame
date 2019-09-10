@@ -25,6 +25,7 @@ CSimon::CSimon()
 	isJumping = false;
 	isCrouching = false;
 	isUsingweapon = false;
+	isControllable = true;
 	weapon = NULL;
 	rope = new CSimonRope();
 	currentAnim = (int)SimonAnimID::IDLE_RIGHT;
@@ -185,7 +186,7 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
-	if (this->rope->isActive()||isUsingweapon||CTimeFreezer::GetInstance()->isOn()) return; 
+	if (this->rope->isActive()||isUsingweapon||!isControllable||CTimeFreezer::GetInstance()->isActive()) return; 
 	switch (action) {
 	case Action::ATTACK:
 		if (!attack_timer.isActive())
@@ -318,4 +319,12 @@ void CSimon::ChangeWeapon(LPWEAPON weapon)
 	delete this->weapon;
 	this->weapon = weapon;
 
+}
+void CSimon::ForceIdle()
+{
+	StandUp();
+	isUsingweapon = false;
+	isJumping = false;
+	if (vy < 0) vy = 1;
+	rope->Deactive();
 }

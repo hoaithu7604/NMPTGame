@@ -124,7 +124,7 @@ void CGameObject::TakeDamage(int damage)
 }
 void CGameObject::FreezeAnimation()
 {
-	if (currentAnim != -1)
+	if (currentAnim != -1&&state.IsRenderable())
 	{
 		animations->Get(currentAnim)->ResetCurrentFrameTime();
 	}
@@ -136,6 +136,14 @@ bool CGameObject::isOverlapping(CGameObject*obj)
 	float l, t, r, b;
 	this->GetBoundingBox(l, t, r, b);
 	return l < right && r > left && t < bottom && b > top;
+}
+bool CGameObject::isContaining(CGameObject*obj)
+{
+	float left, top, right, bottom;
+	obj->GetBoundingBox(left, top, right, bottom);
+	float l, t, r, b;
+	this->GetBoundingBox(l, t, r, b);
+	return l <= left && t <= top && r >= right && b >= bottom;
 }
 void CGameObject::GetCentralPoint(float &x, float&y)
 {

@@ -54,6 +54,7 @@ class CSimon : public CMoveableObject
 	LPSIMONROPE rope;
 	CCamera * camera;
 	static CSimon * __instance;
+	bool isControllable;
 	bool isJumping;
 	bool isCrouching;
 	bool isUsingweapon;
@@ -63,6 +64,10 @@ class CSimon : public CMoveableObject
 	LPWEAPON weapon;
 public:
 	CSimon();
+	bool isMoveable() { return vy==0&&!isJumping && !isUsingweapon && !isCrouching&&!rope->isActive(); }
+	void ForceIdle();
+	void BlockControl() { isControllable=false; }
+	void ReleaseControl() { isControllable = true; }
 	void FinishUsingWeapon() { isUsingweapon = false; }
 	bool CanUseWeapon() { return weapon != NULL && heart > 0 && !weapon->isOnCooldown(); }
 	void ChangeWeapon(LPWEAPON weapon);

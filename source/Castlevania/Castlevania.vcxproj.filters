@@ -76,6 +76,9 @@
     <Filter Include="Source Files\Objects\simon\weapons\dagger">
       <UniqueIdentifier>{41a90695-655e-4252-8da2-90300d0723f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects\events">
+      <UniqueIdentifier>{278fb8d1-8b55-4d42-b66d-1c513b0c8781}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -201,6 +204,12 @@
     <ClInclude Include="Dagger.h">
       <Filter>Header Files\Objects\simon\weapons\Dagger</Filter>
     </ClInclude>
+    <ClInclude Include="AutoWalkEvent.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
+    <ClInclude Include="TeleportEvent.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -313,6 +322,15 @@
     </ClCompile>
     <ClCompile Include="DaggerProjectile.cpp">
       <Filter>Source Files\Objects\simon\weapons\dagger</Filter>
+    </ClCompile>
+    <ClCompile Include="EventObject.cpp">
+      <Filter>Source Files\Objects\events</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoWalkEvent.cpp">
+      <Filter>Source Files\Objects\events</Filter>
+    </ClCompile>
+    <ClCompile Include="TeleportEvent.cpp">
+      <Filter>Source Files\Objects\events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

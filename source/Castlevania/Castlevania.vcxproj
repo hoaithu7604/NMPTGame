@@ -126,6 +126,7 @@
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
     <ClInclude Include="ARGB.h" />
+    <ClInclude Include="AutoWalkEvent.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Dagger.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="OverlayBoard.h" />
     <ClInclude Include="RopeItem.h" />
     <ClInclude Include="SimonRope.h" />
+    <ClInclude Include="TeleportEvent.h" />
     <ClInclude Include="TiledLayer.h" />
     <ClInclude Include="TiledMap.h" />
     <ClInclude Include="TiledObject.h" />
@@ -168,12 +170,14 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
+    <ClCompile Include="AutoWalkEvent.cpp" />
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
     <ClCompile Include="DaggerProjectile.cpp" />
     <ClCompile Include="EffectObject.cpp" />
+    <ClCompile Include="EventObject.cpp" />
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
@@ -181,6 +185,7 @@
     <ClCompile Include="OverlayBoard.cpp" />
     <ClCompile Include="RopeItem.cpp" />
     <ClCompile Include="SimonRope.cpp" />
+    <ClCompile Include="TeleportEvent.cpp" />
     <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Game.cpp" />
