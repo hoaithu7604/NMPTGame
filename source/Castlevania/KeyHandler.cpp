@@ -11,6 +11,7 @@ void CKeyHandler::OnKeyDown(int KeyCode)
 	if(KeyCode == DIK_Z) {
 		if ((CGame::GetInstance()->IsKeyDown(DIK_UP)&&CSimon::GetInstance()->CanUseWeapon()))
 			CSimon::GetInstance()->DoAction(Action::USE_WEAPON);
+		else
 		CSimon::GetInstance()->DoAction(Action::ATTACK);
 	}
 	else if (KeyCode == DIK_X) {

@@ -5,8 +5,9 @@ class CWeapon : public CGameObject
 {
 protected:
 	CTimer cooldown_timer;
+	CTimer trigger_delay_timer;
 public:
-	CWeapon() :CGameObject() { cooldown_timer.SetTime(1000); state = State(true, true, false); } // no collision for this class, only collsion for its projectile class
+	CWeapon() :CGameObject() { state = GAMEOBJECT_STATE_NO_COLLISION; } // no collision for this class, only collsion for its projectile class
 	bool isOnCooldown() { return cooldown_timer.isActive();} //simon->GetHeart() > 0 
 	virtual void Trigger() {};
 };

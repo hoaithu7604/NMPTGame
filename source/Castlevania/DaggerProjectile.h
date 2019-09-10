@@ -2,10 +2,12 @@
 #include "MoveableObject.h"
 #define DAGGER_PROJECTILE_BBOX_WIDTH 32
 #define DAGGER_PROJECTILE_BBOX_HEIGHT 18
-#define DAGGER_PROJECTILE_SPEED 0.01f
+#define DAGGER_PROJECTILE_SPEED 1.f
+#define WEAPON_DAGGER_PROJECTILE_SPAWN_POS_X 8
+#define WEAPON_DAGGER_PROJECTILE_SPAWN_POS_Y -20
 enum class DaggerProjectileAnim {
-	LEFT=1000,
-	RIGHT
+	RIGHT=1000,
+	LEFT
 };
 class CDaggerProjectile : public CMoveableObject
 {

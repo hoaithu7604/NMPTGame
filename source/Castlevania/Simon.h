@@ -63,6 +63,7 @@ class CSimon : public CMoveableObject
 	LPWEAPON weapon;
 public:
 	CSimon();
+	void FinishUsingWeapon() { isUsingweapon = false; }
 	bool CanUseWeapon() { return weapon != NULL && heart > 0 && !weapon->isOnCooldown(); }
 	void ChangeWeapon(LPWEAPON weapon);
 	void DoAction(Action action);

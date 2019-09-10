@@ -68,6 +68,7 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 {
+	if (weapon != NULL) weapon->Update(dt);
 	if (attack_timer.isActive()) {
 		attack_timer.hasTicked();
 	}
@@ -199,12 +200,15 @@ void CSimon::DoAction(Action action)
 		}
 		break;
 	case Action::USE_WEAPON:
+		heart--;
 		isUsingweapon = true;
 		weapon->Trigger();
 		if (!isJumping)
 		{
 			this->vx = 0;
 		}
+		else isCrouching = false;
+		break;
 	}
 	if (isJumping) return;
 	//------------------------------
@@ -277,7 +281,7 @@ void CSimon::StandUp()
 void CSimon::Jump()
 {
 	//can't jump if simon is crouching or attacking or jumping 
-	if (!isJumping&&!isCrouching && !this->rope->isActive())
+	if (!isJumping&&!isCrouching && !isUsingweapon&&!this->rope->isActive())
 	{
 		isJumping = true;
 		isCrouching = true;

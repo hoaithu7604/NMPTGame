@@ -25,6 +25,8 @@ using namespace std;
 #define GAMEOBJECT_STATE_NO_UPDATE State(1,0,1)
 #define GAMEOBJECT_STATE_NO_RENDER State(0,1,1)
 #define GAMEOBJECT_STATE_NO_COLLISION State(1,1,0)
+#define DIRECTION_RIGHT 1
+#define DIRECTION_LEFT -1
 struct State
 {
 	bool renderable;
@@ -77,6 +79,7 @@ public:
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
 	State GetState() { return this->state; }
+	int GetDirection() { return nx; }
 	virtual void SetState(State state) { this->state = state; }
 	int GetHealth() { return health; }
 	void RenderBoundingBox();

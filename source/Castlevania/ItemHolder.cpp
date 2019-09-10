@@ -16,8 +16,7 @@ void CItemHolder::Destroy() {
 
 void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	if (delay_timer.isActive())
-	{
+	
 		if (delay_timer.hasTicked())
 		{
 			state = GAMEOBJECT_STATE_INVISIBLE;
@@ -44,5 +43,5 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				}
 			}
 		}
-	}
+	
 }
