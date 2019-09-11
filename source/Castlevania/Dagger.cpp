@@ -26,7 +26,7 @@ CDagger::CDagger(float x, float y)
 }
 void CDagger::Trigger() 
 {
-	if (!cooldown_timer.isActive())
+	if (!cooldown_timer.isActive()||cooldown_timer.hasTicked())
 	{
 		cooldown_timer.Active();
 		trigger_delay_timer.Active();
@@ -41,8 +41,6 @@ void CDagger::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		CSimon::GetInstance()->GetCentralPoint(x, y);
 		int nx = CSimon::GetInstance()->GetDirection();
 		CGameObject::AddObject(new CDaggerProjectile(damage,x,y,nx));
-
 		CSimon::GetInstance()->FinishUsingWeapon();
 	}
-	cooldown_timer.hasTicked(); //just to update timer;
 }

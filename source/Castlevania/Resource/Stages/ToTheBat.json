@@ -646,6 +646,17 @@
                  "width":32,
                  "x":2471,
                  "y":348
+                }, 
+                {
+                 "height":128,
+                 "id":411,
+                 "name":"stair_up",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":2912,
+                 "y":288
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -654,7 +665,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":410,
+ "nextobjectid":412,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

@@ -9,7 +9,7 @@ protected:
 	int damage;
 public:
 	CWeapon() :CGameObject() { state = GAMEOBJECT_STATE_NO_COLLISION; } // no collision for this class, only collsion for its projectile class
-	bool isOnCooldown() { return cooldown_timer.isActive();} //simon->GetHeart() > 0 
+	bool isOnCooldown() { return cooldown_timer.isActive()&&!cooldown_timer.hasTicked();} //simon->GetHeart() > 0 
 	virtual void Trigger() {};
 };
 typedef CWeapon*LPWEAPON;

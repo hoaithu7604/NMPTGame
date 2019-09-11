@@ -8,32 +8,38 @@
 #include "RopeItem.h"
 #include "DaggerItem.h"
 #include "TinyHeart.h"
+#include "Zombie.h"
 CSimon * CSimon::__instance = NULL;
-
 CSimon* CSimon::GetInstance()
 {
 	if (__instance == NULL) __instance = new CSimon();
 	return __instance;
 }
-
 CSimon::CSimon() 
 	:CMoveableObject()
 {
+	//stats
 	health = SIMON_HEALTH_DEFAULT;
-	fabulous_timer.SetTime(SIMON_FABULOUS_DURATION);
-	attack_timer.SetTime(SIMON_ATTACK_COOLDOWN);
 	heart = SIMON_HEART_DEFAULT;
+	weapon = NULL;
+	rope = new CSimonRope();
+	//flag
 	isJumping = false;
 	isCrouching = false;
 	isUsingweapon = false;
 	isControllable = true;
-	weapon = NULL;
-	rope = new CSimonRope();
+	isKnockingBack = false;
+	//timer
+	fabulous_timer.SetTime(SIMON_FABULOUS_DURATION);
+	attack_timer.SetTime(SIMON_ATTACK_COOLDOWN);
+	forcedCrouchTimer.SetTime(SIMON_FORCED_CROUCH_DURATION);
+	invulTimer.SetTime(SIMON_INVUL_TIMER);
+	//others
 	currentAnim = (int)SimonAnimID::IDLE_RIGHT;
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
 	camera = CCamera::GetInstance();
 }
-// no collision events thing spawn on top of simon so let use this function
+// no collision events to thing spawn on top of simon so let use this function
 void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT>*_objects)
 {
 	for (int i = 0; i < coObjects->size(); i++)
@@ -70,6 +76,21 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 			dynamic_cast<CDaggerItem *>(obj)->GetReward();
 			DebugOut(L"[INFO] OVERLAPPING DAGGER ITEM");
 		}
+		else if (dynamic_cast<CZombie *>(obj)&&isOverlapping(obj))
+		{
+			OutputDebugString(L"TOUCHED MONSTER?!!??!?!?");
+			if (TakingDamage(dynamic_cast<CMonster *>(obj)->GetContactDamage()))
+			{
+				float x, y;
+				obj->GetCentralPoint(x, y);
+				if (x > this->x)
+				{
+					KnockedBack(DIRECTION_LEFT);
+				}
+				else KnockedBack(DIRECTION_RIGHT);
+
+			}
+		}
 		else _objects->push_back(obj);
 	}
 }
@@ -78,45 +99,44 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 
 	if (isJumping)
 	{
+		//jumping gravity
 		if (vy >= 0)
 		{
 			isCrouching = false;
 			vy += SIMON_FALLING_SPEED * dt;
 		}
 		else
-		{
-			//if (this->rope->isActive())
-				//isCrouching = false;
 			vy += SIMON_JUMPING_FALLING_SPEED * dt;
-		}
-
 	}
 	else {
-		if (vy != 0)
+		if (isKnockingBack)
 		{
-			vx = 0;
+			vy += SIMON_KNOCKED_FALLING_SPEED*dt;
 		}
-		vy += SIMON_FALLING_SPEED * dt;
+		else
+		{
+			//normal gravity
+			if (vy != 0) vx = 0; //can't move while falling
+			vy += SIMON_FALLING_SPEED * dt;
+		}
 	}
+	//update current weapon
 	if (weapon != NULL) weapon->Update(dt);
-	if (attack_timer.isActive()) {
-		attack_timer.hasTicked();
+	//update timer
+	if (forcedCrouchTimer.hasTicked()) {
+		ReleaseControl();
+		StandUp();
 	}
-	vector<LPGAMEOBJECT> coObjects;
+	//collision&overlapping event
+	vector<LPGAMEOBJECT> coObjects; // for collidable objects
 	OverLappingLogic(Objects,&coObjects);
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
-
-	//
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
-
 	coEvents.clear();
-
 	CalcPotentialCollisions(&coObjects, coEvents);
-
-	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
 		x += dx;
@@ -124,6 +144,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 	}
 	else
 	{
+
 		float min_tx, min_ty, nx = 0, ny;
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
@@ -145,6 +166,12 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 						isJumping = false;
 						vx = 0;
 					}
+					if (isKnockingBack)
+					{
+						isKnockingBack = false;
+						ForcedCrouch();
+						vx = 0;
+					}
 					vy = 0;
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
 				}
@@ -155,29 +182,39 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 					should_x_change = false;
 				}
 			}
+
 		}
+
 		if (should_x_change) x += dx;
 		if (should_y_change) y += dy;
-
-
-
-		//
 		
 	}
-
-	//
-
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-	this->rope->Update(x,y,nx,dt, Objects);
-	Focus();
+	//-----------------------------
+
 	UpdateCurrentAnim();
+	this->rope->Update(x, y, nx, dt, Objects);
+	Focus(); //focus camera, may change the way camera work later
 }
 void CSimon::Render() 
 {
-	if (fabulous_timer.isActive()&&!fabulous_timer.hasTicked()) {
-		argb.fade();
+	if (fabulous_timer.isActive()) {
+		if  (!fabulous_timer.hasTicked())
+			argb.fade();
+		else argb = CARGB();
 	}
-	else argb = CARGB();
+	if (invulTimer.isActive()) 
+	{
+		if (!invulTimer.hasTicked())
+		{
+			if (argb.alpha == 200)
+				argb.alpha = 100;
+			else if (argb.alpha == 100)
+				argb.alpha = 200;
+			else argb.alpha = 200;
+		}
+		else argb.alpha = 255;
+	}
 	CGameObject::Render(); 
 	this->rope->Render();
 }
@@ -199,10 +236,12 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
-	if (this->rope->isActive() || isUsingweapon || !isControllable || CTimeFreezer::GetInstance()->isActive()) return;
+	if (this->rope->isActive() 
+		|| isKnockingBack||isUsingweapon||!isControllable||CTimeFreezer::GetInstance()->isActive()) return;
+
 	switch (action) {
 	case Action::ATTACK:
-		if (!attack_timer.isActive())
+		if (!attack_timer.isActive()||attack_timer.hasTicked())
 		{
 			attack_timer.Active();
 			this->rope->Active();
@@ -224,6 +263,7 @@ void CSimon::DoAction(Action action)
 		else isCrouching = false;
 		break;
 	}
+
 	if (isJumping) return;
 	//------------------------------
 	switch (action) {
@@ -243,7 +283,6 @@ void CSimon::DoAction(Action action)
 			this->nx = -1;
 			this->vx = SIMON_WALKING_SPEED * this->nx;
 			break;
-		
 		case Action::IDLE:
 			StandUp();
 			this->vx = 0;
@@ -252,7 +291,6 @@ void CSimon::DoAction(Action action)
 }
 void CSimon::UpdateCurrentAnim() 
 {
-
 	if (this->rope->isActive()||isUsingweapon)
 	{
 		if (isCrouching) {
@@ -260,6 +298,10 @@ void CSimon::UpdateCurrentAnim()
 		}
 		else
 		currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_RIGHT : (int)SimonAnimID::ATTACK_LEFT;
+	}
+	else if (isKnockingBack)
+	{
+		currentAnim = nx > 0 ? (int)SimonAnimID::DAMAGING_RIGHT : (int)SimonAnimID::DAMAGING_LEFT;
 	}
 	else if (isJumping)
 	{
@@ -284,13 +326,15 @@ void CSimon::UpdateCurrentAnim()
 }
 void CSimon::StandUp()
 {
-	if (isCrouching)
+	if (!isJumping)
 	{
-		isCrouching = false;
-		y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
-		//if (isJumping) // fix later
-			//y -= 10;
+		if (isCrouching)
+		{
+			isCrouching = false;
+			y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
+		}
 	}
+	else isCrouching = false;
 }
 void CSimon::Jump()
 {
@@ -340,4 +384,43 @@ void CSimon::ForceIdle()
 	isJumping = false;
 	if (vy < 0) vy = 1;
 	rope->Deactive();
+}
+bool CSimon::TakingDamage(int damage)
+{
+	if (!invulTimer.isActive() || invulTimer.hasTicked())
+	{
+		invulTimer.Active();
+		health -= damage;
+		if (health <= 0) {
+			health = 0;
+			Die();
+		}
+		return true;
+	}
+	else return false; //taking damage failed
+}
+void CSimon::Die()
+{
+	// DEAD
+}
+void CSimon::KnockedBack(int Direction)
+{
+	OutputDebugString(L"KNOCKED BACK");
+	vy = -SIMON_KNOCKED_BACK_FORCE_Y;
+	vx = Direction * SIMON_KNOCKED_BACK_FORCE_X;
+	nx = -Direction;
+	StandUp();
+	isJumping = false;
+	isUsingweapon = false;
+	rope->Deactive();
+	isKnockingBack = true;
+}
+void CSimon::ForcedCrouch()
+{
+	if (!forcedCrouchTimer.isActive() || forcedCrouchTimer.hasTicked())
+	{
+		Crouch();
+		BlockControl();
+		forcedCrouchTimer.Active();
+	}
 }

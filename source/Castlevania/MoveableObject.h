@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #define WORLD_GRAVITY 0.001f
-#define AVOID_OVERLAPPLING_FORCE 0.2f
+#define AVOID_OVERLAPPLING_FORCE 0.4f
 enum class Action
 {
 	IDLE,

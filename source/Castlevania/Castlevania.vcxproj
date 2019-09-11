@@ -149,6 +149,7 @@
     <ClInclude Include="RopeItem.h" />
     <ClInclude Include="SimonRope.h" />
     <ClInclude Include="Spawner.h" />
+    <ClInclude Include="StairUp.h" />
     <ClInclude Include="TeleportEvent.h" />
     <ClInclude Include="TiledLayer.h" />
     <ClInclude Include="TiledMap.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="StairUp.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieSpawner.cpp" />
     <ClCompile Include="ZombieSpawner.h" />

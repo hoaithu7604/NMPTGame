@@ -53,6 +53,7 @@ void CMonster::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		if (should_x_change) x += dx;
 		if (should_y_change) y += dy;
 	}
+	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	if (isFarOffscreen()) state = GAMEOBJECT_STATE_INVISIBLE;// all monster despawn if they're far enought from camera view, override Update to avoid this
 }
 void CMonster::TakeDamage(int damage)

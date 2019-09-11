@@ -12,6 +12,9 @@
 #define SIMON_ROPE_LEVEL_THREE_LAST_FRAME_BBOX_HEIGHT 18
 #define SIMON_ROPE_TWO_FIRST_FRAME_BBOX_WIDTH 32
 #define SIMON_ROPE_LAST_FRAME_ADJUSTING_Y 14
+#define SIMON_ROPE_LEVEL_ONE_DAMAGE 1
+#define SIMON_ROPE_LEVEL_TWO_DAMAGE 2
+#define SIMON_ROPE_LEVEL_THREE_DAMAGE 2
 enum class RopeAnimID
 {
 	LEVEL_ONE_RIGHT = 200,
@@ -28,6 +31,7 @@ class CSimonRope : public CGameObject
 	bool isFirstFrame;
 public:
 	CSimonRope();
+	int GetDamage();
 	bool isActive() { return _isActive; }
 	void Deactive() { animations->Get(currentAnim)->Reset(); _isActive = false; }
 	void Active(bool active = true) { isFirstFrame = true; _isActive = active; }

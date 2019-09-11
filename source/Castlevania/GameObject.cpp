@@ -197,7 +197,7 @@ void CGameObject::SetPositionCentral(float x, float y)
 }
 void CGameObject::RenderBoundingBox()
 {
-	if (state.IsColliable()&&state.IsRenderable()) return;
+	if (!state.IsColliable()||!state.IsRenderable()) return;
 	D3DXVECTOR3 p(x, y, 0);
 	RECT rect;
 
@@ -211,7 +211,7 @@ void CGameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)b - (int)t;
 
-	//CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 170);
+	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 170);
 }
 
 CGameObject::~CGameObject()

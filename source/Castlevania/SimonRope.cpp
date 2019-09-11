@@ -12,6 +12,15 @@ CSimonRope::CSimonRope()
 	prevAnim = (int)RopeAnimID::LEVEL_ONE_LEFT;
 	
 }
+int CSimonRope::GetDamage()
+{
+	if (level == SIMON_ROPE_LEVEL_ONE)
+		return SIMON_ROPE_LEVEL_ONE_DAMAGE;
+	if (level == SIMON_ROPE_LEVEL_TWO)
+		return SIMON_ROPE_LEVEL_TWO_DAMAGE;
+	if (level == SIMON_ROPE_LEVEL_THREE)
+		return SIMON_ROPE_LEVEL_THREE_DAMAGE;
+}
 void CSimonRope::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
 	left = x;
@@ -47,7 +56,6 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 	this->y = y;
 	this->nx = nx;
 	
-
 	UpdateCurrentAnim();
 	UpdatePosition();
 
@@ -58,15 +66,15 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 			{
 				if (dynamic_cast<CTorch*>(coObjects->at(i)))
 				{
-					dynamic_cast<CTorch*>(coObjects->at(i))->TakeDamage(1);
+					dynamic_cast<CTorch*>(coObjects->at(i))->TakeDamage(GetDamage());
 				}
 				else if (dynamic_cast<CCandle*>(coObjects->at(i)))
 				{
-					dynamic_cast<CCandle*>(coObjects->at(i))->TakeDamage(1);
+					dynamic_cast<CCandle*>(coObjects->at(i))->TakeDamage(GetDamage());
 				}
 				else if (dynamic_cast<CZombie*>(coObjects->at(i)))
 				{
-					dynamic_cast<CZombie*>(coObjects->at(i))->TakeDamage(1);
+					dynamic_cast<CZombie*>(coObjects->at(i))->TakeDamage(GetDamage());
 				}
 			}
 		}
@@ -88,6 +96,15 @@ void CSimonRope::Render()
 		argb = CARGB();
 	CGameObject::Render();
 	//RenderBoundingBox();
+
+	//this is bad, maybe i will change it later
+	LPANIMATION currentAnim = animations->Get(this->currentAnim);
+	if (!isFirstFrame&&currentAnim->isFirstFrame())
+	{
+		currentAnim->Reset();
+		_isActive = false;
+	}
+	
 }
 void CSimonRope::UpdateCurrentAnim()
 {
@@ -127,11 +144,7 @@ void CSimonRope::UpdatePosition()
 	else
 	{
 		x = nx > 0 ? x - SIMON_ROPE_TWO_FIRST_FRAME_BBOX_WIDTH : x + SIMON_IDLE_BBOX_WIDTH;
-		if (!isFirstFrame&&currentAnim->isFirstFrame()) 
-		{
-			currentAnim->Reset();
-			_isActive = false;
-		}
+		
 	}
 }
 void CSimonRope::IncreaseLevel()

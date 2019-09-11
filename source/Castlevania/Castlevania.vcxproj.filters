@@ -91,6 +91,12 @@
     <Filter Include="Source Files\Objects\monsters\spawner">
       <UniqueIdentifier>{36510455-cbce-461b-9acc-e6fd507e237e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\stair">
+      <UniqueIdentifier>{bfa7cce9-f0bf-441c-a0aa-53bcb68554c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\stair">
+      <UniqueIdentifier>{c348ab74-4c07-4938-b15d-1c706a3f4829}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -237,6 +243,9 @@
     <ClInclude Include="Spawner.h">
       <Filter>Header Files\Objects\monsters\spawner</Filter>
     </ClInclude>
+    <ClInclude Include="StairUp.h">
+      <Filter>Header Files\Objects\stair</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -379,6 +388,9 @@
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="StairUp.cpp">
+      <Filter>Source Files\Objects\stair</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@
 CMoveableObject::CMoveableObject()
 	:CGameObject()
 {
-	state = GAMEOBJECT_STATE_ACTIVE;
+	state = GAMEOBJECT_STATE_ACTIVE; //every moveable objects are active objects, re-set state to change this
 	vx = 0;
 	vy = 0;
 }
