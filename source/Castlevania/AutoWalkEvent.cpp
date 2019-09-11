@@ -14,6 +14,7 @@ void CAutoWalkEvent::Trigger()
 	{
 		if (simon->isMoveable())
 		{
+			simon->BlockControl();
 			if (targetX - x > 0)
 			{
 				simon->SetSpeed(AUTO_WALK_SPEED, 0);

@@ -143,10 +143,12 @@
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="Maps.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="MoveableObject.h" />
     <ClInclude Include="OverlayBoard.h" />
     <ClInclude Include="RopeItem.h" />
     <ClInclude Include="SimonRope.h" />
+    <ClInclude Include="Spawner.h" />
     <ClInclude Include="TeleportEvent.h" />
     <ClInclude Include="TiledLayer.h" />
     <ClInclude Include="TiledMap.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -184,10 +187,15 @@
     <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Zombie.cpp" />
+    <ClCompile Include="ZombieSpawner.cpp" />
+    <ClCompile Include="ZombieSpawner.h" />
     <ClCompile Include="OverlayBoard.cpp" />
     <ClCompile Include="RopeItem.cpp" />
     <ClCompile Include="SimonRope.cpp" />
     <ClCompile Include="Candle.cpp" />
+    <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="TeleportEvent.cpp" />
     <ClCompile Include="TiledLayer.cpp" />
     <ClCompile Include="Debug.cpp" />

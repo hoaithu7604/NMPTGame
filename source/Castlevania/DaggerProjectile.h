@@ -14,7 +14,7 @@ class CDaggerProjectile : public CMoveableObject
 	int ContactDamage;
 public:
 	CDaggerProjectile() :CMoveableObject() { vx = DAGGER_PROJECTILE_SPEED; prevAnim = currentAnim = (int)DaggerProjectileAnim::LEFT; }
-	CDaggerProjectile(float x, float y, int nx);
+	CDaggerProjectile(int damage,float x, float y, int nx);
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();

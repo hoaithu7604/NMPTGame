@@ -75,6 +75,29 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 {
+
+	if (isJumping)
+	{
+		if (vy >= 0)
+		{
+			isCrouching = false;
+			vy += SIMON_FALLING_SPEED * dt;
+		}
+		else
+		{
+			//if (this->rope->isActive())
+				//isCrouching = false;
+			vy += SIMON_JUMPING_FALLING_SPEED * dt;
+		}
+
+	}
+	else {
+		if (vy != 0)
+		{
+			vx = 0;
+		}
+		vy += SIMON_FALLING_SPEED * dt;
+	}
 	if (weapon != NULL) weapon->Update(dt);
 	if (attack_timer.isActive()) {
 		attack_timer.hasTicked();
@@ -85,22 +108,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 	dx = vx * dt;
 	dy = vy * dt;
 
-	if (isJumping)
-	{
-		if (vy >= 0)
-		{
-			isCrouching = false;
-			vy += SIMON_FALLING_SPEED * dt;
-		}
-		else 
-		{
-			if (this->rope->isActive())
-				isCrouching = false;
-			vy += SIMON_JUMPING_FALLING_SPEED * dt;
-		}
-
-	}
-	else vy += SIMON_FALLING_SPEED * dt;
 	//
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
@@ -192,7 +199,7 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
-	if (this->rope->isActive()||isUsingweapon||!isControllable||CTimeFreezer::GetInstance()->isActive()) return; 
+	if (this->rope->isActive() || isUsingweapon || !isControllable || CTimeFreezer::GetInstance()->isActive()) return;
 	switch (action) {
 	case Action::ATTACK:
 		if (!attack_timer.isActive())
@@ -201,9 +208,9 @@ void CSimon::DoAction(Action action)
 			this->rope->Active();
 			if (!isJumping)
 			{			
-				this->vx = 0;
+				this->vx = 0;				
 			}
-			//else StandUp();
+			else isCrouching = false;
 		}
 		break;
 	case Action::USE_WEAPON:
@@ -256,7 +263,7 @@ void CSimon::UpdateCurrentAnim()
 	}
 	else if (isJumping)
 	{
-		if (this->vy < 0) {
+		if (isCrouching) {
 			currentAnim = nx > 0 ? (int)SimonAnimID::CROUCH_RIGHT : (int)SimonAnimID::CROUCH_LEFT;
 		}
 		else
@@ -281,8 +288,8 @@ void CSimon::StandUp()
 	{
 		isCrouching = false;
 		y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
-		if (isJumping) // fix later
-			y -= 10;
+		//if (isJumping) // fix later
+			//y -= 10;
 	}
 }
 void CSimon::Jump()

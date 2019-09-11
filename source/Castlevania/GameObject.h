@@ -27,6 +27,7 @@ using namespace std;
 #define GAMEOBJECT_STATE_NO_COLLISION State(1,1,0)
 #define DIRECTION_RIGHT 1
 #define DIRECTION_LEFT -1
+#define BARELY_OFFSCREEN_DISTANCE 100
 struct State
 {
 	bool renderable;
@@ -73,6 +74,9 @@ protected:
 	CAnimations* animations; //Should be fine i guess?
 public: 
 	bool isOnCamera();
+	bool isAlmostOnCamera();
+	int isBarelyOffscreen();
+	bool isFarOffscreen();
 	static void Init(vector<LPGAMEOBJECT>*_objects) { objects = _objects; }
 	static void AddObject(LPGAMEOBJECT object) { objects->push_back(object); }
 	static void LoadResource(string ObjectName);

@@ -2,6 +2,7 @@
 #include "Simon.h"
 #include "Torch.h"
 #include "Candle.h"
+#include "Zombie.h"
 CSimonRope::CSimonRope()
 	:CGameObject()
 {
@@ -62,6 +63,10 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 				else if (dynamic_cast<CCandle*>(coObjects->at(i)))
 				{
 					dynamic_cast<CCandle*>(coObjects->at(i))->TakeDamage(1);
+				}
+				else if (dynamic_cast<CZombie*>(coObjects->at(i)))
+				{
+					dynamic_cast<CZombie*>(coObjects->at(i))->TakeDamage(1);
 				}
 			}
 		}

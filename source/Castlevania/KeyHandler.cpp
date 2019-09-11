@@ -17,6 +17,12 @@ void CKeyHandler::OnKeyDown(int KeyCode)
 	else if (KeyCode == DIK_X) {
 		CSimon::GetInstance()->DoAction(Action::JUMP);
 	}
+	else if (KeyCode == DIK_C)
+	{
+		float x, y;
+		CSimon::GetInstance()->GetSpeed(x,y);
+		CSimon::GetInstance()->SetSpeed(x, y-2);
+	}
 	
 }
 

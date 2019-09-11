@@ -1,5 +1,5 @@
 #include "DaggerProjectile.h"
-
+#include "Candle.h"
 void CDaggerProjectile::GetBoundingBox(float &left, float &top, float &right, float &bottom) 
 {
 	left = x;
@@ -12,22 +12,32 @@ void CDaggerProjectile::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects) {
 		state = GAMEOBJECT_STATE_INVISIBLE;//remove when it goes off-screen
 	else
 	{
-
+		this->dt = dt;
+		dx = vx * dt;
+		dy = vy * dt;
+		x += dx;
+		y += dy;
+		for (int i = 0; i < coObjects->size(); i++)
+		{
+			if (isOverlapping(coObjects->at(i)))
+			{			
+				if (dynamic_cast<CCandle*>(coObjects->at(i)))
+				{
+					dynamic_cast<CCandle*>(coObjects->at(i))->TakeDamage(ContactDamage);
+					state = GAMEOBJECT_STATE_INVISIBLE;
+				}
+			}
+		}
 	}
-	this->dt = dt;
-	dx = vx * dt;
-	dy = vy * dt;
-	x += dx;
-	y += dy;
-	
 }
 void CDaggerProjectile::Render() {
 	//if (isOnCamera()) doesn't need it now since it will get removed anyway
 		CGameObject::Render();
 }
-CDaggerProjectile::CDaggerProjectile(float x, float y, int nx)
+CDaggerProjectile::CDaggerProjectile(int damage,float x, float y, int nx)
 	:CMoveableObject() 
 { 
+	ContactDamage = damage;
 	//adjust x,y
 	this->x = nx>0?(x+WEAPON_DAGGER_PROJECTILE_SPAWN_POS_X):(x-WEAPON_DAGGER_PROJECTILE_SPAWN_POS_X-DAGGER_PROJECTILE_BBOX_WIDTH);
 	this->y = y+ WEAPON_DAGGER_PROJECTILE_SPAWN_POS_Y;

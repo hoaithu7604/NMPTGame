@@ -3,7 +3,7 @@
 #include "Camera.h"
 #define SIMON_WALKING_SPEED 0.2f
 #define SIMON_FALLING_SPEED 0.012f
-#define SIMON_JUMPING_SPEED 0.4f
+#define SIMON_JUMPING_SPEED 0.45f
 #define SIMON_JUMPING_FALLING_SPEED 0.001f // lol ik my english sucks
 #define SIMON_IDLE_BBOX_HEIGHT 64
 #define SIMON_IDLE_BBOX_WIDTH 32
@@ -16,6 +16,7 @@
 #include "SimonRope.h"
 #include "Timer.h"
 #include "Dagger.h"
+#include "TimeFreezer.h"
 enum class SimonAnimID
 {
 	IDLE_RIGHT = 100,
@@ -64,7 +65,7 @@ class CSimon : public CMoveableObject
 	LPWEAPON weapon;
 public:
 	CSimon();
-	bool isMoveable() { return vy==0&&!isJumping && !isUsingweapon && !isCrouching&&!rope->isActive(); }
+	bool isMoveable() { return vy == 0 && !isJumping && !isUsingweapon && !isCrouching && !rope->isActive() && !CTimeFreezer::GetInstance()->isActive(); }
 	void ForceIdle();
 	void BlockControl() { isControllable=false; }
 	void ReleaseControl() { isControllable = true; }

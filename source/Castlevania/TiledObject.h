@@ -32,6 +32,8 @@
 #define OBJECTCODE_TELEPORTEVENT "teleportevent"
 #define OBJECTCODE_CANDLE "candle"
 #define OBJECTCODE_TINYHEART "tinyheart"
+#define OBJECTCODE_ZOMBIESPAWNER "zombiespawner"
+#define OBJECTCODE_ZOMBIE "zombie"
 using json = nlohmann::json;
 using namespace std;
 /*

@@ -10,6 +10,7 @@ void CDagger::GetBoundingBox(float &left, float &top, float &right, float &botto
 CDagger::CDagger()
 	:CWeapon()
 {
+	damage = WEAPON_DAGGER_DAMAGE;
 	trigger_delay_timer.SetTime(WEAPON_DAGGER_TRIGGER_DELAY);
 	cooldown_timer.SetTime(WEAPON_DAGGER_COOLDOWN);
 	prevAnim = currentAnim = (int)DaggerAnim::IDLE;
@@ -17,6 +18,7 @@ CDagger::CDagger()
 CDagger::CDagger(float x, float y) 
 	:CWeapon() 
 {
+	damage = WEAPON_DAGGER_DAMAGE;
 	trigger_delay_timer.SetTime(WEAPON_DAGGER_TRIGGER_DELAY);
 	cooldown_timer.SetTime(WEAPON_DAGGER_COOLDOWN);
 	prevAnim = currentAnim = (int)DaggerAnim::IDLE; 
@@ -38,7 +40,7 @@ void CDagger::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		float x, y;
 		CSimon::GetInstance()->GetCentralPoint(x, y);
 		int nx = CSimon::GetInstance()->GetDirection();
-		CGameObject::AddObject(new CDaggerProjectile(x,y,nx));
+		CGameObject::AddObject(new CDaggerProjectile(damage,x,y,nx));
 
 		CSimon::GetInstance()->FinishUsingWeapon();
 	}

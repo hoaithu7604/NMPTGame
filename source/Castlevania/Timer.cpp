@@ -3,7 +3,7 @@
 using namespace std;
 bool CTimer::hasTicked()
 {
-	if (start == DEFAULT_TIME) return false;
+	if (start == DEFAULT_TIME) return false; //not on
 	DWORD now = GetTickCount();
 	if (now - start >= time)
 	{

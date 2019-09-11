@@ -1,3 +1,4 @@
+#pragma once
 #include "TiledObject.h"
 #include "Simon.h"
 #include "UnseenForce.h"
@@ -5,6 +6,7 @@
 #include "AutoWalkEvent.h"
 #include "TeleportEvent.h"
 #include "Candle.h"
+#include "ZombieSpawner.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -111,6 +113,11 @@ void CTiledObject::Create()
 				obj->AddItem(properties[i]->value_string);
 			}
 		}
+		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_ZOMBIESPAWNER)
+	{
+		CZombieSpawner*obj = new CZombieSpawner(x, y, width, height);
 		CGameObject::AddObject(obj);
 	}
 

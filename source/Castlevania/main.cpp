@@ -43,6 +43,7 @@
 #include "Dagger.h"
 #include "Candle.h"
 #include "TinyHeart.h"
+#include "Zombie.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -114,6 +115,7 @@ void LoadResources()
 	CDagger::LoadResource(OBJECTCODE_DAGGER);
 	CCandle::LoadResource(OBJECTCODE_CANDLE);
 	CTinyHeart::LoadResource(OBJECTCODE_TINYHEART);
+	CZombie::LoadResource(OBJECTCODE_ZOMBIE);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

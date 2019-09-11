@@ -27,11 +27,12 @@ void CTinyHeart::GetReward()
 }
 void CTinyHeart::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+
+	vy += dt * ITEM_TINYHEART_GRAVITY;
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
 
-	vy += dt * ITEM_TINYHEART_GRAVITY;
 
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;

@@ -20,7 +20,43 @@ bool CGameObject::isOnCamera() {
 	float l, t, r, b;
 	GetBoundingBox(l, t, r, b);
 	//true only when this object completely on camera
-	return left < l && top < t && right > r && bottom > b;
+	return left <= l && top <= t && right >= r && bottom >= b;
+}
+bool CGameObject::isAlmostOnCamera() {
+	CCamera*camera = CCamera::GetInstance();
+	float left, top, right, bottom;
+	camera->GetViewSize(top, left, bottom, right);
+	float l, t, r, b;
+	GetBoundingBox(l, t, r, b);
+	// true if this object overlapping camera view
+	return l < right && r > left && t < bottom && b > top;
+}
+int CGameObject::isBarelyOffscreen()
+{
+	CCamera*camera = CCamera::GetInstance();
+	float left, top, right, bottom;
+	camera->GetViewSize(top, left, bottom, right);
+	float l, t, r, b;
+	GetBoundingBox(l, t, r, b);
+	// if this object is offscreen but not that far , ignore y for now
+	if (l > left - BARELY_OFFSCREEN_DISTANCE && l < left)
+	{
+		return DIRECTION_LEFT; //left side
+	}
+	else if (r > right&&r < right + BARELY_OFFSCREEN_DISTANCE)
+	{
+		return DIRECTION_RIGHT; // right side
+	}
+	else return 0; //it's far offscreen or onscreen
+}
+bool CGameObject::isFarOffscreen()
+{
+	CCamera*camera = CCamera::GetInstance();
+	float left, top, right, bottom;
+	camera->GetViewSize(top, left, bottom, right);
+	float l, t, r, b;
+	GetBoundingBox(l, t, r, b);
+	return r<left-BARELY_OFFSCREEN_DISTANCE||l>right+ BARELY_OFFSCREEN_DISTANCE||b<top-BARELY_OFFSCREEN_DISTANCE||t>bottom+BARELY_OFFSCREEN_DISTANCE;
 }
 void CGameObject::Render() {
 	if (!state.IsRenderable()) return;

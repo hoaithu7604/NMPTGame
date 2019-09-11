@@ -79,6 +79,18 @@
     <Filter Include="Source Files\Objects\events">
       <UniqueIdentifier>{278fb8d1-8b55-4d42-b66d-1c513b0c8781}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\monsters">
+      <UniqueIdentifier>{5198377b-c245-450c-9903-f1998d47b2f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\monsters">
+      <UniqueIdentifier>{b55a5855-f153-4358-a97a-0d3c0359444b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\monsters\spawner">
+      <UniqueIdentifier>{cbc0488e-1d32-4329-92a7-0c9c32392d6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\monsters\spawner">
+      <UniqueIdentifier>{36510455-cbce-461b-9acc-e6fd507e237e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -216,6 +228,15 @@
     <ClInclude Include="TinyHeart.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files\Objects\monsters\spawner</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -343,6 +364,21 @@
     </ClCompile>
     <ClCompile Include="TinyHeart.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieSpawner.h">
+      <Filter>Header Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieSpawner.cpp">
+      <Filter>Source Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Objects\monsters\spawner</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
