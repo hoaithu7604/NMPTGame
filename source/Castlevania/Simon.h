@@ -18,6 +18,7 @@
 #define SIMON_KNOCKED_BACK_FORCE_Y 0.2f
 #define SIMON_KNOCKED_FALLING_SPEED 0.0008f //apply different gravity while being knocked back
 #define SIMON_FORCED_CROUCH_DURATION 300
+#define SIMON_FALLING_SPEED_LIMIT 1.6f
 #include "SimonRope.h"
 #include "Timer.h"
 #include "Dagger.h"
@@ -110,7 +111,7 @@ public:
 	bool TakingDamage(int damage);
 	void Die();
 	void KnockedBack(int direction);
-	void AutoMove(float x, float y, int mode = AUTO_MOVER_MODE_DEFAULT, int type = AUTO_MOVER_TYPE_DEFAULT);
+	void AutoMove(float x, float y, float v=SIMON_WALKING_SPEED,int mode = AUTO_MOVER_MODE_DEFAULT, int type = AUTO_MOVER_TYPE_DEFAULT);
 	//
 	void UpdateCurrentAnim();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);

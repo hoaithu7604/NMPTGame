@@ -20,6 +20,8 @@
 #define TILED_LAYER_X "x"
 #define TILED_LAYER_Y "y"
 
+#define TILE_WIDTH 32
+#define TILE_HEIGHT 32
 
 using json = nlohmann::json;
 using namespace std;

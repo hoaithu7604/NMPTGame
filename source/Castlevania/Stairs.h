@@ -7,6 +7,7 @@
 #define SECOND 2
 #define STAIRS_TYPE_UP 1 // up means / stairs
 #define STAIRS_TYPE_DOWN 2 // down means \ stairs
+#define STAIRS_CLIMBING_SPEED 0.075f
 class CStairs :public CGameObject
 {
 	float x1;
@@ -24,4 +25,5 @@ public:
 	bool isAbleToGoDown(float x, float y);
 	void Up();
 	void Down();
+	bool ShouldIdle(float x,float y,int nx); //this is not good, but i have no others way to do it
 };

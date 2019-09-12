@@ -27,6 +27,14 @@ void CKeyHandler::OnKeyDown(int KeyCode)
 		CSimon::GetInstance()->GetPosition(x, y);
 		CSimon::GetInstance()->SetPosition(x, y-100);
 	}
+	else if (KeyCode == DIK_1)
+	{
+		CSimon::GetInstance()->SetPosition(3052, 216);
+	}
+	else if (KeyCode == DIK_2)
+	{
+		CSimon::GetInstance()->SetPosition(5348, 170);
+	}
 	
 }
 
@@ -53,10 +61,12 @@ void CKeyHandler::KeyState(BYTE *states)
 		if (CGame::GetInstance()->IsKeyDown(DIK_LEFT))
 		{
 			CSimon::GetInstance()->DoAction(Action::WALK_LEFT);
+			CSimon::GetInstance()->DoAction(Action::GO_STAIRS_LEFT);
 			should_simon_do_nothing = false;
 		}
 		if (CGame::GetInstance()->IsKeyDown(DIK_RIGHT)) {
 			CSimon::GetInstance()->DoAction(Action::WALK_RIGHT);
+			CSimon::GetInstance()->DoAction(Action::GO_STAIRS_RIGHT);
 			should_simon_do_nothing = false;
 		}
 	}

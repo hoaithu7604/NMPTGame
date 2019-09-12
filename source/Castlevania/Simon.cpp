@@ -40,12 +40,7 @@ CSimon::CSimon()
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
 	camera = CCamera::GetInstance();
 
-	automover.SetSpeed(SIMON_WALKING_SPEED);
-	automover.SetTime(1000);
-	automover.SetTarget(1000, 10);
-	automover.SetType(AUTO_MOVER_TYPE_TIMED);
-	automover.SetMode(AUTO_MOVER_MODE_DEFAULT);
-	automover.Active();
+	automover.SetSpeed(SIMON_WALKING_SPEED*.5f);
 }
 // no collision events to thing spawn on top of simon so let use this function
 void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*coObjects)
@@ -148,6 +143,7 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 						ForcedCrouch();
 						vx = 0;
 					}
+					if (vy == SIMON_FALLING_SPEED_LIMIT) ForcedCrouch();
 					vy = 0;
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
 				}
@@ -167,7 +163,6 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 {
-	DebugOut(L"%.2f %.2f", x, y);
 	if (!isOnStairs) //ignore normal gravity while on stairs
 	{
 		if (isJumping)
@@ -195,7 +190,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 			}
 		}
 	}
-	
+	if (vy > SIMON_FALLING_SPEED_LIMIT) vy = SIMON_FALLING_SPEED_LIMIT;
 	//update current weapon
 	if (weapon != NULL) weapon->Update(dt);
 	//update timer
@@ -282,14 +277,27 @@ void CSimon::DoAction(Action action)
 	}
 
 	if (isJumping) return;
-
-	switch (action) {
-	case Action::GO_DOWN_STAIRS:
-		GoDownStairs();
-		break;
-	case Action::GO_UP_STAIRS:
-		GoUpStairs();
-		break;
+	if (vy == 0) {
+		switch (action) {
+		case Action::GO_DOWN_STAIRS:
+			GoDownStairs();
+			break;
+		case Action::GO_UP_STAIRS:
+			GoUpStairs();
+			break;
+		case Action::GO_STAIRS_LEFT:
+			if (isOnStairs)
+				if (stairs->GetStairsType() == STAIRS_TYPE_UP)
+					GoDownStairs();
+				else GoUpStairs();
+				break;
+		case Action::GO_STAIRS_RIGHT:
+			if (isOnStairs)
+				if (stairs->GetStairsType() == STAIRS_TYPE_UP)
+					GoUpStairs();
+				else GoDownStairs();
+				break;
+		}
 	}
 	
 	if (isOnStairs) return;
@@ -329,11 +337,11 @@ void CSimon::UpdateCurrentAnim()
 		}
 		else if (isOnStairs)
 		{
-			int stairstype = stairs->GetStairsType();
-			if (stairs->isEntrance())
+			if (stairs->ShouldIdle(x, y, nx))
 				currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_RIGHT : (int)SimonAnimID::ATTACK_LEFT;
 			else
 			{
+				int stairstype = stairs->GetStairsType();
 				if (stairstype == STAIRS_TYPE_UP)
 					currentAnim = nx > 0 ? (int)SimonAnimID::UP_STAIR_ATTACK_RIGHT : (int)SimonAnimID::DOWN_STAIR_ATTACK_LEFT;
 				else if (stairstype == STAIRS_TYPE_DOWN)
@@ -345,23 +353,25 @@ void CSimon::UpdateCurrentAnim()
 	}
 	else if (isOnStairs)
 	{
-		int stairstype = stairs->GetStairsType();
-		if (stairs->isEntrance())
+		if (stairs->ShouldIdle(x,y,nx))
 			currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_RIGHT : (int)SimonAnimID::IDLE_LEFT;
 		else
-		if (stairstype == STAIRS_TYPE_UP)
 		{
-			if (vx == 0)
-				currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_UPSTAIRS_RIGHT : (int)SimonAnimID::IDLE_DOWNSTAIRS_LEFT;
-			else 
-				currentAnim = nx > 0 ? (int)SimonAnimID::WALK_UPSTAIRS_RIGHT : (int)SimonAnimID::WALK_DOWNSTAIRS_LEFT;
-		}
-		else if (stairstype == STAIRS_TYPE_DOWN)
-		{
-			if (vx == 0)
-				currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_DOWNSTAIRS_RIGHT : (int)SimonAnimID::IDLE_UPSTAIRS_LEFT;
-			else
-				currentAnim = nx > 0 ? (int)SimonAnimID::WALK_DOWNSTAIRS_RIGHT : (int)SimonAnimID::WALK_UPSTAIRS_LEFT;
+			int stairstype = stairs->GetStairsType();
+			if (stairstype == STAIRS_TYPE_UP)
+			{
+				if (vx == 0)
+					currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_UPSTAIRS_RIGHT : (int)SimonAnimID::IDLE_DOWNSTAIRS_LEFT;
+				else
+					currentAnim = nx > 0 ? (int)SimonAnimID::WALK_UPSTAIRS_RIGHT : (int)SimonAnimID::WALK_DOWNSTAIRS_LEFT;
+			}
+			else if (stairstype == STAIRS_TYPE_DOWN)
+			{
+				if (vx == 0)
+					currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_DOWNSTAIRS_RIGHT : (int)SimonAnimID::IDLE_UPSTAIRS_LEFT;
+				else
+					currentAnim = nx > 0 ? (int)SimonAnimID::WALK_DOWNSTAIRS_RIGHT : (int)SimonAnimID::WALK_UPSTAIRS_LEFT;
+			}
 		}
 	}
 	else if (isKnockingBack)
@@ -404,7 +414,7 @@ void CSimon::StandUp()
 void CSimon::Jump()
 {
 	//can't jump if simon is crouching or attacking or jumping 
-	if (!isJumping&&!isCrouching && !isUsingweapon&&!this->rope->isActive())
+	if (vy==0&&!isJumping&&!isCrouching && !isUsingweapon&&!this->rope->isActive())
 	{
 		isJumping = true;
 		isCrouching = true;
@@ -502,10 +512,11 @@ void CSimon::GoUpStairs()
 			stairs->Up();
 	}
 }
-void CSimon::AutoMove(float x, float y, int mode, int type)
+void CSimon::AutoMove(float x, float y,float v, int mode, int type)
 {
 	if (!automover.IsActive())
 	{
+		automover.SetSpeed(v);
 		automover.SetTarget(x, y);
 		automover.Active(mode, type);
 	}

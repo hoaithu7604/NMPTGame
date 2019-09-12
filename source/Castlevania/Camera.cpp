@@ -15,21 +15,12 @@ void CCamera::Focus(float x, float y)
 	if (this->y < activeBound.top) this->y = activeBound.top;
 	if (this->x > activeBound.right - Width) this->x = activeBound.right - Width;
 	if (this->y > activeBound.bottom - Height) this->y = activeBound.bottom - Height;
-	if (activeBound.top == 0 && activeBound.bottom == 0 && activeBound.left == 0 && activeBound.right == 0)
-	{
-		//no active bound
-		this->x = -1000;
-		this->y = -1000;
-	}
 }
 RECT CCamera::GetContainBound(float x, float y) {
 	for (int i = 0; i < cameraBounds.size(); i++)
 		if (x >= cameraBounds[i].left&&y >= this->cameraBounds[i].top&&x <= this->cameraBounds[i].right&&y <= cameraBounds[i].bottom)
-		{
-			if (i == 3) 
-				OutputDebugString(L"WTF");
 			return cameraBounds[i];
-		}
+		
 	RECT temp;
 	temp.top = temp.right = temp.bottom = temp.left = 0;
 	return temp;

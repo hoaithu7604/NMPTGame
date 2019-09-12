@@ -15,5 +15,5 @@ public:
 	bool isActive() { return start != DEFAULT_TIME; }
 	void Active() { this->start = GetTickCount(); }
 	bool hasTicked();
-	DWORD GetRemainingTime() { return time - (GetTickCount() - start); }
+	DWORD GetRemainingTime();
 };

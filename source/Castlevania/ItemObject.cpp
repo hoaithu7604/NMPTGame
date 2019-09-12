@@ -38,4 +38,5 @@ void CItemObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	if (!isOnCamera()) state = GAMEOBJECT_STATE_INVISIBLE;
 }

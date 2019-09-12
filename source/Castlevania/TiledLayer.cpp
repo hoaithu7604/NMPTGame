@@ -34,10 +34,10 @@ void CTiledLayer::Draw(LPTILEDTILESET tileset)
 		float top, left, right, bottom;
 		camera->GetViewSize(top, left, bottom, right);
 		int sta_x, sta_y, end_x, end_y;
-		sta_x = left / 32 - SAFE_DISTANCE;
-		sta_y = top / 32 - SAFE_DISTANCE;
-		end_x = right / 32 + SAFE_DISTANCE;
-		end_y = bottom / 32 + SAFE_DISTANCE;
+		sta_x = left / TILE_WIDTH - SAFE_DISTANCE;
+		sta_y = top / TILE_HEIGHT - SAFE_DISTANCE;
+		end_x = right / TILE_WIDTH + SAFE_DISTANCE;
+		end_y = bottom / TILE_HEIGHT + SAFE_DISTANCE;
 		if (sta_x < 0) sta_x = 0;
 		if (sta_y < 0) sta_y = 0;
 		if (end_x >= width) end_x = width - 1;

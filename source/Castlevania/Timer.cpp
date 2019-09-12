@@ -12,3 +12,9 @@ bool CTimer::hasTicked()
 	}
 	return false;
 }
+DWORD CTimer::GetRemainingTime()
+{
+	DWORD rs = time - (GetTickCount() - start);
+	if (rs < 0) rs = 0;
+	return rs;
+}

@@ -72,4 +72,5 @@ void CTinyHeart::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			accelerationX = -accelerationX;
 	}
 	else vy = 0.1f; // this is dumb, but whatever >.>
+	if (!isOnCamera()) state = GAMEOBJECT_STATE_INVISIBLE;
 }

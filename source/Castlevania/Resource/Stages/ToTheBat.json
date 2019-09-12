@@ -588,8 +588,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":93.25,
-                 "x":3041.75,
+                 "width":95.625,
+                 "x":3039.375,
                  "y":290.5
                 }, 
                 {
@@ -735,7 +735,7 @@
                  "visible":true,
                  "width":2554.30666666667,
                  "x":4708.26333333333,
-                 "y":15.75
+                 "y":25
                 }, 
                 {
                  "height":27.5,
@@ -744,20 +744,20 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":95.068181818182,
+                 "width":126.068181818182,
                  "x":4992.48863636364,
                  "y":289.75
                 }, 
                 {
-                 "height":95.75,
+                 "height":63.25,
                  "id":429,
                  "name":"unseenforce",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":127.25,
+                 "width":128.467391304348,
                  "x":5248.625,
-                 "y":255.75
+                 "y":288.5
                 }, 
                 {
                  "height":64.5,
@@ -938,12 +938,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":94.8180000000002,
+                 "width":125.818,
                  "x":5440.25766666667,
                  "y":290.25
                 }, 
                 {
-                 "height":158.166666666667,
+                 "height":129.416666666667,
                  "id":447,
                  "name":"unseenforce",
                  "rotation":0,
@@ -951,7 +951,7 @@
                  "visible":true,
                  "width":62.8180000000002,
                  "x":5376.92433333333,
-                 "y":258.583333333333
+                 "y":287.5
                 }, 
                 {
                  "height":27.5,
@@ -1075,6 +1075,17 @@
                  "width":64,
                  "x":7120,
                  "y":224
+                }, 
+                {
+                 "height":27.5,
+                 "id":458,
+                 "name":"unseenforce",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":191.318,
+                 "x":5248.341,
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1083,7 +1094,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":458,
+ "nextobjectid":459,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
