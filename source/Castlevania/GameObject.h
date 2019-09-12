@@ -85,6 +85,7 @@ public:
 	void SetFacing(int nx) { this->nx = nx; }
 	bool isOverlapping(CGameObject*obj);
 	bool isContaining(CGameObject*obj);
+	float Distance(CGameObject*obj);
 	//
 	static void Init(vector<LPGAMEOBJECT>*_objects) { objects = _objects; }
 	static void AddObject(LPGAMEOBJECT object) { objects->push_back(object); }

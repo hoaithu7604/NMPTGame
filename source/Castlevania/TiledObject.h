@@ -38,6 +38,8 @@
 #define OBJECTCODE_ZOMBIESPAWNER "zombiespawner"
 #define OBJECTCODE_ZOMBIE "zombie"
 #define OBJECTCODE_STAIRS "stairs"
+#define OBJECTCODE_HOUND "hound"
+#define OBJECTCODE_HOUNDSPAWNER "houndspawner"
 using json = nlohmann::json;
 using namespace std;
 /*

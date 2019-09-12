@@ -10,6 +10,7 @@ CZombie::CZombie(float x, float y, float nx)
 	:CMonster(ZOMBIE_POINT, ZOMBIE_HEALTH_DEFAULT)
 {
 	SetPositionCentral(x, y);
+	this->nx = nx;
 	vx = nx > 0 ? ZOMBIE_WALKING_SPEED : -ZOMBIE_WALKING_SPEED;
 	currentAnim = prevAnim = nx > 0 ? (int)ZombieAnimID::RIGHT: (int)ZombieAnimID::LEFT;
 	contactDamage = ZOMBIE_CONTACT_DAMAGE;

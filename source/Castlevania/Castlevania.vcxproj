@@ -140,6 +140,8 @@
     <ClInclude Include="FlameEffect.h" />
     <ClInclude Include="HealthIcon.h" />
     <ClInclude Include="HeartIcon.h" />
+    <ClInclude Include="Hound.h" />
+    <ClInclude Include="HoundSpawner.h" />
     <ClInclude Include="ItemFrame.h" />
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
@@ -187,6 +189,7 @@
     <ClCompile Include="EffectObject.cpp" />
     <ClCompile Include="EventObject.cpp" />
     <ClCompile Include="FlameEffect.cpp" />
+    <ClCompile Include="Hound.cpp" />
     <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />

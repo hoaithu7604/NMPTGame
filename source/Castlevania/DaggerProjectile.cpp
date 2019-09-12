@@ -1,5 +1,6 @@
 #include "DaggerProjectile.h"
 #include "Candle.h"
+#include "Zombie.h"
 void CDaggerProjectile::GetBoundingBox(float &left, float &top, float &right, float &bottom) 
 {
 	left = x;
@@ -23,8 +24,15 @@ void CDaggerProjectile::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects) {
 			{			
 				if (dynamic_cast<CCandle*>(coObjects->at(i)))
 				{
-					dynamic_cast<CCandle*>(coObjects->at(i))->TakeDamage(ContactDamage);
+					coObjects->at(i)->TakeDamage(ContactDamage);
 					state = GAMEOBJECT_STATE_INVISIBLE;
+					return;
+				}
+				else if (dynamic_cast<CZombie*>(coObjects->at(i)))
+				{
+					coObjects->at(i)->TakeDamage(ContactDamage);
+					state = GAMEOBJECT_STATE_INVISIBLE;
+					return;
 				}
 			}
 		}

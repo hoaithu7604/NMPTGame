@@ -23,7 +23,7 @@ CTiledObject::CTiledObject(json root)
 		json propertyRoot = *it;
 		string propertyName = propertyRoot[TILED_OBJECT_PROPERTY_NAME].get<string>();
 		string propertyType = propertyRoot[TILED_OBJECT_PROPERTY_TYPE].get<string>();
-		if (propertyRoot[TILED_OBJECT_PROPERTY_VALUE].is_number_float())
+		if (propertyRoot[TILED_OBJECT_PROPERTY_VALUE].is_number())
 		{
 			float propertyValue = propertyRoot[TILED_OBJECT_PROPERTY_VALUE].get<float>();
 			CTiledProperty*property = new CTiledProperty(propertyName, propertyType, propertyValue);

@@ -150,7 +150,7 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 				if (e->nx != 0)
 				{
 					x += e->t * dx + nx * AVOID_OVERLAPPLING_FORCE;
-					vx = 0;
+					//vx = 0;
 					should_x_change = false;
 				}
 			}
@@ -171,7 +171,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 			if (vy >= 0)
 			{
 				isCrouching = false;
-				vy += SIMON_FALLING_SPEED * dt;
+				vy += SIMON_JUMPING_FALLING_SPEED_ * dt;
 			}
 			else
 				vy += SIMON_JUMPING_FALLING_SPEED * dt;

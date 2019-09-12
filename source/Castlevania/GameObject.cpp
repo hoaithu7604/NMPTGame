@@ -173,6 +173,10 @@ bool CGameObject::isOverlapping(CGameObject*obj)
 	this->GetBoundingBox(l, t, r, b);
 	return l < right && r > left && t < bottom && b > top;
 }
+float CGameObject::Distance(CGameObject*obj)
+{
+	return sqrt((x - obj->x)*(x - obj->x) + (y - obj->y)*(y - obj->y));
+}
 bool CGameObject::isContaining(CGameObject*obj)
 {
 	float left, top, right, bottom;

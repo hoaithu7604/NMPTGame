@@ -249,6 +249,12 @@
     <ClInclude Include="Stairs.h">
       <Filter>Header Files\Objects\stair</Filter>
     </ClInclude>
+    <ClInclude Include="Hound.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="HoundSpawner.h">
+      <Filter>Header Files\Objects\monsters\spawner</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -396,6 +402,9 @@
       <Filter>Source Files\Objects\stair</Filter>
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Hound.cpp">
       <Filter>Source Files\Objects\monsters</Filter>
     </ClCompile>
   </ItemGroup>

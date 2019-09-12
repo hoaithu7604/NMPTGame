@@ -2,9 +2,10 @@
 #include "MoveableObject.h"
 #include "Camera.h"
 #define SIMON_WALKING_SPEED 0.15f
-#define SIMON_FALLING_SPEED 0.012f
-#define SIMON_JUMPING_SPEED 0.4f
-#define SIMON_JUMPING_FALLING_SPEED 0.0008f // lol ik my english sucks
+#define SIMON_FALLING_SPEED 0.012f 
+#define SIMON_JUMPING_SPEED 0.4f // 
+#define SIMON_JUMPING_FALLING_SPEED 0.0008f // gravity while jumping up
+#define SIMON_JUMPING_FALLING_SPEED_ 0.01f //gravity while falling down after jumping up
 #define SIMON_IDLE_BBOX_HEIGHT 64
 #define SIMON_IDLE_BBOX_WIDTH 32
 #define SIMON_CROUCHING_BBOX_HEIGHT 46

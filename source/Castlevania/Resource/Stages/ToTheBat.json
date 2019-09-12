@@ -355,7 +355,7 @@
                         }],
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":2871.84,
                  "y":289.668
@@ -659,7 +659,7 @@
                         }],
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":128,
                  "x":2896,
                  "y":224
@@ -1086,6 +1086,94 @@
                  "width":191.318,
                  "x":5248.341,
                  "y":256
+                }, 
+                {
+                 "height":64,
+                 "id":460,
+                 "name":"teleportevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":4960
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":496
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":4880,
+                 "y":416
+                }, 
+                {
+                 "height":64,
+                 "id":461,
+                 "name":"teleportevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":4864
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":400
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":4944,
+                 "y":480
+                }, 
+                {
+                 "height":64,
+                 "id":462,
+                 "name":"teleportevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":5600
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":496
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":5520,
+                 "y":416
+                }, 
+                {
+                 "height":64,
+                 "id":463,
+                 "name":"teleportevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":5504
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":400
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":5584,
+                 "y":480
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1094,7 +1182,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":459,
+ "nextobjectid":464,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
