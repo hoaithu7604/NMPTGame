@@ -22,6 +22,8 @@
 #include "Timer.h"
 #include "Dagger.h"
 #include "TimeFreezer.h"
+#include "AutoMover.h"
+#include "Stairs.h"
 enum class SimonAnimID
 {
 	IDLE_RIGHT = 100,
@@ -69,20 +71,31 @@ class CSimon : public CMoveableObject
 	bool isCrouching;
 	bool isUsingweapon;
 	bool isKnockingBack;
+	bool isOnStairs;
 	//timer
 	CTimer invulTimer;
 	CTimer attack_timer; //attack cooldown timer
 	CTimer fabulous_timer; // let simon stay fabulous while this timer is on lol
 	CTimer forcedCrouchTimer; //use when simon falls at high speed or getting knocked back
+	//others component
+	CAutoMover automover;
+	CStairs* stairs; //current stairs simon is overlapping
+	
 public:
 	CSimon();
+	//checking
+	bool IsOnStairs() { return isOnStairs; }
+	bool IsControllable() { return isControllable; }
 	bool CanUseWeapon() { return weapon != NULL && heart > 0 && !weapon->isOnCooldown(); }
 	bool isMoveable() { return vy == 0 && !isJumping && !isUsingweapon && !isCrouching && !rope->isActive() && !CTimeFreezer::GetInstance()->isActive(); }
 	void IncreaseRopeLevel();
 	int GetHeart() { return heart; }
 	void AddHeart(int heart) { this->heart += heart; }
 	LPWEAPON GetWeapon() { return weapon; }
-
+	//action
+	void SetOnStairs(bool b = true) { isOnStairs = b; }
+	void GoUpStairs();
+	void GoDownStairs();
 	void ForcedCrouch();
 	void StandUp();
 	void Jump();
@@ -97,14 +110,15 @@ public:
 	bool TakingDamage(int damage);
 	void Die();
 	void KnockedBack(int direction);
-	
+	void AutoMove(float x, float y, int mode = AUTO_MOVER_MODE_DEFAULT, int type = AUTO_MOVER_TYPE_DEFAULT);
+	//
 	void UpdateCurrentAnim();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render();
 	virtual void FreezeAnimation();
 	void OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT>*_objects);
-		
+	void CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects);
 	static CSimon * GetInstance();
 };
 

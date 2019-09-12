@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <nlohmann\json.hpp>
+#define TILED_PROPERTY_STAIR_TYPE "stairtype"
+#define TILED_PROPERTY_STAIR_TYPE_UP "up"
+#define TILED_PROPERTY_STAIR_TYPE_DOWN "down"
 #define TILED_PROPERTY_ITEMHOLDER "itemholder"
 #define TILED_PROPERTY_TARGET_POS_X "target_pos_x"
 #define TILED_PROPERTY_TARGET_POS_Y "target_pos_y"
@@ -34,6 +37,7 @@
 #define OBJECTCODE_TINYHEART "tinyheart"
 #define OBJECTCODE_ZOMBIESPAWNER "zombiespawner"
 #define OBJECTCODE_ZOMBIE "zombie"
+#define OBJECTCODE_STAIRS "stairs"
 using json = nlohmann::json;
 using namespace std;
 /*

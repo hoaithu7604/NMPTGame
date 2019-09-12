@@ -27,7 +27,7 @@ using namespace std;
 #define GAMEOBJECT_STATE_NO_COLLISION State(1,1,0)
 #define DIRECTION_RIGHT 1
 #define DIRECTION_LEFT -1
-#define BARELY_OFFSCREEN_DISTANCE 100
+#define BARELY_OFFSCREEN_DISTANCE 50
 struct State
 {
 	bool renderable;
@@ -73,10 +73,19 @@ protected:
 	CARGB argb;
 	CAnimations* animations; //Should be fine i guess?
 public: 
+	CGameObject();
+	//checking
 	bool isOnCamera();
 	bool isAlmostOnCamera();
 	int isBarelyOffscreen();
 	bool isFarOffscreen();
+	bool IsRenderable() { return state.IsRenderable(); }
+	bool IsUpdatable() { return state.IsUpdatable(); }
+	bool IsColliable() { return state.IsColliable(); }
+	void SetFacing(int nx) { this->nx = nx; }
+	bool isOverlapping(CGameObject*obj);
+	bool isContaining(CGameObject*obj);
+	//
 	static void Init(vector<LPGAMEOBJECT>*_objects) { objects = _objects; }
 	static void AddObject(LPGAMEOBJECT object) { objects->push_back(object); }
 	static void LoadResource(string ObjectName);
@@ -86,15 +95,7 @@ public:
 	int GetDirection() { return nx; }
 	virtual void SetState(State state) { this->state = state; }
 	int GetHealth() { return health; }
-	void RenderBoundingBox();
-
-	bool IsRenderable() { return state.IsRenderable(); }
-	bool IsUpdatable() { return state.IsUpdatable(); }
-	bool IsColliable() { return state.IsColliable(); }
-	void SetFacing(int nx) { this->nx = nx; }
-	CGameObject();
-	bool isOverlapping(CGameObject*obj);
-	bool isContaining(CGameObject*obj);
+	
 	void SetAnimation(int AnimID) { this->currentAnim = AnimID; }
 	virtual void TakeDamage(int damage);
 	virtual void Destroy() {};
@@ -105,6 +106,7 @@ public:
 	virtual void RenderOverlay();
 	virtual void GetCentralPoint(float &x, float&y);
 	virtual void SetPositionCentral(float x, float y);
+	void RenderBoundingBox();
 	~CGameObject();
 };
 

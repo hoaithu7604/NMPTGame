@@ -8,10 +8,13 @@ protected:
 	float height;
 	CTimer cooldown_timer;
 public:
+	virtual bool ShouldSpawn() = 0;
+	virtual void Spawn() = 0;
 	CSpawner() :CGameObject() { state = GAMEOBJECT_STATE_UPDATE_ONLY; } 
 	CSpawner(float x, float y, float width, float height);
-	virtual bool ShouldSpawn() { return false; }
-	virtual void Spawn() {}
+	
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
+
+
 };

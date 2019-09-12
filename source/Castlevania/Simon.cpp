@@ -29,6 +29,7 @@ CSimon::CSimon()
 	isUsingweapon = false;
 	isControllable = true;
 	isKnockingBack = false;
+	isOnStairs = false;
 	//timer
 	fabulous_timer.SetTime(SIMON_FABULOUS_DURATION);
 	attack_timer.SetTime(SIMON_ATTACK_COOLDOWN);
@@ -38,13 +39,21 @@ CSimon::CSimon()
 	currentAnim = (int)SimonAnimID::IDLE_RIGHT;
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
 	camera = CCamera::GetInstance();
+
+	automover.SetSpeed(SIMON_WALKING_SPEED);
+	automover.SetTime(1000);
+	automover.SetTarget(1000, 10);
+	automover.SetType(AUTO_MOVER_TYPE_TIMED);
+	automover.SetMode(AUTO_MOVER_MODE_DEFAULT);
+	automover.Active();
 }
 // no collision events to thing spawn on top of simon so let use this function
-void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT>*_objects)
+void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*coObjects)
 {
-	for (int i = 0; i < coObjects->size(); i++)
+	if (!isOnStairs) stairs = NULL; 
+	for (int i = 0; i < objects->size(); i++)
 	{
-		LPGAMEOBJECT obj=coObjects->at(i);
+		LPGAMEOBJECT obj= objects->at(i);
 		if (dynamic_cast<CBigHeart *>(obj)&&isOverlapping(obj))
 		{			
 			dynamic_cast<CBigHeart*>(obj)->GetReward();
@@ -91,52 +100,23 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*coObjects,vector<LPGAMEOBJECT
 
 			}
 		}
-		else _objects->push_back(obj);
+		else if (dynamic_cast<CStairs*>(obj) && dynamic_cast<CStairs*>(obj)->isAbleToClimb())
+		{
+			stairs = dynamic_cast<CStairs*>(obj);
+		}
+		else coObjects->push_back(obj);
 	}
 }
-void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
+void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 {
-
-	if (isJumping)
-	{
-		//jumping gravity
-		if (vy >= 0)
-		{
-			isCrouching = false;
-			vy += SIMON_FALLING_SPEED * dt;
-		}
-		else
-			vy += SIMON_JUMPING_FALLING_SPEED * dt;
-	}
-	else {
-		if (isKnockingBack)
-		{
-			vy += SIMON_KNOCKED_FALLING_SPEED*dt;
-		}
-		else
-		{
-			//normal gravity
-			if (vy != 0) vx = 0; //can't move while falling
-			vy += SIMON_FALLING_SPEED * dt;
-		}
-	}
-	//update current weapon
-	if (weapon != NULL) weapon->Update(dt);
-	//update timer
-	if (forcedCrouchTimer.hasTicked()) {
-		ReleaseControl();
-		StandUp();
-	}
-	//collision&overlapping event
-	vector<LPGAMEOBJECT> coObjects; // for collidable objects
-	OverLappingLogic(Objects,&coObjects);
 	this->dt = dt;
+	automover.Update(dt); //ignore gravity when automover is actived by re-set vy
 	dx = vx * dt;
 	dy = vy * dt;
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 	coEvents.clear();
-	CalcPotentialCollisions(&coObjects, coEvents);
+	CalcPotentialCollisions(coObjects, coEvents);
 	if (coEvents.size() == 0)
 	{
 		x += dx;
@@ -144,21 +124,17 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 	}
 	else
 	{
-
 		float min_tx, min_ty, nx = 0, ny;
-
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
 		bool should_x_change = true;
 		bool should_y_change = true;
-			
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (dynamic_cast<CUnseenForce *>(e->obj))
+			if (dynamic_cast<CUnseenForce *>(e->obj)&&!isOnStairs)
 			{
-				if (e->ny < 0) 
+				if (e->ny < 0)
 				{
 					should_y_change = false;
 					if (isJumping)
@@ -175,22 +151,62 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 					vy = 0;
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
 				}
-				if (e->nx != 0) 
+				if (e->nx != 0)
 				{
-					x += e->t * dx + nx * AVOID_OVERLAPPLING_FORCE;		
+					x += e->t * dx + nx * AVOID_OVERLAPPLING_FORCE;
 					vx = 0;
 					should_x_change = false;
 				}
 			}
-
 		}
-
 		if (should_x_change) x += dx;
 		if (should_y_change) y += dy;
-		
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	//-----------------------------
+}
+void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
+{
+	DebugOut(L"%.2f %.2f", x, y);
+	if (!isOnStairs) //ignore normal gravity while on stairs
+	{
+		if (isJumping)
+		{
+			//jumping gravity
+			if (vy >= 0)
+			{
+				isCrouching = false;
+				vy += SIMON_FALLING_SPEED * dt;
+			}
+			else
+				vy += SIMON_JUMPING_FALLING_SPEED * dt;
+		}
+		else {
+			if (isKnockingBack)
+			{
+				//different falling speed while getting knocked back
+				vy += SIMON_KNOCKED_FALLING_SPEED * dt;
+			}
+			else
+			{
+				//normal gravity
+				if (vy != 0) vx = 0; //can't move while falling
+				vy += SIMON_FALLING_SPEED * dt;
+			}
+		}
+	}
+	
+	//update current weapon
+	if (weapon != NULL) weapon->Update(dt);
+	//update timer
+	if (forcedCrouchTimer.hasTicked()) {
+		ReleaseControl();
+		StandUp();
+	}
+	//collision&overlapping event
+	vector<LPGAMEOBJECT> coObjects; // for collidable objects
+	OverLappingLogic(Objects,&coObjects);
+	CollisionLogic(dt, &coObjects);
 
 	UpdateCurrentAnim();
 	this->rope->Update(x, y, nx, dt, Objects);
@@ -237,7 +253,8 @@ void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
 	if (this->rope->isActive() 
-		|| isKnockingBack||isUsingweapon||!isControllable||CTimeFreezer::GetInstance()->isActive()) return;
+		||isKnockingBack||isUsingweapon||!isControllable
+		||CTimeFreezer::GetInstance()->isActive()) return;
 
 	switch (action) {
 	case Action::ATTACK:
@@ -265,13 +282,24 @@ void CSimon::DoAction(Action action)
 	}
 
 	if (isJumping) return;
+
+	switch (action) {
+	case Action::GO_DOWN_STAIRS:
+		GoDownStairs();
+		break;
+	case Action::GO_UP_STAIRS:
+		GoUpStairs();
+		break;
+	}
+	
+	if (isOnStairs) return;
 	//------------------------------
 	switch (action) {
 		case Action::JUMP:
 			Jump();
 			break;
 		case Action::CROUCH:
-			Crouch();
+			if (stairs==NULL||stairs->ShouldCrouch()) Crouch(); // simon should not crouch in some cases when come in contact with stairs
 			break;
 		case Action::WALK_RIGHT:
 			StandUp();
@@ -288,6 +316,9 @@ void CSimon::DoAction(Action action)
 			this->vx = 0;
 			break;
 	}
+	//if simon is not doing IDLE action, it try to deactive automover if it's actived and not forced mode
+	if (action != Action::IDLE&&action!=Action::GO_DOWN_STAIRS&&action!=Action::GO_UP_STAIRS) automover.Deactive(); 
+	
 }
 void CSimon::UpdateCurrentAnim() 
 {
@@ -296,8 +327,42 @@ void CSimon::UpdateCurrentAnim()
 		if (isCrouching) {
 			currentAnim = nx > 0 ? (int)SimonAnimID::CROUCH_ATTACK_RIGHT : (int)SimonAnimID::CROUCH_ATTACK_LEFT;
 		}
+		else if (isOnStairs)
+		{
+			int stairstype = stairs->GetStairsType();
+			if (stairs->isEntrance())
+				currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_RIGHT : (int)SimonAnimID::ATTACK_LEFT;
+			else
+			{
+				if (stairstype == STAIRS_TYPE_UP)
+					currentAnim = nx > 0 ? (int)SimonAnimID::UP_STAIR_ATTACK_RIGHT : (int)SimonAnimID::DOWN_STAIR_ATTACK_LEFT;
+				else if (stairstype == STAIRS_TYPE_DOWN)
+					currentAnim = nx > 0 ? (int)SimonAnimID::DOWN_STAIR_ATTACK_RIGHT : (int)SimonAnimID::UP_STAIR_ATTACK_LEFT;
+			}
+		}
 		else
 		currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_RIGHT : (int)SimonAnimID::ATTACK_LEFT;
+	}
+	else if (isOnStairs)
+	{
+		int stairstype = stairs->GetStairsType();
+		if (stairs->isEntrance())
+			currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_RIGHT : (int)SimonAnimID::IDLE_LEFT;
+		else
+		if (stairstype == STAIRS_TYPE_UP)
+		{
+			if (vx == 0)
+				currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_UPSTAIRS_RIGHT : (int)SimonAnimID::IDLE_DOWNSTAIRS_LEFT;
+			else 
+				currentAnim = nx > 0 ? (int)SimonAnimID::WALK_UPSTAIRS_RIGHT : (int)SimonAnimID::WALK_DOWNSTAIRS_LEFT;
+		}
+		else if (stairstype == STAIRS_TYPE_DOWN)
+		{
+			if (vx == 0)
+				currentAnim = nx > 0 ? (int)SimonAnimID::IDLE_DOWNSTAIRS_RIGHT : (int)SimonAnimID::IDLE_UPSTAIRS_LEFT;
+			else
+				currentAnim = nx > 0 ? (int)SimonAnimID::WALK_DOWNSTAIRS_RIGHT : (int)SimonAnimID::WALK_UPSTAIRS_LEFT;
+		}
 	}
 	else if (isKnockingBack)
 	{
@@ -405,7 +470,7 @@ void CSimon::Die()
 }
 void CSimon::KnockedBack(int Direction)
 {
-	OutputDebugString(L"KNOCKED BACK");
+	if (isOnStairs) return;
 	vy = -SIMON_KNOCKED_BACK_FORCE_Y;
 	vx = Direction * SIMON_KNOCKED_BACK_FORCE_X;
 	nx = -Direction;
@@ -414,6 +479,7 @@ void CSimon::KnockedBack(int Direction)
 	isUsingweapon = false;
 	rope->Deactive();
 	isKnockingBack = true;
+	automover.Deactive(); // try to deactive automover if getting kb
 }
 void CSimon::ForcedCrouch()
 {
@@ -422,5 +488,25 @@ void CSimon::ForcedCrouch()
 		Crouch();
 		BlockControl();
 		forcedCrouchTimer.Active();
+	}
+}
+void CSimon::GoDownStairs()
+{
+	if (stairs != NULL) {
+		stairs->Down();
+	}
+}
+void CSimon::GoUpStairs()
+{
+	if (stairs != NULL) {
+			stairs->Up();
+	}
+}
+void CSimon::AutoMove(float x, float y, int mode, int type)
+{
+	if (!automover.IsActive())
+	{
+		automover.SetTarget(x, y);
+		automover.Active(mode, type);
 	}
 }

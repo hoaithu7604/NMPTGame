@@ -243,7 +243,10 @@
     <ClInclude Include="Spawner.h">
       <Filter>Header Files\Objects\monsters\spawner</Filter>
     </ClInclude>
-    <ClInclude Include="StairUp.h">
+    <ClInclude Include="AutoMover.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Stairs.h">
       <Filter>Header Files\Objects\stair</Filter>
     </ClInclude>
   </ItemGroup>
@@ -386,11 +389,14 @@
     <ClCompile Include="ZombieSpawner.cpp">
       <Filter>Source Files\Objects\monsters\spawner</Filter>
     </ClCompile>
-    <ClCompile Include="Zombie.cpp">
-      <Filter>Source Files\Objects\monsters\spawner</Filter>
+    <ClCompile Include="AutoMover.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="StairUp.cpp">
+    <ClCompile Include="Stairs.cpp">
       <Filter>Source Files\Objects\stair</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

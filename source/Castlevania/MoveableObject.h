@@ -10,7 +10,9 @@ enum class Action
 	ATTACK,
 	CROUCH,
 	JUMP,
-	USE_WEAPON
+	USE_WEAPON,
+	GO_DOWN_STAIRS,
+	GO_UP_STAIRS
 };
 //class for objects which are capable to move
 class CMoveableObject : public CGameObject

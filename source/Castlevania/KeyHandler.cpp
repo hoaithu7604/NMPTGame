@@ -19,7 +19,13 @@ void CKeyHandler::OnKeyDown(int KeyCode)
 	}
 	else if (KeyCode == DIK_C)
 	{
-		CSimon::GetInstance()->SetPosition(1751,331);
+		CSimon::GetInstance()->SetPosition(5224,581);
+	}
+	else if (KeyCode == DIK_A)
+	{
+		float x, y;
+		CSimon::GetInstance()->GetPosition(x, y);
+		CSimon::GetInstance()->SetPosition(x, y-100);
 	}
 	
 }
@@ -35,10 +41,15 @@ void CKeyHandler::KeyState(BYTE *states)
 	bool should_simon_do_nothing = true;
 	if (CGame::GetInstance()->IsKeyDown(DIK_DOWN)) {
 		CSimon::GetInstance()->DoAction(Action::CROUCH);
+		CSimon::GetInstance()->DoAction(Action::GO_DOWN_STAIRS);
 		should_simon_do_nothing = false;
 	}
 	else
 	{
+		if (CGame::GetInstance()->IsKeyDown(DIK_UP))
+		{
+			CSimon::GetInstance()->DoAction(Action::GO_UP_STAIRS);
+		}
 		if (CGame::GetInstance()->IsKeyDown(DIK_LEFT))
 		{
 			CSimon::GetInstance()->DoAction(Action::WALK_LEFT);

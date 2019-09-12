@@ -7,6 +7,7 @@
 #include "TeleportEvent.h"
 #include "Candle.h"
 #include "ZombieSpawner.h"
+#include "Stairs.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -119,6 +120,23 @@ void CTiledObject::Create()
 	{
 		CZombieSpawner*obj = new CZombieSpawner(x, y, width, height);
 		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_STAIRS)
+	{
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == TILED_PROPERTY_STAIR_TYPE)
+			{
+				if (properties[i]->value_string == TILED_PROPERTY_STAIR_TYPE_UP)
+				{
+					CGameObject::AddObject(new CStairs(x,y+height,x+width,y));
+				}
+				else if (properties[i]->value_string == TILED_PROPERTY_STAIR_TYPE_DOWN)
+				{
+					CGameObject::AddObject(new CStairs(x, y, x + width, y+height));
+				}
+			}
+		}
 	}
 
 }

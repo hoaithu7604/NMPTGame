@@ -1,3 +1,4 @@
+#pragma once
 #include "Spawner.h"
 #define ZOMBIE_SPAWNER_COOLDOWN 20000 
 #define ZOMBIE_SPAWNER_DELAY 300 // delay between each zombie
@@ -8,8 +9,9 @@ class CZombieSpawner : public CSpawner
 	int counter = ZOMBIE_SPAWNER_COUNT_MAX;
 	int spawn_direction;
 public:
-	CZombieSpawner() :CSpawner() { delay_timer.SetTime(ZOMBIE_SPAWNER_DELAY); cooldown_timer.SetTime(ZOMBIE_SPAWNER_COOLDOWN); }
-	CZombieSpawner(float x, float y, float width, float height) :CSpawner(x, y, width, height) { delay_timer.SetTime(ZOMBIE_SPAWNER_DELAY); cooldown_timer.SetTime(ZOMBIE_SPAWNER_COOLDOWN); }
 	virtual bool ShouldSpawn();
 	virtual void Spawn();
+	CZombieSpawner() :CSpawner() { delay_timer.SetTime(ZOMBIE_SPAWNER_DELAY); cooldown_timer.SetTime(ZOMBIE_SPAWNER_COOLDOWN); }
+	CZombieSpawner(float x, float y, float width, float height) :CSpawner(x, y, width, height) { delay_timer.SetTime(ZOMBIE_SPAWNER_DELAY); cooldown_timer.SetTime(ZOMBIE_SPAWNER_COOLDOWN); }
+	
 };

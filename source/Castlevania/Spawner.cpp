@@ -1,5 +1,4 @@
 #include "Spawner.h"
-
 CSpawner::CSpawner(float x, float y, float width, float height)
 	:CGameObject()
 {
