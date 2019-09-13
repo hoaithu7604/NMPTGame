@@ -11,7 +11,6 @@ void CItemHolder::Destroy() {
 	float pos_x = (left + right) / 2;
 	float pos_y = (top + bottom) / 2;
 	CFlameEffect* effect = new CFlameEffect(pos_x,pos_y);
-
 	delay_timer.Active();
 	state = GAMEOBJECT_STATE_UPDATE_ONLY;
 }

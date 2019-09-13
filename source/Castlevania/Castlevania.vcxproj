@@ -131,6 +131,7 @@
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Candle.h" />
+    <ClInclude Include="CrossFlameEffect.h" />
     <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
     <ClInclude Include="DaggerProjectile.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="ItemObject.cpp" />
     <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="CrossFlameEffect.cpp" />
     <ClCompile Include="Stairs.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieSpawner.cpp" />

@@ -41,6 +41,7 @@
 #define OBJECTCODE_HOUND "hound"
 #define OBJECTCODE_HOUNDSPAWNER "houndspawner"
 #define OBJECTCODE_MONEYBAG "moneybag"
+#define OBJECTCODE_CROSS_FLAME_EFFECT "crossflameeffect"
 using json = nlohmann::json;
 using namespace std;
 /*

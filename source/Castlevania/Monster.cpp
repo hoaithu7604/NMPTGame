@@ -1,5 +1,6 @@
 #include "Monster.h"
 #include "FlameEffect.h"
+#include "CrossFlameEffect.h"
 #include "OverlayBoard.h"
 #include "UnseenForce.h"
 void CMonster::Destroy()
@@ -8,6 +9,7 @@ void CMonster::Destroy()
 	float x, y;
 	GetCentralPoint(x, y);
 	CGameObject::AddObject(new CFlameEffect(x, y));
+	CGameObject::AddObject(new CCrossFlameEffect(x, y));
 	GetReward();
 }
 void CMonster::GetReward()

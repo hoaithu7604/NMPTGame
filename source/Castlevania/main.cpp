@@ -46,6 +46,7 @@
 #include "Zombie.h"
 #include "Hound.h"
 #include "MoneyBag.h"
+#include "CrossFlameEffect.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -120,6 +121,7 @@ void LoadResources()
 	CZombie::LoadResource(OBJECTCODE_ZOMBIE);
 	CHound::LoadResource(OBJECTCODE_HOUND);
 	CMoneyBag::LoadResource(OBJECTCODE_MONEYBAG);
+	CCrossFlameEffect::LoadResource(OBJECTCODE_CROSS_FLAME_EFFECT);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

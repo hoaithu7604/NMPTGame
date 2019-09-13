@@ -258,6 +258,9 @@
     <ClInclude Include="MoneyBag.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="CrossFlameEffect.h">
+      <Filter>Header Files\Objects\effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -415,6 +418,9 @@
     </ClCompile>
     <ClCompile Include="MoneyBag.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossFlameEffect.cpp">
+      <Filter>Source Files\Objects\effects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
