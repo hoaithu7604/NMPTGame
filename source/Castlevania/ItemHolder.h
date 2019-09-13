@@ -12,6 +12,7 @@
 #define ITEMCODE_MONEYBAG2 "moneybag2"
 #define ITEMCODE_MONEYBAG3 "moneybag3"
 #define ITEMCODE_MONEYBAG4 "moneybag4"
+#define ITEMCODE_CROSS "cross"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 

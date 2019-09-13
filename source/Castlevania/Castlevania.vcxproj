@@ -132,6 +132,8 @@
     <ClInclude Include="BrickBreakingEffect.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Candle.h" />
+    <ClInclude Include="Cross.h" />
+    <ClInclude Include="CrossEffect.h" />
     <ClInclude Include="CrossFlameEffect.h" />
     <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
@@ -192,6 +194,8 @@
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="BrickBreakingEffect.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cross.cpp" />
+    <ClCompile Include="CrossEffect.cpp" />
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
     <ClCompile Include="DaggerProjectile.cpp" />

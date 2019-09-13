@@ -1240,6 +1240,83 @@
                  "width":29.7272727272721,
                  "x":3648.09090909091,
                  "y":290
+                }, 
+                {
+                 "height":27.2727,
+                 "id":471,
+                 "name":"imbrick",
+                 "properties":[
+                        {
+                         "name":"bricktype",
+                         "type":"float",
+                         "value":2
+                        }, 
+                        {
+                         "name":"itemholder",
+                         "type":"string",
+                         "value":"moneybag4"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29.7273,
+                 "x":5248,
+                 "y":352
+                }, 
+                {
+                 "height":27.2727,
+                 "id":472,
+                 "name":"imbrick",
+                 "properties":[
+                        {
+                         "name":"bricktype",
+                         "type":"float",
+                         "value":2
+                        }, 
+                        {
+                         "name":"itemholder",
+                         "type":"string",
+                         "value":"moneybag4"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29.7273,
+                 "x":5248,
+                 "y":384
+                }, 
+                {
+                 "height":64,
+                 "id":473,
+                 "name":"zombiespawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":4388.5,
+                 "y":350.5
+                }, 
+                {
+                 "height":64,
+                 "id":474,
+                 "name":"zombiespawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":4038.25,
+                 "y":350.5
+                }, 
+                {
+                 "height":64,
+                 "id":475,
+                 "name":"zombiespawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":4590.5,
+                 "y":350.75
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1248,7 +1325,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":471,
+ "nextobjectid":476,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

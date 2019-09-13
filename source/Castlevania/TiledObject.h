@@ -46,6 +46,7 @@
 #define OBJECTCODE_CROSS_FLAME_EFFECT "crossflameeffect"
 #define OBJECTCODE_IMBRICK "imbrick"
 #define OBJECTCODE_BRICK_BREAKING_EFFECT "brickbreakingeffect"
+#define OBJECTCODE_CROSS "cross"
 using json = nlohmann::json;
 using namespace std;
 /*

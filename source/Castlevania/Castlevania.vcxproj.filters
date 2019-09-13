@@ -285,6 +285,12 @@
     <ClInclude Include="FireBombFireEffect.h">
       <Filter>Header Files\Objects\simon\weapons\firebomb</Filter>
     </ClInclude>
+    <ClInclude Include="Cross.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossEffect.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -466,6 +472,12 @@
     </ClCompile>
     <ClCompile Include="FireBombFireEffect.cpp">
       <Filter>Source Files\Objects\simon\weapons\firebomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Cross.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossEffect.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

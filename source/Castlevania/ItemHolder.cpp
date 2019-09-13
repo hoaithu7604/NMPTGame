@@ -6,6 +6,7 @@
 #include "TinyHeart.h"
 #include "MoneyBag.h"
 #include "FireBombItem.h"
+#include "Cross.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -71,6 +72,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CFireBombItem* firebombitem = new CFireBombItem(pos_x, pos_y);
 					CGameObject::AddObject(firebombitem);
+				}
+				else if (item[i] == ITEMCODE_CROSS)
+				{
+					CCross* cross = new CCross(pos_x, pos_y);
+					CGameObject::AddObject(cross);
 				}
 			}
 		}
