@@ -9,6 +9,7 @@
 #include "DaggerItem.h"
 #include "TinyHeart.h"
 #include "Zombie.h"
+#include "Hound.h"
 CSimon * CSimon::__instance = NULL;
 CSimon* CSimon::GetInstance()
 {
@@ -80,7 +81,7 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*
 			dynamic_cast<CDaggerItem *>(obj)->GetReward();
 			DebugOut(L"[INFO] OVERLAPPING DAGGER ITEM");
 		}
-		else if (dynamic_cast<CZombie *>(obj)&&isOverlapping(obj))
+		else if (dynamic_cast<CMonster *>(obj)&&isOverlapping(obj))
 		{
 			OutputDebugString(L"TOUCHED MONSTER?!!??!?!?");
 			if (TakingDamage(dynamic_cast<CMonster *>(obj)->GetContactDamage()))
@@ -92,9 +93,9 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*
 					KnockedBack(DIRECTION_LEFT);
 				}
 				else KnockedBack(DIRECTION_RIGHT);
-
 			}
 		}
+
 		else if (dynamic_cast<CStairs*>(obj) && dynamic_cast<CStairs*>(obj)->isAbleToClimb())
 		{
 			stairs = dynamic_cast<CStairs*>(obj);

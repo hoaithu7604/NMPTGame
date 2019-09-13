@@ -190,6 +190,7 @@
     <ClCompile Include="EventObject.cpp" />
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="Hound.cpp" />
+    <ClCompile Include="HoundSpawner.cpp" />
     <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />

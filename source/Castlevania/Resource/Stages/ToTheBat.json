@@ -1174,6 +1174,39 @@
                  "width":32,
                  "x":5584,
                  "y":480
+                }, 
+                {
+                 "height":32,
+                 "id":464,
+                 "name":"houndspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":3064.5,
+                 "y":256
+                }, 
+                {
+                 "height":32,
+                 "id":465,
+                 "name":"houndspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":3410.5,
+                 "y":192
+                }, 
+                {
+                 "height":32,
+                 "id":466,
+                 "name":"houndspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":3577,
+                 "y":252.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1182,7 +1215,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":464,
+ "nextobjectid":467,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

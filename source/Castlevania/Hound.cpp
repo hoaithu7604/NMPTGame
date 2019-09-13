@@ -11,7 +11,7 @@ CHound::CHound(float x, float y, float nx)
 	: CMonster(HOUND_POINT, HOUND_HEALTH_DEFAULT)
 {
 	isJumping = false;
-	SetPositionCentral(x, y);
+	this->x = x; this->y = y;
 	this->nx = nx;
 	currentAnim = prevAnim = nx > 0 ? (int)HoundAnimID::IDLE_RIGHT : (int)HoundAnimID::IDLE_RIGHT;
 	contactDamage = HOUND_CONTACT_DAMAGE;
@@ -20,17 +20,27 @@ void CHound::GetBoundingBox(float &left, float &top, float &right, float &bottom
 {
 	left = x;
 	top = y;
-	right = left + HOUND_BBOX_WIDTH;
-	bottom = top + HOUND_BBOX_HEIGHT;
+	if (vx == 0)
+	{
+		right = left + HOUND_BBOX_WIDTH;
+		bottom = top + HOUND_BBOX_HEIGHT;
+	}
+	else {
+		right = left + HOUND_RUNNING_BBOX_WIDTH;
+		bottom = top + HOUND_RUNNING_BBOX_HEIGHT;
+	}
 }
 void CHound::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	if (currentAnim == (int)HoundAnimID::IDLE_RIGHT || currentAnim == (int)HoundAnimID::IDLE_RIGHT)
+	if (currentAnim == (int)HoundAnimID::IDLE_RIGHT || currentAnim == (int)HoundAnimID::IDLE_LEFT)
 	{
-		if (Distance(CSimon::GetInstance())<HOUND_JUMPSCARE_DISTANCE)
+		float x, y;
+		CSimon::GetInstance()->GetCentralPoint(x, y);
+		
+		if (abs(this->x+HOUND_BBOX_WIDTH-x)<HOUND_JUMPSCARE_DISTANCE)
 		{
 			vx += nx*HOUND_RUNNING_SPEED;
-			vy += HOUND_JUMP_SPEED;
+			vy -= HOUND_JUMP_SPEED;
 			isJumping = true;
 		}
 	}
@@ -40,7 +50,6 @@ void CHound::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
-	
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 	coEvents.clear();
@@ -66,22 +75,21 @@ void CHound::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				if (e->ny < 0)
 				{
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
-					isJumping = false;
-					//change direction 
-					nx = -nx;
-					vx = -vx;
-					//
+					if (isJumping)
+					{
+						isJumping = false;
+						//change direction after finishing jumping
+						nx = -nx;
+						vx = -vx;
+						//
+					}
 					vy = 0;
 					should_y_change = false;
 				}
-				if (e->nx != 0)
-				{
-					x += e->t*dx + nx * AVOID_OVERLAPPLING_FORCE;
-					should_x_change = false;
-				}
 			}
 		}
-		if (should_x_change) x += dx;
+		if (should_x_change)
+			x += dx;
 		if (should_y_change) y += dy;
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];

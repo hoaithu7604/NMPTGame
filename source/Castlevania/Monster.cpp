@@ -69,3 +69,10 @@ void CMonster::TakeDamage(int damage)
 		else invulTimer.Active();
 	}
 }
+void CMonster::Render()
+{
+	if (isOnCamera()) {
+		CGameObject::Render();
+		RenderBoundingBox();
+	}
+}

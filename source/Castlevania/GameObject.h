@@ -38,6 +38,9 @@ struct State
 	bool IsRenderable() { return renderable; }
 	bool IsUpdatable() { return updatable; }
 	bool IsColliable() { return collidable; }
+	bool operator==(const State& other) { 
+		return this->renderable == other.renderable&&this->updatable == other.updatable&&this->collidable == other.collidable;
+	}
 };
 
 class CGameObject; 
@@ -82,6 +85,7 @@ public:
 	bool IsRenderable() { return state.IsRenderable(); }
 	bool IsUpdatable() { return state.IsUpdatable(); }
 	bool IsColliable() { return state.IsColliable(); }
+	bool IsInvisible() { return state == GAMEOBJECT_STATE_INVISIBLE; }
 	void SetFacing(int nx) { this->nx = nx; }
 	bool isOverlapping(CGameObject*obj);
 	bool isContaining(CGameObject*obj);

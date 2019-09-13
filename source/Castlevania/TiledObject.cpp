@@ -6,8 +6,9 @@
 #include "AutoWalkEvent.h"
 #include "TeleportEvent.h"
 #include "Candle.h"
-#include "ZombieSpawner.h"
 #include "Stairs.h"
+#include "ZombieSpawner.h"
+#include "HoundSpawner.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -137,6 +138,11 @@ void CTiledObject::Create()
 				}
 			}
 		}
+	}
+	else if (name == OBJECTCODE_HOUNDSPAWNER)
+	{
+		CHoundSpawner*obj = new CHoundSpawner(x, y, width, height);
+		CGameObject::AddObject(obj);
 	}
 
 }
