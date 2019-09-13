@@ -9,6 +9,7 @@
 #include "Stairs.h"
 #include "ZombieSpawner.h"
 #include "HoundSpawner.h"
+#include "ImBrick.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -142,6 +143,22 @@ void CTiledObject::Create()
 	else if (name == OBJECTCODE_HOUNDSPAWNER)
 	{
 		CHoundSpawner*obj = new CHoundSpawner(x, y, width, height);
+		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_IMBRICK)
+	{
+		CImBrick*obj = new CImBrick(x, y);
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == TILED_PROPERTY_ITEMHOLDER)
+			{
+				obj->AddItem(properties[i]->value_string);
+			}
+			else if (properties[i]->name == TILED_PROPERTY_BRICK_TYPE)
+			{
+				obj->SetType(properties[i]->value_float);
+			}
+		}
 		CGameObject::AddObject(obj);
 	}
 

@@ -334,7 +334,7 @@
                         {
                          "name":"itemholder",
                          "type":"string",
-                         "value":"moneybag4"
+                         "value":"tinyheart"
                         }],
                  "rotation":0,
                  "type":"",
@@ -615,15 +615,15 @@
                  "y":226.25
                 }, 
                 {
-                 "height":27.5,
+                 "height":27.6818181818182,
                  "id":406,
                  "name":"unseenforce",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":158.75,
+                 "width":127.659090909091,
                  "x":3520.375,
-                 "y":290.25
+                 "y":290
                 }, 
                 {
                  "height":64,
@@ -1218,6 +1218,28 @@
                  "width":31.8333333333339,
                  "x":4719.25,
                  "y":96.6666666666667
+                }, 
+                {
+                 "height":27.2727272727273,
+                 "id":470,
+                 "name":"imbrick",
+                 "properties":[
+                        {
+                         "name":"bricktype",
+                         "type":"float",
+                         "value":1
+                        }, 
+                        {
+                         "name":"itemholder",
+                         "type":"string",
+                         "value":"moneybag4"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29.7272727272721,
+                 "x":3648.09090909091,
+                 "y":290
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1226,7 +1248,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":468,
+ "nextobjectid":471,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

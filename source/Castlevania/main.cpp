@@ -47,6 +47,8 @@
 #include "Hound.h"
 #include "MoneyBag.h"
 #include "CrossFlameEffect.h"
+#include "ImBrick.h"
+#include "BrickBreakingEffect.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -122,6 +124,8 @@ void LoadResources()
 	CHound::LoadResource(OBJECTCODE_HOUND);
 	CMoneyBag::LoadResource(OBJECTCODE_MONEYBAG);
 	CCrossFlameEffect::LoadResource(OBJECTCODE_CROSS_FLAME_EFFECT);
+	CImBrick::LoadResource(OBJECTCODE_IMBRICK);
+	CBrickBreakingEffect::LoadResource(OBJECTCODE_BRICK_BREAKING_EFFECT);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

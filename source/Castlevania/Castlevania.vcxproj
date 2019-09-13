@@ -129,6 +129,7 @@
     <ClInclude Include="AutoMover.h" />
     <ClInclude Include="AutoWalkEvent.h" />
     <ClInclude Include="BigHeart.h" />
+    <ClInclude Include="BrickBreakingEffect.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Candle.h" />
     <ClInclude Include="CrossFlameEffect.h" />
@@ -143,6 +144,7 @@
     <ClInclude Include="HeartIcon.h" />
     <ClInclude Include="Hound.h" />
     <ClInclude Include="HoundSpawner.h" />
+    <ClInclude Include="ImBrick.h" />
     <ClInclude Include="ItemFrame.h" />
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
@@ -184,6 +186,7 @@
     <ClCompile Include="AutoMover.cpp" />
     <ClCompile Include="AutoWalkEvent.cpp" />
     <ClCompile Include="BigHeart.cpp" />
+    <ClCompile Include="BrickBreakingEffect.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
@@ -193,6 +196,7 @@
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="Hound.cpp" />
     <ClCompile Include="HoundSpawner.cpp" />
+    <ClCompile Include="ImBrick.cpp" />
     <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />

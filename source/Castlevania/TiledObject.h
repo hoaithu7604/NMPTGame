@@ -6,6 +6,7 @@
 #define TILED_PROPERTY_STAIR_TYPE_UP "up"
 #define TILED_PROPERTY_STAIR_TYPE_DOWN "down"
 #define TILED_PROPERTY_ITEMHOLDER "itemholder"
+#define TILED_PROPERTY_BRICK_TYPE "bricktype"
 #define TILED_PROPERTY_TARGET_POS_X "target_pos_x"
 #define TILED_PROPERTY_TARGET_POS_Y "target_pos_y"
 #define TILED_OBJECT_PROPERTY_NAME "name"
@@ -42,6 +43,8 @@
 #define OBJECTCODE_HOUNDSPAWNER "houndspawner"
 #define OBJECTCODE_MONEYBAG "moneybag"
 #define OBJECTCODE_CROSS_FLAME_EFFECT "crossflameeffect"
+#define OBJECTCODE_IMBRICK "imbrick"
+#define OBJECTCODE_BRICK_BREAKING_EFFECT "brickbreakingeffect"
 using json = nlohmann::json;
 using namespace std;
 /*

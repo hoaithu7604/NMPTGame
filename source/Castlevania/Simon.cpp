@@ -10,6 +10,7 @@
 #include "TinyHeart.h"
 #include "Zombie.h"
 #include "Hound.h"
+#include "ImBrick.h"
 CSimon * CSimon::__instance = NULL;
 CSimon* CSimon::GetInstance()
 {
@@ -116,7 +117,7 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (dynamic_cast<CUnseenForce *>(e->obj)&&!isOnStairs)
+			if ((dynamic_cast<CUnseenForce *>(e->obj)||dynamic_cast<CImBrick *>(e->obj))&&!isOnStairs)
 			{
 				if (e->ny < 0)
 				{
@@ -139,7 +140,6 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 				if (e->nx != 0)
 				{
 					x += e->t * dx + nx * AVOID_OVERLAPPLING_FORCE;
-					//vx = 0;
 					should_x_change = false;
 				}
 			}
@@ -266,7 +266,7 @@ void CSimon::DoAction(Action action)
 	}
 
 	if (isJumping) return;
-	if (vy == 0) {
+	if (vy == 0&&!isCrouching) {
 		switch (action) {
 		case Action::GO_DOWN_STAIRS:
 			GoDownStairs();

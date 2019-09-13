@@ -261,6 +261,12 @@
     <ClInclude Include="CrossFlameEffect.h">
       <Filter>Header Files\Objects\effects</Filter>
     </ClInclude>
+    <ClInclude Include="ImBrick.h">
+      <Filter>Header Files\Objects\itemholders</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickBreakingEffect.h">
+      <Filter>Header Files\Objects\effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -420,6 +426,12 @@
       <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
     <ClCompile Include="CrossFlameEffect.cpp">
+      <Filter>Source Files\Objects\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="ImBrick.cpp">
+      <Filter>Source Files\Objects\itemholders</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickBreakingEffect.cpp">
       <Filter>Source Files\Objects\effects</Filter>
     </ClCompile>
   </ItemGroup>
