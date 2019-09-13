@@ -40,6 +40,7 @@
 #define OBJECTCODE_STAIRS "stairs"
 #define OBJECTCODE_HOUND "hound"
 #define OBJECTCODE_HOUNDSPAWNER "houndspawner"
+#define OBJECTCODE_MONEYBAG "moneybag"
 using json = nlohmann::json;
 using namespace std;
 /*

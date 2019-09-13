@@ -16,10 +16,6 @@ CTinyHeart::CTinyHeart(float x, float y)
 	this->x = x - ITEM_TINYHEART_BBOX_WIDTH / 2;
 	this->y = y - ITEM_TINYHEART_BBOX_HEIGHT / 2;
 }
-void CTinyHeart::Render()
-{
-	if (isOnCamera()) CGameObject::Render();
-}
 void CTinyHeart::GetReward()
 {
 	CSimon::GetInstance()->AddHeart(ITEM_TINYHEART_HEART_VALUE);

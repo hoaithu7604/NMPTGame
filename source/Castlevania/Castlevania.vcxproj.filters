@@ -255,6 +255,9 @@
     <ClInclude Include="HoundSpawner.h">
       <Filter>Header Files\Objects\monsters\spawner</Filter>
     </ClInclude>
+    <ClInclude Include="MoneyBag.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -409,6 +412,9 @@
     </ClCompile>
     <ClCompile Include="HoundSpawner.cpp">
       <Filter>Source Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBag.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

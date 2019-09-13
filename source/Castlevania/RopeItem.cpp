@@ -19,7 +19,3 @@ CRopeItem::CRopeItem(float x, float y)
 	currentAnim = (int)CRopeItemAnim::IDLE;
 	prevAnim = (int)CRopeItemAnim::IDLE;
 }
-void CRopeItem::Render()
-{
-	if (isOnCamera()) CGameObject::Render();
-}

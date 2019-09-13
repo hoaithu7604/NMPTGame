@@ -7,6 +7,10 @@
 #define ITEMCODE_ROPEITEM "ropeitem"
 #define ITEMCODE_DAGGERITEM "daggeritem"
 #define ITEMCODE_TINYHEART "tinyheart"
+#define ITEMCODE_MONEYBAG1 "moneybag1"
+#define ITEMCODE_MONEYBAG2 "moneybag2"
+#define ITEMCODE_MONEYBAG3 "moneybag3"
+#define ITEMCODE_MONEYBAG4 "moneybag4"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 

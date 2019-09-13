@@ -146,6 +146,7 @@
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="Maps.h" />
+    <ClInclude Include="MoneyBag.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MoveableObject.h" />
     <ClInclude Include="OverlayBoard.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="ItemFrame.cpp" />
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
+    <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Stairs.cpp" />
     <ClCompile Include="Zombie.cpp" />

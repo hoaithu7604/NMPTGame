@@ -38,5 +38,9 @@ void CItemObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-	if (!isOnCamera()) state = GAMEOBJECT_STATE_INVISIBLE;
+	if (!isOnCamera()) state = GAMEOBJECT_STATE_INVISIBLE; // all items should despawn when it's offscreen
+}
+void CItemObject::Render()
+{
+	if (isOnCamera()) CGameObject::Render(); // all items should only be rendered if it's onscreen
 }

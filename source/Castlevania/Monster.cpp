@@ -58,6 +58,7 @@ void CMonster::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 }
 void CMonster::TakeDamage(int damage)
 {
+	OutputDebugString(L"CALLED FROM MONSTER");
 	if (!invulTimer.isActive() || invulTimer.hasTicked())
 	{
 		health -= damage;

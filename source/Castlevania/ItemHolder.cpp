@@ -4,6 +4,7 @@
 #include "RopeItem.h"
 #include "DaggerItem.h"
 #include "TinyHeart.h"
+#include "MoneyBag.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -46,6 +47,26 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CTinyHeart* tinyheart = new CTinyHeart(pos_x, pos_y);
 					CGameObject::AddObject(tinyheart);
+				}
+				else if (item[i] == ITEMCODE_MONEYBAG1)
+				{
+					CMoneyBag* moneybag = new CMoneyBag(pos_x, pos_y, MONEYBAG_TIER_ONE);
+					CGameObject::AddObject(moneybag);
+				}
+				else if (item[i] == ITEMCODE_MONEYBAG2)
+				{
+					CMoneyBag* moneybag = new CMoneyBag(pos_x, pos_y, MONEYBAG_TIER_TWO);
+					CGameObject::AddObject(moneybag);
+				}
+				else if (item[i] == ITEMCODE_MONEYBAG3)
+				{
+					CMoneyBag* moneybag = new CMoneyBag(pos_x, pos_y, MONEYBAG_TIER_THREE);
+					CGameObject::AddObject(moneybag);
+				}
+				else if (item[i] == ITEMCODE_MONEYBAG4)
+				{
+					CMoneyBag* moneybag = new CMoneyBag(pos_x, pos_y, MONEYBAG_TIER_FOUR);
+					CGameObject::AddObject(moneybag);
 				}
 			}
 		}

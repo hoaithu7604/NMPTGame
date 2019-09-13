@@ -22,13 +22,7 @@ void CDaggerProjectile::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects) {
 		{
 			if (isOverlapping(coObjects->at(i)))
 			{			
-				if (dynamic_cast<CCandle*>(coObjects->at(i)))
-				{
-					coObjects->at(i)->TakeDamage(ContactDamage);
-					state = GAMEOBJECT_STATE_INVISIBLE;
-					return;
-				}
-				else if (dynamic_cast<CZombie*>(coObjects->at(i)))
+				if (dynamic_cast<CItemHolder*>(coObjects->at(i))||dynamic_cast<CMonster*>(coObjects->at(i)))
 				{
 					coObjects->at(i)->TakeDamage(ContactDamage);
 					state = GAMEOBJECT_STATE_INVISIBLE;

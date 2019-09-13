@@ -45,6 +45,7 @@
 #include "TinyHeart.h"
 #include "Zombie.h"
 #include "Hound.h"
+#include "MoneyBag.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -118,6 +119,7 @@ void LoadResources()
 	CTinyHeart::LoadResource(OBJECTCODE_TINYHEART);
 	CZombie::LoadResource(OBJECTCODE_ZOMBIE);
 	CHound::LoadResource(OBJECTCODE_HOUND);
+	CMoneyBag::LoadResource(OBJECTCODE_MONEYBAG);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

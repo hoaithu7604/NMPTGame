@@ -64,18 +64,10 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 		{
 			if (isOverlapping(coObjects->at(i)))
 			{
-				if (dynamic_cast<CTorch*>(coObjects->at(i)))
+				if (dynamic_cast<CItemHolder*>(coObjects->at(i))|| dynamic_cast<CMonster*>(coObjects->at(i)))
 				{
-					dynamic_cast<CTorch*>(coObjects->at(i))->TakeDamage(GetDamage());
-				}
-				else if (dynamic_cast<CCandle*>(coObjects->at(i)))
-				{
-					dynamic_cast<CCandle*>(coObjects->at(i))->TakeDamage(GetDamage());
-				}
-				else if (dynamic_cast<CZombie*>(coObjects->at(i)))
-				{
-					dynamic_cast<CZombie*>(coObjects->at(i))->TakeDamage(GetDamage());
-				}
+					coObjects->at(i)->TakeDamage(GetDamage());
+				}				
 			}
 		}
 	}

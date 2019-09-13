@@ -50,23 +50,16 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*
 	for (int i = 0; i < objects->size(); i++)
 	{
 		LPGAMEOBJECT obj= objects->at(i);
-		if (dynamic_cast<CBigHeart *>(obj)&&isOverlapping(obj))
+		if (dynamic_cast<CItemObject *>(obj)&&isOverlapping(obj))
 		{			
-			dynamic_cast<CBigHeart*>(obj)->GetReward();
-			DebugOut(L"[INFO] OVERLAPPING BIG HEART");			
-		}
-		else if (dynamic_cast<CTinyHeart *>(obj) && isOverlapping(obj))
-		{
-			dynamic_cast<CTinyHeart*>(obj)->GetReward();
-			DebugOut(L"[INFO] OVERLAPPING TINY HEART");
-		}
-		else if (dynamic_cast<CRopeItem *>(obj) && isOverlapping(obj))
-		{
-			dynamic_cast<CRopeItem *>(obj)->GetReward();
-			CTimeFreezer::GetInstance()->Active(SIMON_PICK_ITEM_FREEZE_TIME);
-			fabulous_timer.Active();
-			argb = RGB_RED;
-			DebugOut(L"[INFO] OVERLAPPING ROPE ITEM");
+			dynamic_cast<CItemObject*>(obj)->GetReward();
+			DebugOut(L"[INFO] OVERLAPPING ITEM OBJECT");	
+			if (dynamic_cast<CRopeItem*>(obj))
+			{
+				CTimeFreezer::GetInstance()->Active(SIMON_PICK_ITEM_FREEZE_TIME);
+				fabulous_timer.Active();
+				argb = RGB_RED;
+			}
 		}
 		else if (dynamic_cast<CTorch *>(obj)&&isOverlapping(obj))
 		{
@@ -76,11 +69,6 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*
 		{
 			DebugOut(L"[INFO] OVERLAPPING FLAME EFFECT");
 		}		
-		else if (dynamic_cast<CDaggerItem*>(obj) && isOverlapping(obj))
-		{
-			dynamic_cast<CDaggerItem *>(obj)->GetReward();
-			DebugOut(L"[INFO] OVERLAPPING DAGGER ITEM");
-		}
 		else if (dynamic_cast<CMonster *>(obj)&&isOverlapping(obj))
 		{
 			OutputDebugString(L"TOUCHED MONSTER?!!??!?!?");
