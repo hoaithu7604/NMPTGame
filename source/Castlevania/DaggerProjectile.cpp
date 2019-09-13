@@ -26,7 +26,7 @@ void CDaggerProjectile::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects) {
 				{
 					coObjects->at(i)->TakeDamage(ContactDamage);
 					state = GAMEOBJECT_STATE_INVISIBLE;
-					return;
+					return; // so it won't kill all objects it's overlapping
 				}
 			}
 		}

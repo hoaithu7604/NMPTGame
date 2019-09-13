@@ -6,6 +6,7 @@
 #define WEAPON_DAGGER_COOLDOWN 1000
 #define WEAPON_DAGGER_TRIGGER_DELAY 200 // delay time to create projectile
 #define WEAPON_DAGGER_DAMAGE 1
+#define WEAPON_DAGGER_HEARTCOST 1
 enum class DaggerAnim
 {
 	IDLE = 1000

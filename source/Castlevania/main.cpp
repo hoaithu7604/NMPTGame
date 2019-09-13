@@ -40,7 +40,10 @@
 #include "OverlayBoard.h"
 #include "ItemFrame.h"
 #include "HeartIcon.h"
+//weapon
 #include "Dagger.h"
+#include "FireBomb.h"
+
 #include "Candle.h"
 #include "TinyHeart.h"
 #include "Zombie.h"
@@ -118,6 +121,7 @@ void LoadResources()
 	CItemFrame::LoadResource(OBJECTCODE_ITEMFRAME);
 	CHeartIcon::LoadResource(OBJECTCODE_HEARTICON);
 	CDagger::LoadResource(OBJECTCODE_DAGGER);
+	CFireBomb::LoadResource(OBJECTCODE_FIREBOMB);
 	CCandle::LoadResource(OBJECTCODE_CANDLE);
 	CTinyHeart::LoadResource(OBJECTCODE_TINYHEART);
 	CZombie::LoadResource(OBJECTCODE_ZOMBIE);

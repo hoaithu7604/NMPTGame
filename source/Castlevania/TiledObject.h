@@ -32,6 +32,7 @@
 #define OBJECTCODE_ITEMFRAME "itemframe"
 #define OBJECTCODE_HEARTICON "hearticon"
 #define OBJECTCODE_DAGGER "dagger"
+#define OBJECTCODE_FIREBOMB "firebomb"
 #define OBJECTCODE_AUTOWALKEVENT "autowalkevent"
 #define OBJECTCODE_TELEPORTEVENT "teleportevent"
 #define OBJECTCODE_CANDLE "candle"

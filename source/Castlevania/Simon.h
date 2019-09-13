@@ -88,7 +88,7 @@ public:
 	//checking
 	bool IsOnStairs() { return isOnStairs; }
 	bool IsControllable() { return isControllable; }
-	bool CanUseWeapon() { return weapon != NULL && heart > 0 && !weapon->isOnCooldown(); }
+	bool CanUseWeapon() { return weapon != NULL && !weapon->isOnCooldown() &&heart>=weapon->GetHeartCost(); }
 	bool isMoveable() { return vy == 0 && !isJumping && !isUsingweapon && !isCrouching && !rope->isActive() && !CTimeFreezer::GetInstance()->isActive(); }
 	void IncreaseRopeLevel();
 	int GetHeart() { return heart; }

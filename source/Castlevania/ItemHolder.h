@@ -6,6 +6,7 @@
 #define ITEMCODE_BIGHEART "bigheart"
 #define ITEMCODE_ROPEITEM "ropeitem"
 #define ITEMCODE_DAGGERITEM "daggeritem"
+#define ITEMCODE_FIREBOMBITEM "firebombitem"
 #define ITEMCODE_TINYHEART "tinyheart"
 #define ITEMCODE_MONEYBAG1 "moneybag1"
 #define ITEMCODE_MONEYBAG2 "moneybag2"

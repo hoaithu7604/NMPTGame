@@ -97,6 +97,12 @@
     <Filter Include="Source Files\Objects\stair">
       <UniqueIdentifier>{c348ab74-4c07-4938-b15d-1c706a3f4829}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects\simon\weapons\firebomb">
+      <UniqueIdentifier>{462d369d-8b32-4c22-afce-e6ac443c6ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\simon\weapons\firebomb">
+      <UniqueIdentifier>{ac986b33-787d-4057-b3ad-d25a71e46fa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -267,6 +273,18 @@
     <ClInclude Include="BrickBreakingEffect.h">
       <Filter>Header Files\Objects\effects</Filter>
     </ClInclude>
+    <ClInclude Include="FireBomb.h">
+      <Filter>Header Files\Objects\simon\weapons\firebomb</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBombItem.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBombProjectile.h">
+      <Filter>Header Files\Objects\simon\weapons\firebomb</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBombFireEffect.h">
+      <Filter>Header Files\Objects\simon\weapons\firebomb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -433,6 +451,21 @@
     </ClCompile>
     <ClCompile Include="BrickBreakingEffect.cpp">
       <Filter>Source Files\Objects\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBomb.cpp">
+      <Filter>Source Files\Objects\simon\weapons\firebomb</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBombItem.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBombProjectile.cpp">
+      <Filter>Source Files\Objects\simon\weapons\firebomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files\Objects\simon\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBombFireEffect.cpp">
+      <Filter>Source Files\Objects\simon\weapons\firebomb</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

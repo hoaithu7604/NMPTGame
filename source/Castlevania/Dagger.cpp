@@ -10,6 +10,7 @@ void CDagger::GetBoundingBox(float &left, float &top, float &right, float &botto
 CDagger::CDagger()
 	:CWeapon()
 {
+	heartCost = WEAPON_DAGGER_HEARTCOST;
 	damage = WEAPON_DAGGER_DAMAGE;
 	trigger_delay_timer.SetTime(WEAPON_DAGGER_TRIGGER_DELAY);
 	cooldown_timer.SetTime(WEAPON_DAGGER_COOLDOWN);
@@ -18,6 +19,7 @@ CDagger::CDagger()
 CDagger::CDagger(float x, float y) 
 	:CWeapon() 
 {
+	heartCost = WEAPON_DAGGER_HEARTCOST;
 	damage = WEAPON_DAGGER_DAMAGE;
 	trigger_delay_timer.SetTime(WEAPON_DAGGER_TRIGGER_DELAY);
 	cooldown_timer.SetTime(WEAPON_DAGGER_COOLDOWN);

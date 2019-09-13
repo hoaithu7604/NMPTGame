@@ -139,6 +139,10 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EffectObject.h" />
     <ClInclude Include="EventObject.h" />
+    <ClInclude Include="FireBomb.h" />
+    <ClInclude Include="FireBombFireEffect.h" />
+    <ClInclude Include="FireBombItem.h" />
+    <ClInclude Include="FireBombProjectile.h" />
     <ClInclude Include="FlameEffect.h" />
     <ClInclude Include="HealthIcon.h" />
     <ClInclude Include="HeartIcon.h" />
@@ -193,6 +197,8 @@
     <ClCompile Include="DaggerProjectile.cpp" />
     <ClCompile Include="EffectObject.cpp" />
     <ClCompile Include="EventObject.cpp" />
+    <ClCompile Include="FireBomb.cpp" />
+    <ClCompile Include="FireBombFireEffect.cpp" />
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="Hound.cpp" />
     <ClCompile Include="HoundSpawner.cpp" />
@@ -203,7 +209,10 @@
     <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="CrossFlameEffect.cpp" />
+    <ClCompile Include="FireBombItem.cpp" />
+    <ClCompile Include="FireBombProjectile.cpp" />
     <ClCompile Include="Stairs.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieSpawner.cpp" />
     <ClCompile Include="ZombieSpawner.h" />

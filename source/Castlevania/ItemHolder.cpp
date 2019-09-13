@@ -5,6 +5,7 @@
 #include "DaggerItem.h"
 #include "TinyHeart.h"
 #include "MoneyBag.h"
+#include "FireBombItem.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -17,7 +18,6 @@ void CItemHolder::Destroy() {
 
 void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	
 		if (delay_timer.hasTicked())
 		{
 			state = GAMEOBJECT_STATE_INVISIBLE;
@@ -39,8 +39,8 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				}
 				else if (item[i] == ITEMCODE_DAGGERITEM)
 				{
-					CDaggerItem* daggeritem = new CDaggerItem(pos_x, pos_y);
-					CGameObject::AddObject(daggeritem);
+					CDaggerItem* firebombitem = new CDaggerItem(pos_x, pos_y);
+					CGameObject::AddObject(firebombitem);
 				}
 				else if (item[i] == ITEMCODE_TINYHEART)
 				{
@@ -66,6 +66,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CMoneyBag* moneybag = new CMoneyBag(pos_x, pos_y, MONEYBAG_TIER_FOUR);
 					CGameObject::AddObject(moneybag);
+				}
+				else if (item[i] == ITEMCODE_FIREBOMBITEM)
+				{
+					CFireBombItem* firebombitem = new CFireBombItem(pos_x, pos_y);
+					CGameObject::AddObject(firebombitem);
 				}
 			}
 		}

@@ -254,7 +254,7 @@ void CSimon::DoAction(Action action)
 		}
 		break;
 	case Action::USE_WEAPON:
-		heart--;
+		heart = heart - weapon->GetHeartCost();
 		isUsingweapon = true;
 		weapon->Trigger();
 		if (!isJumping)

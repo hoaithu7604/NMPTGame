@@ -83,8 +83,6 @@ void CStairs::Up()
 		simon->GetPosition(x, y);
 		if (isAbleToGoUp(x,y))
 		{
-			
-			OutputDebugString(L"GO UP!!!!!");
 			int stair = GetStairsType();
 			if (stair==STAIRS_TYPE_UP)
 				simon->AutoMove(x + STAIR_STEP_DISTANCE, y - STAIR_STEP_DISTANCE, STAIRS_CLIMBING_SPEED,AUTO_MOVER_MODE_FORCED);
@@ -134,7 +132,6 @@ void CStairs::Down()
 		simon->GetPosition(x, y);
 		if (isAbleToGoDown(x, y))
 		{
-			OutputDebugString(L"GO DOWN!!!!!");
 			int stair = GetStairsType();
 			if (stair == STAIRS_TYPE_UP)
 				simon->AutoMove(x - STAIR_STEP_DISTANCE, y + STAIR_STEP_DISTANCE, STAIRS_CLIMBING_SPEED, AUTO_MOVER_MODE_FORCED);
