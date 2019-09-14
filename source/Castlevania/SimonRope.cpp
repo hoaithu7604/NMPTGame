@@ -3,6 +3,7 @@
 #include "Torch.h"
 #include "Candle.h"
 #include "Zombie.h"
+#include "FireBall.h"
 CSimonRope::CSimonRope()
 	:CGameObject()
 {
@@ -64,10 +65,11 @@ void CSimonRope::Update(float x,float y, DWORD nx,DWORD dt, vector<LPGAMEOBJECT>
 		{
 			if (isOverlapping(coObjects->at(i)))
 			{
-				if (dynamic_cast<CItemHolder*>(coObjects->at(i))|| dynamic_cast<CMonster*>(coObjects->at(i)))
+				if (dynamic_cast<CItemHolder*>(coObjects->at(i)) || dynamic_cast<CMonster*>(coObjects->at(i))|| dynamic_cast<CFireBall*>(coObjects->at(i)))
 				{
 					coObjects->at(i)->TakeDamage(GetDamage());
-				}				
+				}
+				
 			}
 		}
 	}

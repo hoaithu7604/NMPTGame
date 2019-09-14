@@ -27,6 +27,7 @@ using namespace std;
 #define GAMEOBJECT_STATE_NO_COLLISION State(1,1,0)
 #define DIRECTION_RIGHT 1
 #define DIRECTION_LEFT -1
+#define DIRECTION_DOWN 2
 #define BARELY_OFFSCREEN_DISTANCE 50
 struct State
 {

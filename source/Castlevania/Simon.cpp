@@ -11,6 +11,7 @@
 #include "Zombie.h"
 #include "Hound.h"
 #include "ImBrick.h"
+#include "FireBall.h"
 CSimon * CSimon::__instance = NULL;
 CSimon* CSimon::GetInstance()
 {
@@ -69,7 +70,20 @@ void CSimon::OverLappingLogic(vector<LPGAMEOBJECT>*objects,vector<LPGAMEOBJECT>*
 		else if (dynamic_cast<CFlameEffect*>(obj)&&isOverlapping(obj))
 		{
 			DebugOut(L"[INFO] OVERLAPPING FLAME EFFECT");
-		}		
+		}	
+		else if (dynamic_cast<CFireBall*>(obj) && isOverlapping(obj))
+		{
+			if (TakingDamage(dynamic_cast<CFireBall *>(obj)->GetContactDamage()))
+			{
+				float x, y;
+				obj->GetCentralPoint(x, y);
+				if (x > this->x)
+				{
+					KnockedBack(DIRECTION_LEFT);
+				}
+				else KnockedBack(DIRECTION_RIGHT);
+			}
+		}
 		else if (dynamic_cast<CMonster *>(obj)&&isOverlapping(obj))
 		{
 			OutputDebugString(L"TOUCHED MONSTER?!!??!?!?");

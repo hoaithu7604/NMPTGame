@@ -303,6 +303,15 @@
     <ClInclude Include="BatSpawner.h">
       <Filter>Header Files\Objects\monsters\spawner</Filter>
     </ClInclude>
+    <ClInclude Include="Fish.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="FishSpawner.h">
+      <Filter>Header Files\Objects\monsters\spawner</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -499,6 +508,15 @@
     </ClCompile>
     <ClCompile Include="BatSpawner.cpp">
       <Filter>Source Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="Fish.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="FishSpawner.cpp">
+      <Filter>Source Files\Objects\monsters\spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

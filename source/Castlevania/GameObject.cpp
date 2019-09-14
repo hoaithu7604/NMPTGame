@@ -38,14 +38,24 @@ int CGameObject::isBarelyOffscreen()
 	camera->GetViewSize(top, left, bottom, right);
 	float l, t, r, b;
 	GetBoundingBox(l, t, r, b);
-	// if this object is offscreen but not that far , ignore y for now
-	if (l > left - BARELY_OFFSCREEN_DISTANCE && l < left)
+	// if this object is offscreen but not that far 
+	if (t >= top && b <= bottom)
 	{
-		return DIRECTION_LEFT; //left side
+		if (l > left - BARELY_OFFSCREEN_DISTANCE && l < left)
+		{
+			return DIRECTION_LEFT; //left side
+		}
+		else if (r > right&&r < right + BARELY_OFFSCREEN_DISTANCE)
+		{
+			return DIRECTION_RIGHT; // right side
+		}
 	}
-	else if (r > right&&r < right + BARELY_OFFSCREEN_DISTANCE)
+	else if (l >= left&&r <= right)
 	{
-		return DIRECTION_RIGHT; // right side
+		if (b > bottom&& b < bottom + BARELY_OFFSCREEN_DISTANCE)
+		{
+			return DIRECTION_DOWN;
+		}
 	}
 	else return 0; //it's far offscreen or onscreen
 }

@@ -3,7 +3,7 @@
 bool CZombieSpawner::ShouldSpawn()
 {
 	spawn_direction = isBarelyOffscreen();
-	if (spawn_direction != 0)
+	if (spawn_direction == DIRECTION_LEFT || spawn_direction == DIRECTION_RIGHT)
 	{
 		if (!cooldown_timer.isActive() || cooldown_timer.hasTicked())
 		{

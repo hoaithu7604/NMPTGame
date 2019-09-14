@@ -9,8 +9,8 @@
 #define BAT_CONTACT_DAMAGE 1
 #define BAT_ALPHA_Y 30
 enum class BatAnimID {
-	LEFT = 2200,
-	RIGHT
+	RIGHT = 2200,
+	LEFT
 };
 class CBat : public CMonster
 {

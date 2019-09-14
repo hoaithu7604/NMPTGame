@@ -144,10 +144,13 @@
     <ClInclude Include="DoorEvent.h" />
     <ClInclude Include="EffectObject.h" />
     <ClInclude Include="EventObject.h" />
+    <ClInclude Include="FireBall.h" />
     <ClInclude Include="FireBomb.h" />
     <ClInclude Include="FireBombFireEffect.h" />
     <ClInclude Include="FireBombItem.h" />
     <ClInclude Include="FireBombProjectile.h" />
+    <ClInclude Include="Fish.h" />
+    <ClInclude Include="FishSpawner.h" />
     <ClInclude Include="FlameEffect.h" />
     <ClInclude Include="Gate.h" />
     <ClInclude Include="HealthIcon.h" />
@@ -208,8 +211,11 @@
     <ClCompile Include="DoorEvent.cpp" />
     <ClCompile Include="EffectObject.cpp" />
     <ClCompile Include="EventObject.cpp" />
+    <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="FireBomb.cpp" />
     <ClCompile Include="FireBombFireEffect.cpp" />
+    <ClCompile Include="Fish.cpp" />
+    <ClCompile Include="FishSpawner.cpp" />
     <ClCompile Include="FlameEffect.cpp" />
     <ClCompile Include="Hound.cpp" />
     <ClCompile Include="HoundSpawner.cpp" />

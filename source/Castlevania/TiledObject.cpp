@@ -12,6 +12,7 @@
 #include "ImBrick.h"
 #include "DoorEvent.h"
 #include "BatSpawner.h"
+#include "FishSpawner.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -206,5 +207,9 @@ void CTiledObject::Create()
 	else if (name == OBJECTCODE_BATSPAWNER)
 	{
 		CGameObject::AddObject(new CBatSpawner(x, y, width, height));
+	}
+	else if (name == OBJECTCODE_FISHSPAWNER)
+	{
+		CGameObject::AddObject(new CFishSpawner(x, y, width, height));
 	}
 }

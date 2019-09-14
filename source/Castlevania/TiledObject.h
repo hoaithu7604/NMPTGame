@@ -59,6 +59,9 @@
 #define OBJECTCODE_DOOREVENT "doorevent"
 #define OBJECTCODE_BAT "bat"
 #define OBJECTCODE_BATSPAWNER "batspawner"
+#define OBJECTCODE_FISH "fish"
+#define OBJECTCODE_FISHSPAWNER "fishspawner"
+#define OBJECTCODE_FIREBALL "fireball"
 using json = nlohmann::json;
 using namespace std;
 /*

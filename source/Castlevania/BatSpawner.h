@@ -9,5 +9,4 @@ public:
 	virtual void Spawn();
 	CBatSpawner() :CSpawner() { cooldown_timer.SetTime(BAT_SPAWNER_COOLDOWN); }
 	CBatSpawner(float x, float y, float width, float height) :CSpawner(x, y, width, height) { cooldown_timer.SetTime(BAT_SPAWNER_COOLDOWN); }
-
 };

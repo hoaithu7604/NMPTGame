@@ -4,7 +4,7 @@ bool CHoundSpawner::ShouldSpawn()
 {
 	spawn_direction = isBarelyOffscreen();
 	//check if spawner is offscreen and if the hound is still alive
-	if (spawn_direction != 0 && (hound == NULL || hound->IsInvisible()))
+	if ((spawn_direction == DIRECTION_LEFT || spawn_direction == DIRECTION_RIGHT) && (hound == NULL || hound->IsInvisible()))
 	{
 		return true;
 	}

@@ -1457,6 +1457,61 @@
                  "width":32,
                  "x":5308.66666666667,
                  "y":348.666666666667
+                }, 
+                {
+                 "height":64,
+                 "id":483,
+                 "name":"fishspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":4963.33333333333,
+                 "y":864
+                }, 
+                {
+                 "height":64,
+                 "id":484,
+                 "name":"fishspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":5120,
+                 "y":864
+                }, 
+                {
+                 "height":64,
+                 "id":485,
+                 "name":"fishspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":5325.33333333333,
+                 "y":864
+                }, 
+                {
+                 "height":64,
+                 "id":486,
+                 "name":"fishspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":5456.66666666667,
+                 "y":864
+                }, 
+                {
+                 "height":64,
+                 "id":487,
+                 "name":"fishspawner",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":5685.33333333333,
+                 "y":864
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1465,7 +1520,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":483,
+ "nextobjectid":488,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

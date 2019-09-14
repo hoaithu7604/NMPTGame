@@ -55,6 +55,8 @@
 #include "Cross.h"
 #include "Gate.h"
 #include "Bat.h"
+#include "Fish.h"
+#include "FireBall.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -138,6 +140,8 @@ void LoadResources()
 	CCross::LoadResource(OBJECTCODE_CROSS);
 	CGate::LoadResource(OBJECTCODE_GATE);
 	CBat::LoadResource(OBJECTCODE_BAT);
+	CFish::LoadResource(OBJECTCODE_FISH);
+	CFireBall::LoadResource(OBJECTCODE_FIREBALL);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
