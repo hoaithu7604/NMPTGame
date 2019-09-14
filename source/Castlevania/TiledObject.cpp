@@ -10,6 +10,7 @@
 #include "ZombieSpawner.h"
 #include "HoundSpawner.h"
 #include "ImBrick.h"
+#include "DoorEvent.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -160,6 +161,46 @@ void CTiledObject::Create()
 			}
 		}
 		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_DOOREVENT)
+	{
+		float cameraX, cameraY, doorX, doorY, targetX, targetY, finishX, finishY;
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == DOOREVENT_CAMERAX)
+			{
+				cameraX = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_CAMERAY)
+			{
+				cameraY = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_DOORX)
+			{
+				doorX = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_DOORY)
+			{
+				doorY = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_TARGETX)
+			{
+				targetX = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_TARGETY)
+			{
+				targetY = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_FINISHX)
+			{
+				finishX = properties[i]->value_float;
+			}
+			else if (properties[i]->name == DOOREVENT_FINISHY)
+			{
+				finishY = properties[i]->value_float;
+			}
+		}
+		CGameObject::AddObject(new CDoorEvent(x, y, width, height, cameraX, cameraY, doorX, doorY, targetX, targetY, finishX, finishY));
 	}
 
 }

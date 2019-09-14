@@ -291,6 +291,12 @@
     <ClInclude Include="CrossEffect.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="Gate.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorEvent.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -478,6 +484,9 @@
     </ClCompile>
     <ClCompile Include="CrossEffect.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorEvent.cpp">
+      <Filter>Source Files\Objects\events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

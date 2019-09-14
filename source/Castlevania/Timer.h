@@ -8,7 +8,7 @@ class CTimer
 	DWORD start;
 	DWORD time;
 public:
-	CTimer() { time = DEFAULT_TIME_VALUE; }
+	CTimer() { start = DEFAULT_TIME; time = DEFAULT_TIME_VALUE; }
 	CTimer(DWORD time) { this->time = time; start = DEFAULT_TIME; }
 	void SetTime(DWORD time) { this->time = time; }
 	void Reset() { this->start = DEFAULT_TIME; }

@@ -53,6 +53,7 @@
 #include "ImBrick.h"
 #include "BrickBreakingEffect.h"
 #include "Cross.h"
+#include "Gate.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -109,6 +110,8 @@ void LoadResources()
 	animations = CAnimations::GetInstance();
 	camera = CCamera::GetInstance();
 	camera->SetSize(CAMERA_WIDTH, CAMERA_HEIGH);
+	camera->SetMode(CAMERA_MODE_INSTANT);
+	camera->SetType(CAMERA_TYPE_FOLLOW);
 	board = COverlayBoard::GetInstance();
 	texture->LoadResource();
 
@@ -132,6 +135,7 @@ void LoadResources()
 	CImBrick::LoadResource(OBJECTCODE_IMBRICK);
 	CBrickBreakingEffect::LoadResource(OBJECTCODE_BRICK_BREAKING_EFFECT);
 	CCross::LoadResource(OBJECTCODE_CROSS);
+	CGate::LoadResource(OBJECTCODE_GATE);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
@@ -168,6 +172,7 @@ void Update(DWORD dt)
 			upObjects[i]->Update(dt, &coObjects);
 		board->Update(dt);
 	}
+	camera->Update(dt);
 }
 
 /*

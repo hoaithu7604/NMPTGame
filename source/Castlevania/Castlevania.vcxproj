@@ -139,6 +139,7 @@
     <ClInclude Include="DaggerItem.h" />
     <ClInclude Include="DaggerProjectile.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="DoorEvent.h" />
     <ClInclude Include="EffectObject.h" />
     <ClInclude Include="EventObject.h" />
     <ClInclude Include="FireBomb.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="FireBombItem.h" />
     <ClInclude Include="FireBombProjectile.h" />
     <ClInclude Include="FlameEffect.h" />
+    <ClInclude Include="Gate.h" />
     <ClInclude Include="HealthIcon.h" />
     <ClInclude Include="HeartIcon.h" />
     <ClInclude Include="Hound.h" />
@@ -199,6 +201,7 @@
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
     <ClCompile Include="DaggerProjectile.cpp" />
+    <ClCompile Include="DoorEvent.cpp" />
     <ClCompile Include="EffectObject.cpp" />
     <ClCompile Include="EventObject.cpp" />
     <ClCompile Include="FireBomb.cpp" />

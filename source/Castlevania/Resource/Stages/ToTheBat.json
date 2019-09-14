@@ -209,7 +209,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":3089.64,
+                 "width":3073.89,
                  "x":1663.5,
                  "y":25
                 }, 
@@ -733,8 +733,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":2554.30666666667,
-                 "x":4708.26333333333,
+                 "width":2543.05666666667,
+                 "x":4720,
                  "y":25
                 }, 
                 {
@@ -749,15 +749,15 @@
                  "y":289.75
                 }, 
                 {
-                 "height":65.9166666666666,
+                 "height":92.6666666666666,
                  "id":429,
                  "name":"unseenforce",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":30.134057971015,
-                 "x":5248.625,
-                 "y":285.833333333333
+                 "width":32.384057971015,
+                 "x":5246.375,
+                 "y":259.083333333333
                 }, 
                 {
                  "height":130.5,
@@ -1293,8 +1293,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":4388.5,
-                 "y":350.5
+                 "x":4471.33333333333,
+                 "y":348.666666666667
                 }, 
                 {
                  "height":64,
@@ -1304,8 +1304,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":4038.25,
-                 "y":350.5
+                 "x":4183.33333333333,
+                 "y":348.666666666667
                 }, 
                 {
                  "height":64,
@@ -1315,8 +1315,60 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":4590.5,
-                 "y":350.75
+                 "x":3938,
+                 "y":349.333333333333
+                }, 
+                {
+                 "height":82.6666666666667,
+                 "id":476,
+                 "name":"doorevent",
+                 "properties":[
+                        {
+                         "name":"cameraX",
+                         "type":"float",
+                         "value":4736
+                        }, 
+                        {
+                         "name":"cameraY",
+                         "type":"float",
+                         "value":233
+                        }, 
+                        {
+                         "name":"doorX",
+                         "type":"float",
+                         "value":4720
+                        }, 
+                        {
+                         "name":"doorY",
+                         "type":"float",
+                         "value":128
+                        }, 
+                        {
+                         "name":"finishX",
+                         "type":"float",
+                         "value":4982.5
+                        }, 
+                        {
+                         "name":"finishY",
+                         "type":"float",
+                         "value":233
+                        }, 
+                        {
+                         "name":"targetX",
+                         "type":"float",
+                         "value":4865
+                        }, 
+                        {
+                         "name":"targetY",
+                         "type":"float",
+                         "value":160
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":41,
+                 "x":4677,
+                 "y":147
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1325,7 +1377,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":476,
+ "nextobjectid":477,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

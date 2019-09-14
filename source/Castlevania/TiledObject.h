@@ -9,6 +9,14 @@
 #define TILED_PROPERTY_BRICK_TYPE "bricktype"
 #define TILED_PROPERTY_TARGET_POS_X "target_pos_x"
 #define TILED_PROPERTY_TARGET_POS_Y "target_pos_y"
+#define DOOREVENT_CAMERAX "cameraX"
+#define DOOREVENT_CAMERAY "cameraY"
+#define DOOREVENT_DOORX "doorX"
+#define DOOREVENT_DOORY "doorY"
+#define DOOREVENT_TARGETX "targetX"
+#define DOOREVENT_TARGETY "targetY"
+#define DOOREVENT_FINISHX "finishX"
+#define DOOREVENT_FINISHY "finishY"
 #define TILED_OBJECT_PROPERTY_NAME "name"
 #define TILED_OBJECT_PROPERTY_TYPE "type"
 #define TILED_OBJECT_PROPERTY_VALUE "value"
@@ -47,6 +55,8 @@
 #define OBJECTCODE_IMBRICK "imbrick"
 #define OBJECTCODE_BRICK_BREAKING_EFFECT "brickbreakingeffect"
 #define OBJECTCODE_CROSS "cross"
+#define OBJECTCODE_GATE "gate"
+#define OBJECTCODE_DOOREVENT "doorevent"
 using json = nlohmann::json;
 using namespace std;
 /*

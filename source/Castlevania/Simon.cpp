@@ -194,7 +194,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 
 	UpdateCurrentAnim();
 	this->rope->Update(x, y, nx, dt, Objects);
-	Focus(); //focus camera, may change the way camera work later
+	//Focus(); //focus camera, may change the way camera work later
 }
 void CSimon::Render() 
 {
@@ -448,6 +448,7 @@ void CSimon::ForceIdle()
 	isJumping = false;
 	if (vy < 0) vy = 1;
 	rope->Deactive();
+	vx = 0;
 }
 bool CSimon::TakingDamage(int damage)
 {

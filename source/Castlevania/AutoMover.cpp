@@ -42,6 +42,7 @@ void CAutoMover::Update(DWORD dt)
 			if (mode == AUTO_MOVER_MODE_FORCED)
 				simon->ReleaseControl();
 			isActive = false;
+			simon->SetSpeed(0, 0);//?
 		}
 		else
 		{
