@@ -21,21 +21,21 @@ void CItemObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		float min_tx, min_ty, nx = 0, ny;
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
+		bool should_y_change = true;
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-
 			if (dynamic_cast<CUnseenForce *>(e->obj))
 			{
 				if (e->ny < 0)
 				{
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
 					vy = 0;
+					should_y_change = false;
 				}
-				else y += dy;
 			}
 		}
+		if (should_y_change) y += dy;
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	if (!isOnCamera()) state = GAMEOBJECT_STATE_INVISIBLE; // all items should despawn when it's offscreen

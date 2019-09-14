@@ -134,8 +134,8 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 						vx = 0;
 					}
 					if (vy == SIMON_FALLING_SPEED_LIMIT) ForcedCrouch();
-					vy = 0;
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
+					vy = 0;
 				}
 				if (e->nx != 0)
 				{

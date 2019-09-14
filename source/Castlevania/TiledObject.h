@@ -57,6 +57,8 @@
 #define OBJECTCODE_CROSS "cross"
 #define OBJECTCODE_GATE "gate"
 #define OBJECTCODE_DOOREVENT "doorevent"
+#define OBJECTCODE_BAT "bat"
+#define OBJECTCODE_BATSPAWNER "batspawner"
 using json = nlohmann::json;
 using namespace std;
 /*

@@ -66,6 +66,7 @@ void CGameObject::Render() {
 		prevAnim = currentAnim;
 	}
 	animations->Get(currentAnim)->Render(x, y, argb);
+	//RenderBoundingBox();
 }
 void CGameObject::RenderOverlay() {
 	if (!state.IsRenderable()) return;
@@ -215,7 +216,7 @@ void CGameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)b - (int)t;
 
-	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 170);
+	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 100);
 }
 
 CGameObject::~CGameObject()

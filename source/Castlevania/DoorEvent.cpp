@@ -39,6 +39,7 @@ void CDoorEvent::Trigger()
 		simon->BlockControl();
 		simon->ForceIdle();
 		openDelayTimer.Active();
+		simon->SetFacing(DIRECTION_RIGHT);
 		//setup camera
 		CCamera* camera = CCamera::GetInstance();
 		camera->IgnoreBound();
@@ -81,7 +82,7 @@ void CDoorEvent::Trigger()
 		camera->IgnoreBound(false);
 		camera->SetMode(CAMERA_MODE_INSTANT);
 		camera->SetType(CAMERA_TYPE_FOLLOW);
-		CSimon::GetInstance()->ReleaseControl(); // you're done my man
+		simon->ReleaseControl(); // you're done my man
 	}
 	
 }

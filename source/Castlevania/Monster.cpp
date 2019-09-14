@@ -76,6 +76,5 @@ void CMonster::Render()
 {
 	if (isOnCamera()) {
 		CGameObject::Render();
-		RenderBoundingBox();
 	}
 }

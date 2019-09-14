@@ -11,6 +11,7 @@
 #include "HoundSpawner.h"
 #include "ImBrick.h"
 #include "DoorEvent.h"
+#include "BatSpawner.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -202,5 +203,8 @@ void CTiledObject::Create()
 		}
 		CGameObject::AddObject(new CDoorEvent(x, y, width, height, cameraX, cameraY, doorX, doorY, targetX, targetY, finishX, finishY));
 	}
-
+	else if (name == OBJECTCODE_BATSPAWNER)
+	{
+		CGameObject::AddObject(new CBatSpawner(x, y, width, height));
+	}
 }

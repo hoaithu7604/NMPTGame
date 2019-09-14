@@ -128,6 +128,8 @@
     <ClInclude Include="ARGB.h" />
     <ClInclude Include="AutoMover.h" />
     <ClInclude Include="AutoWalkEvent.h" />
+    <ClInclude Include="Bat.h" />
+    <ClInclude Include="BatSpawner.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="BrickBreakingEffect.h" />
     <ClInclude Include="Camera.h" />
@@ -193,6 +195,8 @@
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="AutoMover.cpp" />
     <ClCompile Include="AutoWalkEvent.cpp" />
+    <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="BatSpawner.cpp" />
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="BrickBreakingEffect.cpp" />
     <ClCompile Include="Camera.cpp" />

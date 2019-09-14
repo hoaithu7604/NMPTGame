@@ -54,6 +54,7 @@
 #include "BrickBreakingEffect.h"
 #include "Cross.h"
 #include "Gate.h"
+#include "Bat.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -136,6 +137,7 @@ void LoadResources()
 	CBrickBreakingEffect::LoadResource(OBJECTCODE_BRICK_BREAKING_EFFECT);
 	CCross::LoadResource(OBJECTCODE_CROSS);
 	CGate::LoadResource(OBJECTCODE_GATE);
+	CBat::LoadResource(OBJECTCODE_BAT);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

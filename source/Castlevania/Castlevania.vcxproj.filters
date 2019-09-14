@@ -297,6 +297,12 @@
     <ClInclude Include="DoorEvent.h">
       <Filter>Header Files\Objects\events</Filter>
     </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="BatSpawner.h">
+      <Filter>Header Files\Objects\monsters\spawner</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -487,6 +493,12 @@
     </ClCompile>
     <ClCompile Include="DoorEvent.cpp">
       <Filter>Source Files\Objects\events</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="BatSpawner.cpp">
+      <Filter>Source Files\Objects\monsters\spawner</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
