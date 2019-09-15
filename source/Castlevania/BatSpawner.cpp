@@ -2,9 +2,10 @@
 #include "Bat.h"
 bool CBatSpawner::ShouldSpawn()
 {
-	spawn_direction = isBarelyOffscreen();
-	if (spawn_direction == DIRECTION_LEFT || spawn_direction == DIRECTION_RIGHT)
+	int temp = isBarelyOffscreen();
+	if (temp == DIRECTION_LEFT || temp == DIRECTION_RIGHT)
 	{
+		spawn_direction = temp;
 		if (!cooldown_timer.isActive() || cooldown_timer.hasTicked())
 		{
 			cooldown_timer.Active();

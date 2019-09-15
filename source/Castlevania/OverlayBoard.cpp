@@ -41,6 +41,7 @@ COverlayBoard::COverlayBoard()
 		icon->SetAnimation((int)HealthIconAnim::ENEMY);
 		enemyHealth.push_back(icon);
 	}
+	dummyNirensya = CAnimations::GetInstance()->Get(Nirensya_ANIMID);
 }
 void COverlayBoard::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -73,6 +74,10 @@ void COverlayBoard::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else
 				enemyHealth[i]->SetAnimation((int)HealthIconAnim::EMPTY);
 		}
+		//power up
+		if (simon->GetPowerUp() == PowerUp::NIRENSYA)
+			PU = dummyNirensya;
+		else PU = NULL;
 	}
 }
 void COverlayBoard::Render()
@@ -124,4 +129,6 @@ void COverlayBoard::Render()
 	playcountString.insert(playcountString.begin(), OVERLAYBOARD_PLAY_COUNT_DIGITS_COUNT - playcountString.size(), '0');
 	playcountString = OVERLAYBOARD_PLAY_COUNT_TEXT + playcountString;
 	game->DrawString(x + OVERLAYBOARD_PLAY_COUNT_X, y + OVERLAYBOARD_PLAY_COUNT_Y, playcountString);
+	//PU
+	if (PU != NULL) PU->RenderOverlay(OVERLAYBOARD_PU_X, OVERLAYBOARD_PU_Y);
 }

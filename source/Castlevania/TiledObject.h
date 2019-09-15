@@ -67,6 +67,7 @@
 #define OBJECTCODE_WATCH "watch"
 #define OBJECTCODE_MEDICINEJAR "medicinejar"
 #define OBJECTCODE_AXE "axe"
+#define OBJECTCODE_NIRENSYA "nirensya"
 using json = nlohmann::json;
 using namespace std;
 /*

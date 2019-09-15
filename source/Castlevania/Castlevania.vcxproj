@@ -170,6 +170,7 @@
     <ClInclude Include="MoneyBag.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MoveableObject.h" />
+    <ClInclude Include="Nirensya.h" />
     <ClInclude Include="OverlayBoard.h" />
     <ClInclude Include="PorkChop.h" />
     <ClInclude Include="RopeItem.h" />
@@ -241,6 +242,7 @@
     <ClCompile Include="CrossFlameEffect.cpp" />
     <ClCompile Include="FireBombItem.cpp" />
     <ClCompile Include="FireBombProjectile.cpp" />
+    <ClCompile Include="Nirensya.cpp" />
     <ClCompile Include="PorkChop.cpp" />
     <ClCompile Include="Stairs.cpp" />
     <ClCompile Include="Watch.cpp" />

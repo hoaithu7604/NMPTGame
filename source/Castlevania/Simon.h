@@ -20,6 +20,7 @@
 #define SIMON_KNOCKED_FALLING_SPEED 0.0008f //apply different gravity while being knocked back
 #define SIMON_FORCED_CROUCH_DURATION 300
 #define SIMON_FALLING_SPEED_LIMIT 1.6f
+#define NIRENSYA_WEAPON_COOLDOWN 200
 #include "SimonRope.h"
 #include "Timer.h"
 #include "Dagger.h"
@@ -58,7 +59,10 @@ enum class SimonAnimID
 	DAMAGED_LEFT,
 	DAMAGED_RIGHT
 };
-
+enum class PowerUp {
+	NONE,
+	NIRENSYA
+};
 class CSimon : public CMoveableObject
 {
 	CCamera * camera;
@@ -75,6 +79,7 @@ class CSimon : public CMoveableObject
 	bool isKnockingBack;
 	bool isOnStairs;
 	bool isInvul; //flag to check if simon is under effect of medicine jar
+	bool isDead;
 	//timer
 	CTimer invulTimer;
 	CTimer attack_timer; //attack cooldown timer
@@ -83,7 +88,7 @@ class CSimon : public CMoveableObject
 	//others component
 	CAutoMover automover;
 	CStairs* stairs; //current stairs simon is overlapping
-	
+	PowerUp powerup;
 public:
 	CSimon();
 	//checking
@@ -97,6 +102,9 @@ public:
 	void AddHealth(int health) { this->health += health; if (this->health > SIMON_HEALTH_DEFAULT) this->health = SIMON_HEALTH_DEFAULT; }
 	LPWEAPON GetWeapon() { return weapon; }
 	void SetInvul(DWORD time) { isInvul = true; invulTimer.SetTime(time); invulTimer.Active(); }
+	PowerUp GetPowerUp() { return powerup; }
+	void SetPowerUp(PowerUp powerup);
+	void UpgradeWeapon();
 	//action
 	void SetOnStairs(bool b = true) { isOnStairs = b; }
 	void GoUpStairs();

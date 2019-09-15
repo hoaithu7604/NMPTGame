@@ -43,6 +43,10 @@ void CKeyHandler::OnKeyDown(int KeyCode)
 	{
 		CSimon::GetInstance()->SetPosition(6062, 163);
 	}
+	else if (KeyCode == DIK_5)
+	{
+		CSimon::GetInstance()->SetPosition(7050, 281);
+	}
 	
 }
 

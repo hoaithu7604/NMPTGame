@@ -33,6 +33,7 @@ CSimon::CSimon()
 	isControllable = true;
 	isKnockingBack = false;
 	isOnStairs = false;
+	isDead = false;
 	//timer
 	fabulous_timer.SetTime(SIMON_FABULOUS_DURATION);
 	attack_timer.SetTime(SIMON_ATTACK_COOLDOWN);
@@ -42,7 +43,7 @@ CSimon::CSimon()
 	currentAnim = (int)SimonAnimID::IDLE_RIGHT;
 	prevAnim = (int)SimonAnimID::IDLE_RIGHT;
 	camera = CCamera::GetInstance();
-
+	powerup = PowerUp::NONE;
 	automover.SetSpeed(SIMON_WALKING_SPEED*.5f);
 }
 // no collision events to thing spawn on top of simon so let use this function
@@ -262,7 +263,7 @@ void CSimon::DoAction(Action action)
 {
 	//return if simon should not be able to do action here
 	if (this->rope->isActive() 
-		||isKnockingBack||isUsingweapon||!isControllable
+		||isKnockingBack||isUsingweapon||!isControllable||isDead
 		||(CTimeFreezer::GetInstance()->isActive()&& CTimeFreezer::GetInstance()->ShouldSimonFreeze())) return;
 
 	switch (action) {
@@ -344,7 +345,11 @@ void CSimon::DoAction(Action action)
 }
 void CSimon::UpdateCurrentAnim() 
 {
-	if (this->rope->isActive()||isUsingweapon)
+	if (isDead)
+	{
+		currentAnim = nx > 0 ? (int)SimonAnimID::DIE_RIGHT : (int)SimonAnimID::DIE_LEFT;
+	}
+	else if (this->rope->isActive()||isUsingweapon)
 	{
 		if (isCrouching) {
 			currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_CROUCH_RIGHT : (int)SimonAnimID::ATTACK_CROUCH_LEFT;
@@ -464,7 +469,7 @@ void CSimon::ChangeWeapon(LPWEAPON weapon)
 {
 	delete this->weapon;
 	this->weapon = weapon;
-
+	UpgradeWeapon();
 }
 void CSimon::ForceIdle()
 {
@@ -492,6 +497,9 @@ bool CSimon::TakingDamage(int damage)
 void CSimon::Die()
 {
 	// DEAD
+	isDead = true;
+	invulTimer.SetTime(99999999);
+	invulTimer.Active();
 }
 void CSimon::KnockedBack(int Direction)
 {
@@ -534,5 +542,21 @@ void CSimon::AutoMove(float x, float y,float v, int mode, int type)
 		automover.SetSpeed(v);
 		automover.SetTarget(x, y);
 		automover.Active(mode, type);
+	}
+}
+void CSimon::SetPowerUp(PowerUp powerup)
+{
+	this->powerup = powerup; 
+	UpgradeWeapon();
+}
+void CSimon::UpgradeWeapon()
+{
+	if (weapon != NULL)
+	{
+		switch (powerup) {
+		case PowerUp::NIRENSYA:
+			weapon->SetCooldown(NIRENSYA_WEAPON_COOLDOWN);
+			break;
+		}
 	}
 }

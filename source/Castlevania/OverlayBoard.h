@@ -6,6 +6,7 @@
 #include "HealthIcon.h"
 #include "ItemFrame.h"
 #include "HeartIcon.h"
+//#include "Nirensya.h"
 #define OVERLAYBOARD_LINE_SPACING 15
 #define OVERLAYBOARD_X_SPACING 15
 #define OVERLAYBOARD_DEFAULT_POINT 0
@@ -45,8 +46,11 @@
 #define OVERLAYBOARD_PLAY_COUNT_Y OVERLAYBOARD_ENEMY_HEALTH_Y + 3
 #define OVERLAYBOARD_PLAY_COUNT_DIGITS_COUNT 2
 #define OVERLAYBOARD_PLAY_COUNT_TEXT "P-"
-
+#define OVERLAYBOARD_PU_X OVERLAYBOARD_HEART_TEXT_X + 70
+#define OVERLAYBOARD_PU_Y OVERLAYBOARD_PLAY_COUNT_Y - 10
+#define Nirensya_ANIMID 2900
 #define ENEMY_HEALTH_DEFAULT 16 // delete later
+
 
 class COverlayBoard:CGameObject {
 	int point;
@@ -60,6 +64,8 @@ class COverlayBoard:CGameObject {
 	CHeartIcon* heart;
 	vector<CHealthIcon*> playerHealth;
 	vector<CHealthIcon*> enemyHealth;
+	CAnimation* dummyNirensya;
+	CAnimation* PU;
 	//----
 	static COverlayBoard* __instance;
 public:

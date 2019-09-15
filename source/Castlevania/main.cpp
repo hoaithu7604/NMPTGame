@@ -61,6 +61,7 @@
 #include "Watch.h"
 #include "MedicineJar.h"
 #include "Axe.h"
+#include "Nirensya.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -119,7 +120,6 @@ void LoadResources()
 	camera->SetSize(CAMERA_WIDTH, CAMERA_HEIGH);
 	camera->SetMode(CAMERA_MODE_INSTANT);
 	camera->SetType(CAMERA_TYPE_FOLLOW);
-	board = COverlayBoard::GetInstance();
 	texture->LoadResource();
 
 	CSimon::LoadResource(OBJECTCODE_SIMON);
@@ -150,7 +150,9 @@ void LoadResources()
 	CWatch::LoadResource(OBJECTCODE_WATCH);
 	CMedicineJar::LoadResource(OBJECTCODE_MEDICINEJAR);
 	CAxe::LoadResource(OBJECTCODE_AXE);
+	CNirensya::LoadResource(OBJECTCODE_NIRENSYA);
 	//
+	board = COverlayBoard::GetInstance();
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
 	maps->Add(map);
