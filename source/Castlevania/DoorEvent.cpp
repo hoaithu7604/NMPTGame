@@ -95,7 +95,7 @@ void CDoorEvent::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		for (int i = 0; i < coObjects->size(); i++)
 		{
 			CGameObject*obj = coObjects->at(i);
-			if (dynamic_cast<CMonster*>(obj)&&(obj->isOnCamera()||obj->isBarelyOffscreen()))
+			if (dynamic_cast<CMonster*>(obj)&&(obj->isAlmostOnCamera()))
 				coObjects->at(i)->SetState(GAMEOBJECT_STATE_INVISIBLE); // remove all monster while this event is active
 		}
 	}
