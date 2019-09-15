@@ -5,6 +5,7 @@
 #include "Torch.h"
 #include "AutoWalkEvent.h"
 #include "TeleportEvent.h"
+#include "ItemSpawnEvent.h"
 #include "Candle.h"
 #include "Stairs.h"
 #include "ZombieSpawner.h"
@@ -93,6 +94,24 @@ void CTiledObject::Create()
 	else if (name == OBJECTCODE_TELEPORTEVENT) 
 	{
 		CTeleportEvent*obj = new CTeleportEvent(x, y, width, height);
+		float pos_x, pos_y;
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == TILED_PROPERTY_TARGET_POS_X)
+			{
+				pos_x = properties[i]->value_float;
+			}
+			else if (properties[i]->name == TILED_PROPERTY_TARGET_POS_Y)
+			{
+				pos_y = properties[i]->value_float;
+			}
+		}
+		obj->SetTargetPos(pos_x, pos_y);
+		CGameObject::AddObject(obj);
+	}
+	else if (name == OBJECTCODE_ITEMSPAWNEVENT)
+	{
+		CItemSpawnEvent*obj = new CItemSpawnEvent(x, y, width, height);
 		float pos_x, pos_y;
 		for (int i = 0; i < properties.size(); i++)
 		{

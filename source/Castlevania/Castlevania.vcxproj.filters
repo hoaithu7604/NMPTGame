@@ -312,6 +312,9 @@
     <ClInclude Include="FireBall.h">
       <Filter>Header Files\Objects\monsters</Filter>
     </ClInclude>
+    <ClInclude Include="ItemSpawnEvent.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -517,6 +520,9 @@
     </ClCompile>
     <ClCompile Include="FireBall.cpp">
       <Filter>Source Files\Objects\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSpawnEvent.cpp">
+      <Filter>Source Files\Objects\events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
