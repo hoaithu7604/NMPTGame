@@ -14,6 +14,7 @@
 #include "DoorEvent.h"
 #include "BatSpawner.h"
 #include "FishSpawner.h"
+#include "VampireBatEvent.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -230,5 +231,29 @@ void CTiledObject::Create()
 	else if (name == OBJECTCODE_FISHSPAWNER)
 	{
 		CGameObject::AddObject(new CFishSpawner(x, y, width, height));
+	}
+	else if (name == OBJECTCODE_VAMPIREBATEVENT)
+	{
+		float batX, batY, cameraX, cameraY;
+		for (int i = 0; i < properties.size(); i++)
+		{
+			if (properties[i]->name == BATEVENT_BATX)
+			{
+				batX = properties[i]->value_float;
+			}
+			else if (properties[i]->name == BATEVENT_BATY)
+			{
+				batY = properties[i]->value_float;
+			}
+			else if (properties[i]->name == BATEVENT_CAMERAX)
+			{
+				cameraX = properties[i]->value_float;
+			}
+			else if (properties[i]->name == BATEVENT_CAMERAY)
+			{
+				cameraY = properties[i]->value_float;
+			}
+		}
+		CGameObject::AddObject(new CVampireBatEvent(x, y, width, height, cameraX, cameraY, batX, batY));
 	}
 }

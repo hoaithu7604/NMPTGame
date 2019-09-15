@@ -17,6 +17,10 @@
 #define DOOREVENT_TARGETY "targetY"
 #define DOOREVENT_FINISHX "finishX"
 #define DOOREVENT_FINISHY "finishY"
+#define BATEVENT_BATX "batX"
+#define BATEVENT_BATY "batY"
+#define BATEVENT_CAMERAX "cameraX"
+#define BATEVENT_CAMERAY "cameraY"
 #define TILED_OBJECT_PROPERTY_NAME "name"
 #define TILED_OBJECT_PROPERTY_TYPE "type"
 #define TILED_OBJECT_PROPERTY_VALUE "value"
@@ -68,6 +72,9 @@
 #define OBJECTCODE_MEDICINEJAR "medicinejar"
 #define OBJECTCODE_AXE "axe"
 #define OBJECTCODE_NIRENSYA "nirensya"
+#define OBJECTCODE_VAMPIREBATEVENT "vampirebatevent"
+#define OBJECTCODE_VAMPIREBAT "vampirebat"
+#define OBJECTCODE_MAGICCRYSTAL "magiccrystal"
 using json = nlohmann::json;
 using namespace std;
 /*

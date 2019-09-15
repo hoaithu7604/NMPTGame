@@ -66,7 +66,9 @@ void COverlayBoard::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else
 				playerHealth[i]->SetAnimation((int)HealthIconAnim::EMPTY);
 		}
-		int enemyCurrentHealth = 8; // update current enemy health here
+		
+		int enemyCurrentHealth = ENEMY_HEALTH_DEFAULT; // update current enemy health here
+		if (stageBoss != NULL) enemyCurrentHealth = stageBoss->GetHealth();
 		for (int i = 0; i < ENEMY_HEALTH_DEFAULT; i++)
 		{
 			if (i < enemyCurrentHealth)

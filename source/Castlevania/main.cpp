@@ -62,6 +62,8 @@
 #include "MedicineJar.h"
 #include "Axe.h"
 #include "Nirensya.h"
+#include "VampireBat.h"
+#include "MagicCrystal.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -151,6 +153,8 @@ void LoadResources()
 	CMedicineJar::LoadResource(OBJECTCODE_MEDICINEJAR);
 	CAxe::LoadResource(OBJECTCODE_AXE);
 	CNirensya::LoadResource(OBJECTCODE_NIRENSYA);
+	CVampireBat::LoadResource(OBJECTCODE_VAMPIREBAT);
+	CMagicCrystal::LoadResource(OBJECTCODE_MAGICCRYSTAL);
 	//
 	board = COverlayBoard::GetInstance();
 	maps = CMaps::GetInstance();

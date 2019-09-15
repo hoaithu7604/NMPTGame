@@ -66,13 +66,14 @@ class COverlayBoard:CGameObject {
 	vector<CHealthIcon*> enemyHealth;
 	CAnimation* dummyNirensya;
 	CAnimation* PU;
+	CGameObject* stageBoss;
 	//----
 	static COverlayBoard* __instance;
 public:
 	COverlayBoard();
 
 	void IncreasePoint(int point) { this->point += point; }
-
+	void SetBoss(CGameObject*stageBoss) { this->stageBoss = stageBoss; }
 
 	static COverlayBoard * GetInstance();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);

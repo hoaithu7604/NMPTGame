@@ -351,6 +351,15 @@
     <ClInclude Include="Nirensya.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="VampireBatEvent.h">
+      <Filter>Header Files\Objects\events</Filter>
+    </ClInclude>
+    <ClInclude Include="VampireBat.h">
+      <Filter>Header Files\Objects\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicCrystal.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -582,6 +591,15 @@
       <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
     <ClCompile Include="Nirensya.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="VampireBatEvent.cpp">
+      <Filter>Source Files\Objects\events</Filter>
+    </ClCompile>
+    <ClCompile Include="VampireBat.cpp">
+      <Filter>Source Files\Objects\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicCrystal.cpp">
       <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>

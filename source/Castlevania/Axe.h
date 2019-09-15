@@ -5,7 +5,7 @@
 #define WEAPON_AXE_BBOX_HEIGHT 28
 #define WEAPON_AXE_COOLDOWN 1000
 #define WEAPON_AXE_TRIGGER_DELAY 200 // delay time to create projectile
-#define WEAPON_AXE_DAMAGE 1
+#define WEAPON_AXE_DAMAGE 10
 #define WEAPON_AXE_HEARTCOST 1
 enum class AxeAnim
 {

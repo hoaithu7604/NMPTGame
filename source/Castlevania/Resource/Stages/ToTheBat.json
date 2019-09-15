@@ -2095,6 +2095,38 @@
                  "width":32,
                  "x":6392,
                  "y":347
+                }, 
+                {
+                 "height":327.333333333333,
+                 "id":538,
+                 "name":"vampirebatevent",
+                 "properties":[
+                        {
+                         "name":"batX",
+                         "type":"float",
+                         "value":7026
+                        }, 
+                        {
+                         "name":"batY",
+                         "type":"float",
+                         "value":89
+                        }, 
+                        {
+                         "name":"cameraX",
+                         "type":"float",
+                         "value":7060
+                        }, 
+                        {
+                         "name":"cameraY",
+                         "type":"float",
+                         "value":233
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512.333333333334,
+                 "x":6751,
+                 "y":91.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2103,7 +2135,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":538,
+ "nextobjectid":539,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

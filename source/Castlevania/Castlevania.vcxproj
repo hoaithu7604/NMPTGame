@@ -165,6 +165,7 @@
     <ClInclude Include="ItemHolder.h" />
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="ItemSpawnEvent.h" />
+    <ClInclude Include="MagicCrystal.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MedicineJar.h" />
     <ClInclude Include="MoneyBag.h" />
@@ -196,6 +197,8 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="VampireBat.h" />
+    <ClInclude Include="VampireBatEvent.h" />
     <ClInclude Include="Watch.h" />
     <ClInclude Include="WatchItem.h" />
     <ClInclude Include="Weapon.h" />
@@ -236,6 +239,7 @@
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
     <ClCompile Include="ItemSpawnEvent.cpp" />
+    <ClCompile Include="MagicCrystal.cpp" />
     <ClCompile Include="MedicineJar.cpp" />
     <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -245,6 +249,8 @@
     <ClCompile Include="Nirensya.cpp" />
     <ClCompile Include="PorkChop.cpp" />
     <ClCompile Include="Stairs.cpp" />
+    <ClCompile Include="VampireBat.cpp" />
+    <ClCompile Include="VampireBatEvent.cpp" />
     <ClCompile Include="Watch.cpp" />
     <ClCompile Include="WatchItem.cpp" />
     <ClCompile Include="Weapon.cpp" />
