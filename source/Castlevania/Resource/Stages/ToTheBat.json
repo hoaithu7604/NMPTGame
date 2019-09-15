@@ -1669,7 +1669,7 @@
                         {
                          "name":"itemholder",
                          "type":"string",
-                         "value":"watch"
+                         "value":"watchitem"
                         }],
                  "rotation":0,
                  "type":"",

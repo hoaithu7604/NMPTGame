@@ -252,7 +252,7 @@ void CSimon::DoAction(Action action)
 	//return if simon should not be able to do action here
 	if (this->rope->isActive() 
 		||isKnockingBack||isUsingweapon||!isControllable
-		||CTimeFreezer::GetInstance()->isActive()) return;
+		||(CTimeFreezer::GetInstance()->isActive()&& CTimeFreezer::GetInstance()->ShouldSimonFreeze())) return;
 
 	switch (action) {
 	case Action::ATTACK:

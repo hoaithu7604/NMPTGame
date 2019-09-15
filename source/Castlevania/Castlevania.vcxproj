@@ -191,6 +191,8 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="Watch.h" />
+    <ClInclude Include="WatchItem.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
@@ -233,6 +235,8 @@
     <ClCompile Include="FireBombProjectile.cpp" />
     <ClCompile Include="PorkChop.cpp" />
     <ClCompile Include="Stairs.cpp" />
+    <ClCompile Include="Watch.cpp" />
+    <ClCompile Include="WatchItem.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieSpawner.cpp" />

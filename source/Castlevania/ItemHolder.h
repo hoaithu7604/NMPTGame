@@ -14,6 +14,7 @@
 #define ITEMCODE_MONEYBAG4 "moneybag4"
 #define ITEMCODE_CROSS "cross"
 #define ITEMCODE_PORKCHOP "porkchop"
+#define ITEMCODE_WATCHITEM "watchitem"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 

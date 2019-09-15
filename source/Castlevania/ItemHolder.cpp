@@ -8,12 +8,15 @@
 #include "FireBombItem.h"
 #include "Cross.h"
 #include "PorkChop.h"
+#include "WatchItem.h"
+#include "CrossFlameEffect.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
 	float pos_x = (left + right) / 2;
 	float pos_y = (top + bottom) / 2;
 	CFlameEffect* effect = new CFlameEffect(pos_x,pos_y);
+	CGameObject::AddObject(new CCrossFlameEffect(pos_x, pos_y));
 	delay_timer.Active();
 	state = GAMEOBJECT_STATE_UPDATE_ONLY;
 }
@@ -83,6 +86,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CPorkChop* porkchop = new CPorkChop(pos_x, pos_y);
 					CGameObject::AddObject(porkchop);
+				}
+				else if (item[i] == ITEMCODE_WATCHITEM)
+				{
+					CWatchItem* watchitem = new CWatchItem(pos_x, pos_y);
+					CGameObject::AddObject(watchitem);
 				}
 			}
 		}

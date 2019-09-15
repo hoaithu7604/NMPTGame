@@ -103,6 +103,12 @@
     <Filter Include="Header Files\Objects\simon\weapons\firebomb">
       <UniqueIdentifier>{ac986b33-787d-4057-b3ad-d25a71e46fa4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects\simon\weapons\watch">
+      <UniqueIdentifier>{5c79901b-443e-4dec-92fb-2aa2e8e02503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\simon\weapons\watch">
+      <UniqueIdentifier>{8047f6dc-8283-41af-81fe-a56afc719dab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -318,6 +324,12 @@
     <ClInclude Include="PorkChop.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="WatchItem.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Watch.h">
+      <Filter>Header Files\Objects\simon\weapons\watch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -529,6 +541,12 @@
     </ClCompile>
     <ClCompile Include="PorkChop.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="WatchItem.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Watch.cpp">
+      <Filter>Source Files\Objects\simon\weapons\watch</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

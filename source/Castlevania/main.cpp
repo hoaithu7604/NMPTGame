@@ -58,6 +58,7 @@
 #include "Fish.h"
 #include "FireBall.h"
 #include "PorkChop.h"
+#include "Watch.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -144,6 +145,7 @@ void LoadResources()
 	CFish::LoadResource(OBJECTCODE_FISH);
 	CFireBall::LoadResource(OBJECTCODE_FIREBALL);
 	CPorkChop::LoadResource(OBJECTCODE_PORKCHOP);
+	CWatch::LoadResource(OBJECTCODE_WATCH);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
@@ -170,7 +172,11 @@ void Update(DWORD dt)
 		}
 	}
 	if (freezer->isActive()) {
-		simon->FreezeAnimation();
+		if (freezer->ShouldSimonFreeze()) 
+		{
+			simon->FreezeAnimation();
+		}
+		else simon->Update(dt,&coObjects);
 		for (int i = 0; i < objects.size(); i++)
 			objects[i]->FreezeAnimation();
 	}
@@ -178,8 +184,8 @@ void Update(DWORD dt)
 	{
 		for (int i = 0; i < upObjects.size(); i++)
 			upObjects[i]->Update(dt, &coObjects);
-		board->Update(dt);
 	}
+	board->Update(dt);
 	camera->Update(dt);
 }
 
