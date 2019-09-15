@@ -63,6 +63,7 @@
 #define OBJECTCODE_FISHSPAWNER "fishspawner"
 #define OBJECTCODE_FIREBALL "fireball"
 #define OBJECTCODE_ITEMSPAWNEVENT "itemspawnevent"
+#define OBJECTCODE_PORKCHOP "porkchop"
 using json = nlohmann::json;
 using namespace std;
 /*

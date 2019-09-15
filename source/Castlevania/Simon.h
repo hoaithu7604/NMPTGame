@@ -93,6 +93,7 @@ public:
 	void IncreaseRopeLevel();
 	int GetHeart() { return heart; }
 	void AddHeart(int heart) { this->heart += heart; }
+	void AddHealth(int health) { this->health += health; if (this->health > SIMON_HEALTH_DEFAULT) this->health = SIMON_HEALTH_DEFAULT; }
 	LPWEAPON GetWeapon() { return weapon; }
 	//action
 	void SetOnStairs(bool b = true) { isOnStairs = b; }

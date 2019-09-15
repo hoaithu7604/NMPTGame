@@ -167,6 +167,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MoveableObject.h" />
     <ClInclude Include="OverlayBoard.h" />
+    <ClInclude Include="PorkChop.h" />
     <ClInclude Include="RopeItem.h" />
     <ClInclude Include="SimonRope.h" />
     <ClInclude Include="Spawner.h" />
@@ -230,6 +231,7 @@
     <ClCompile Include="CrossFlameEffect.cpp" />
     <ClCompile Include="FireBombItem.cpp" />
     <ClCompile Include="FireBombProjectile.cpp" />
+    <ClCompile Include="PorkChop.cpp" />
     <ClCompile Include="Stairs.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />

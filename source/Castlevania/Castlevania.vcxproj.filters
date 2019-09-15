@@ -315,6 +315,9 @@
     <ClInclude Include="ItemSpawnEvent.h">
       <Filter>Header Files\Objects\events</Filter>
     </ClInclude>
+    <ClInclude Include="PorkChop.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -523,6 +526,9 @@
     </ClCompile>
     <ClCompile Include="ItemSpawnEvent.cpp">
       <Filter>Source Files\Objects\events</Filter>
+    </ClCompile>
+    <ClCompile Include="PorkChop.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

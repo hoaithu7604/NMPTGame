@@ -7,6 +7,7 @@
 #include "MoneyBag.h"
 #include "FireBombItem.h"
 #include "Cross.h"
+#include "PorkChop.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -77,6 +78,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CCross* cross = new CCross(pos_x, pos_y);
 					CGameObject::AddObject(cross);
+				}
+				else if (item[i] == ITEMCODE_PORKCHOP)
+				{
+					CPorkChop* porkchop = new CPorkChop(pos_x, pos_y);
+					CGameObject::AddObject(porkchop);
 				}
 			}
 		}

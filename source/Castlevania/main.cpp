@@ -57,6 +57,7 @@
 #include "Bat.h"
 #include "Fish.h"
 #include "FireBall.h"
+#include "PorkChop.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -142,6 +143,7 @@ void LoadResources()
 	CBat::LoadResource(OBJECTCODE_BAT);
 	CFish::LoadResource(OBJECTCODE_FISH);
 	CFireBall::LoadResource(OBJECTCODE_FIREBALL);
+	CPorkChop::LoadResource(OBJECTCODE_PORKCHOP);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
