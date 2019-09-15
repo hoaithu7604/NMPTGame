@@ -36,8 +36,8 @@ enum class SimonAnimID
 	CROUCH_LEFT,
 	ATTACK_RIGHT,
 	ATTACK_LEFT,
-	PUSHED_BACK_RIGHT,
-	PUSHED_BACK_LEFT,
+	KNOCKED_BACK_RIGHT,
+	KNOCKED_BACK_LEFT,
 	WALK_DOWNSTAIRS_RIGHT,
 	WALK_DOWNSTAIRS_LEFT,
 	WALK_UPSTAIRS_RIGHT,
@@ -46,17 +46,17 @@ enum class SimonAnimID
 	IDLE_DOWNSTAIRS_LEFT,
 	IDLE_UPSTAIRS_RIGHT,
 	IDLE_UPSTAIRS_LEFT,
-	CROUCH_ATTACK_RIGHT,
-	CROUCH_ATTACK_LEFT,
-	DOWN_STAIR_ATTACK_RIGHT,
-	DOWN_STAIR_ATTACK_LEFT,
-	UP_STAIR_ATTACK_RIGHT,
-	UP_STAIR_ATTACK_LEFT,
+	ATTACK_CROUCH_RIGHT,
+	ATTACK_CROUCH_LEFT,
+	ATTACK_DOWNSTAIRS_RIGHT,
+	ATTACK_DOWNSTAIRS_LEFT,
+	ATTACK_UPSTAIRS_RIGHT,
+	ATTACK_UPSTAIRS_LEFT,
 	GO_IN,
 	DIE_LEFT,
 	DIE_RIGHT,
-	DAMAGING_LEFT,
-	DAMAGING_RIGHT
+	DAMAGED_LEFT,
+	DAMAGED_RIGHT
 };
 
 class CSimon : public CMoveableObject
@@ -74,6 +74,7 @@ class CSimon : public CMoveableObject
 	bool isUsingweapon;
 	bool isKnockingBack;
 	bool isOnStairs;
+	bool isInvul; //flag to check if simon is under effect of medicine jar
 	//timer
 	CTimer invulTimer;
 	CTimer attack_timer; //attack cooldown timer
@@ -95,6 +96,7 @@ public:
 	void AddHeart(int heart) { this->heart += heart; }
 	void AddHealth(int health) { this->health += health; if (this->health > SIMON_HEALTH_DEFAULT) this->health = SIMON_HEALTH_DEFAULT; }
 	LPWEAPON GetWeapon() { return weapon; }
+	void SetInvul(DWORD time) { isInvul = true; invulTimer.SetTime(time); invulTimer.Active(); }
 	//action
 	void SetOnStairs(bool b = true) { isOnStairs = b; }
 	void GoUpStairs();

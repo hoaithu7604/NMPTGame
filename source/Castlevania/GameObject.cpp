@@ -70,7 +70,7 @@ bool CGameObject::isFarOffscreen()
 }
 void CGameObject::Render() {
 	if (!state.IsRenderable()) return;
-	if (currentAnim == -1) return; //this object doesn't have animations, may delete later because update state
+	//if (currentAnim == -1) return; //this object doesn't have animations, may delete later because update state
 	if (prevAnim != currentAnim) {
 		animations->Get(prevAnim)->Reset(); // reset previous animation if object's animation get changed
 		prevAnim = currentAnim;

@@ -163,6 +163,7 @@
     <ClInclude Include="ItemObject.h" />
     <ClInclude Include="ItemSpawnEvent.h" />
     <ClInclude Include="Maps.h" />
+    <ClInclude Include="MedicineJar.h" />
     <ClInclude Include="MoneyBag.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MoveableObject.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="ItemHolder.cpp" />
     <ClCompile Include="ItemObject.cpp" />
     <ClCompile Include="ItemSpawnEvent.cpp" />
+    <ClCompile Include="MedicineJar.cpp" />
     <ClCompile Include="MoneyBag.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="CrossFlameEffect.cpp" />

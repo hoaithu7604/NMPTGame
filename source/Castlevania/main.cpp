@@ -59,6 +59,7 @@
 #include "FireBall.h"
 #include "PorkChop.h"
 #include "Watch.h"
+#include "MedicineJar.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -146,6 +147,7 @@ void LoadResources()
 	CFireBall::LoadResource(OBJECTCODE_FIREBALL);
 	CPorkChop::LoadResource(OBJECTCODE_PORKCHOP);
 	CWatch::LoadResource(OBJECTCODE_WATCH);
+	CMedicineJar::LoadResource(OBJECTCODE_MEDICINEJAR);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

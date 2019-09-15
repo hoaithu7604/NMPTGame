@@ -10,6 +10,7 @@
 #include "PorkChop.h"
 #include "WatchItem.h"
 #include "CrossFlameEffect.h"
+#include "MedicineJar.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -91,6 +92,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CWatchItem* watchitem = new CWatchItem(pos_x, pos_y);
 					CGameObject::AddObject(watchitem);
+				}
+				else if (item[i] == ITEMCODE_MEDICINEJAR)
+				{
+					CMedicineJar* mj = new CMedicineJar(pos_x, pos_y);
+					CGameObject::AddObject(mj);
 				}
 			}
 		}

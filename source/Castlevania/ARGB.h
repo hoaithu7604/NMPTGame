@@ -4,6 +4,7 @@
 #define RGB_RED CARGB(255,255,0,0)
 #define RGB_GREEN CARGB(255,0,255,0)
 #define RGB_BLUE CARGB(255,0,0,255)
+#define RGB_YELLOW(alpha) CARGB(alpha,255,255,104)
 
 struct CARGB {
 	CARGB() :red(255), green(255), blue(255), alpha(255) {}

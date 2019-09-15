@@ -39,6 +39,10 @@ void CKeyHandler::OnKeyDown(int KeyCode)
 	{
 		CSimon::GetInstance()->SetPosition(5348, 170);
 	}
+	else if (KeyCode == DIK_4)
+	{
+		CSimon::GetInstance()->SetPosition(6062, 163);
+	}
 	
 }
 

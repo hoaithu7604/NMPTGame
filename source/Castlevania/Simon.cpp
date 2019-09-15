@@ -208,7 +208,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 
 	UpdateCurrentAnim();
 	this->rope->Update(x, y, nx, dt, Objects);
-	//Focus(); //focus camera, may change the way camera work later
 }
 void CSimon::Render() 
 {
@@ -226,9 +225,21 @@ void CSimon::Render()
 			else if (argb.alpha == 100)
 				argb.alpha = 200;
 			else argb.alpha = 200;
+			if (isInvul)
+				argb = RGB_YELLOW(argb.alpha);
 		}
-		else argb.alpha = 255;
+		else
+		{
+			argb.alpha = 255;
+			if (isInvul) {
+				invulTimer.SetTime(SIMON_INVUL_TIMER);
+				isInvul = false;
+				argb = RGB_WHITE;
+			}
+		}
+
 	}
+	
 	CGameObject::Render(); 
 	this->rope->Render();
 }
@@ -336,7 +347,7 @@ void CSimon::UpdateCurrentAnim()
 	if (this->rope->isActive()||isUsingweapon)
 	{
 		if (isCrouching) {
-			currentAnim = nx > 0 ? (int)SimonAnimID::CROUCH_ATTACK_RIGHT : (int)SimonAnimID::CROUCH_ATTACK_LEFT;
+			currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_CROUCH_RIGHT : (int)SimonAnimID::ATTACK_CROUCH_LEFT;
 		}
 		else if (isOnStairs)
 		{
@@ -346,9 +357,9 @@ void CSimon::UpdateCurrentAnim()
 			{
 				int stairstype = stairs->GetStairsType();
 				if (stairstype == STAIRS_TYPE_UP)
-					currentAnim = nx > 0 ? (int)SimonAnimID::UP_STAIR_ATTACK_RIGHT : (int)SimonAnimID::DOWN_STAIR_ATTACK_LEFT;
+					currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_UPSTAIRS_RIGHT : (int)SimonAnimID::ATTACK_DOWNSTAIRS_LEFT;
 				else if (stairstype == STAIRS_TYPE_DOWN)
-					currentAnim = nx > 0 ? (int)SimonAnimID::DOWN_STAIR_ATTACK_RIGHT : (int)SimonAnimID::UP_STAIR_ATTACK_LEFT;
+					currentAnim = nx > 0 ? (int)SimonAnimID::ATTACK_DOWNSTAIRS_RIGHT : (int)SimonAnimID::ATTACK_UPSTAIRS_LEFT;
 			}
 		}
 		else
@@ -379,7 +390,7 @@ void CSimon::UpdateCurrentAnim()
 	}
 	else if (isKnockingBack)
 	{
-		currentAnim = nx > 0 ? (int)SimonAnimID::DAMAGING_RIGHT : (int)SimonAnimID::DAMAGING_LEFT;
+		currentAnim = nx > 0 ? (int)SimonAnimID::DAMAGED_RIGHT : (int)SimonAnimID::DAMAGED_LEFT;
 	}
 	else if (isJumping)
 	{

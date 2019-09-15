@@ -330,6 +330,9 @@
     <ClInclude Include="Watch.h">
       <Filter>Header Files\Objects\simon\weapons\watch</Filter>
     </ClInclude>
+    <ClInclude Include="MedicineJar.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -547,6 +550,9 @@
     </ClCompile>
     <ClCompile Include="Watch.cpp">
       <Filter>Source Files\Objects\simon\weapons\watch</Filter>
+    </ClCompile>
+    <ClCompile Include="MedicineJar.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

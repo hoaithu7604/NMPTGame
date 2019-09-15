@@ -65,6 +65,7 @@
 #define OBJECTCODE_ITEMSPAWNEVENT "itemspawnevent"
 #define OBJECTCODE_PORKCHOP "porkchop"
 #define OBJECTCODE_WATCH "watch"
+#define OBJECTCODE_MEDICINEJAR "medicinejar"
 using json = nlohmann::json;
 using namespace std;
 /*
