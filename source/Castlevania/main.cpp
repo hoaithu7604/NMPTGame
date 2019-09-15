@@ -60,6 +60,7 @@
 #include "PorkChop.h"
 #include "Watch.h"
 #include "MedicineJar.h"
+#include "Axe.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -148,6 +149,7 @@ void LoadResources()
 	CPorkChop::LoadResource(OBJECTCODE_PORKCHOP);
 	CWatch::LoadResource(OBJECTCODE_WATCH);
 	CMedicineJar::LoadResource(OBJECTCODE_MEDICINEJAR);
+	CAxe::LoadResource(OBJECTCODE_AXE);
 	//
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);

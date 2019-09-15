@@ -1,3 +1,4 @@
+#pragma once
 #include "ItemHolder.h"
 #include "FlameEffect.h"
 #include "BigHeart.h"
@@ -11,6 +12,8 @@
 #include "WatchItem.h"
 #include "CrossFlameEffect.h"
 #include "MedicineJar.h"
+#include "AxeItem.h"
+
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -97,6 +100,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CMedicineJar* mj = new CMedicineJar(pos_x, pos_y);
 					CGameObject::AddObject(mj);
+				}
+				else if (item[i] == ITEMCODE_AXEITEM)
+				{
+					CAxeItem* axe = new CAxeItem(pos_x,pos_y);
+					CGameObject::AddObject(axe);
 				}
 			}
 		}

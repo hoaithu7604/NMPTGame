@@ -109,6 +109,12 @@
     <Filter Include="Header Files\Objects\simon\weapons\watch">
       <UniqueIdentifier>{8047f6dc-8283-41af-81fe-a56afc719dab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\simon\weapons\Axe">
+      <UniqueIdentifier>{c46c5965-649a-4728-92c9-4838eda2b3d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\simon\weapons\axe">
+      <UniqueIdentifier>{9952cd63-a027-4f42-ab92-61d753c25692}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -333,6 +339,15 @@
     <ClInclude Include="MedicineJar.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Header Files\Objects\simon\weapons\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeProjectile.h">
+      <Filter>Header Files\Objects\simon\weapons\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeItem.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -552,6 +567,15 @@
       <Filter>Source Files\Objects\simon\weapons\watch</Filter>
     </ClCompile>
     <ClCompile Include="MedicineJar.cpp">
+      <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>Source Files\Objects\simon\weapons\axe</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeProjectile.cpp">
+      <Filter>Source Files\Objects\simon\weapons\axe</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeItem.cpp">
       <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>

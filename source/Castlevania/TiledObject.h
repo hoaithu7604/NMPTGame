@@ -66,6 +66,7 @@
 #define OBJECTCODE_PORKCHOP "porkchop"
 #define OBJECTCODE_WATCH "watch"
 #define OBJECTCODE_MEDICINEJAR "medicinejar"
+#define OBJECTCODE_AXE "axe"
 using json = nlohmann::json;
 using namespace std;
 /*

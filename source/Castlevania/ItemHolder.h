@@ -16,6 +16,7 @@
 #define ITEMCODE_PORKCHOP "porkchop"
 #define ITEMCODE_WATCHITEM "watchitem"
 #define ITEMCODE_MEDICINEJAR "medicinejar"
+#define ITEMCODE_AXEITEM "axeitem"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 
