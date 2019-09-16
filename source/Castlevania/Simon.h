@@ -105,6 +105,7 @@ public:
 	PowerUp GetPowerUp() { return powerup; }
 	void SetPowerUp(PowerUp powerup);
 	void UpgradeWeapon();
+	void AutoMoverSetTime(DWORD t) { automover.SetTime(t); }
 	//action
 	void SetOnStairs(bool b = true) { isOnStairs = b; }
 	void GoUpStairs();

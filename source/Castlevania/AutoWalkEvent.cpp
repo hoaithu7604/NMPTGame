@@ -10,6 +10,8 @@ void CAutoWalkEvent::Trigger()
 	CSimon*simon = CSimon::GetInstance();
 	float x, y;
 	simon->GetPosition(x, y);
+	//simon->AutoMoverSetTime(1000);
+	//simon->AutoMove(targetX, targetY, AUTO_WALK_SPEED, AUTO_MOVER_MODE_FORCED,AUTO_MOVER_TYPE_TIMED);
 	if (abs(x-targetX)>MIN_DISTANCE)
 	{
 		if (simon->isMoveable())
@@ -34,6 +36,7 @@ void CAutoWalkEvent::Trigger()
 	}
 	else
 	{
+		simon->SetPosition(targetX, targetY);
 		isTriggering = false;
 		simon->ForceIdle();
 		simon->ReleaseControl();

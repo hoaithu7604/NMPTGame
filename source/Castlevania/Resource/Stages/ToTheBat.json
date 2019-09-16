@@ -159,29 +159,29 @@
                  "y":-7.08349999999998
                 }, 
                 {
-                 "height":184.25,
+                 "height":85.25,
                  "id":292,
                  "name":"autowalkevent",
                  "properties":[
                         {
                          "name":"target_pos_x",
                          "type":"float",
-                         "value":1680.1
+                         "value":1504
                         }, 
                         {
                          "name":"target_pos_y",
                          "type":"float",
-                         "value":352.1
+                         "value":320
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":39.25,
                  "x":1464.25,
-                 "y":214.5
+                 "y":313.5
                 }, 
                 {
-                 "height":104.416666666667,
+                 "height":64,
                  "id":294,
                  "name":"teleportevent",
                  "properties":[
@@ -198,9 +198,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":46.5,
-                 "x":1504.75,
-                 "y":287.75
+                 "width":32,
+                 "x":1504,
+                 "y":320
                 }, 
                 {
                  "height":416,
@@ -419,7 +419,7 @@
                         {
                          "name":"itemholder",
                          "type":"string",
-                         "value":"moneybagwhite"
+                         "value":"moneybag1"
                         }],
                  "rotation":0,
                  "type":"",
@@ -659,7 +659,7 @@
                         }],
                  "rotation":0,
                  "type":"",
-                 "visible":false,
+                 "visible":true,
                  "width":128,
                  "x":2896,
                  "y":224
@@ -2127,6 +2127,28 @@
                  "width":512.333333333334,
                  "x":6751,
                  "y":91.3333333333333
+                }, 
+                {
+                 "height":72.5,
+                 "id":539,
+                 "name":"itemspawnevent",
+                 "properties":[
+                        {
+                         "name":"target_pos_x",
+                         "type":"float",
+                         "value":1389
+                        }, 
+                        {
+                         "name":"target_pos_y",
+                         "type":"float",
+                         "value":332
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":44.25,
+                 "x":1597.25,
+                 "y":317.25
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2135,7 +2157,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":539,
+ "nextobjectid":540,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
