@@ -26,4 +26,5 @@ public:
 	void Up();
 	void Down();
 	bool ShouldIdle(float x,float y,int nx); //this is not good, but i have no others way to do it
+	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };

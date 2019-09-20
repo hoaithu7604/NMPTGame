@@ -198,3 +198,10 @@ bool CStairs::ShouldIdle(float x, float y, int nx)
 	}
 	else return false;
 }
+void CStairs::GetBoundingBox(float &left, float &top, float &right, float &bottom) 
+{ 
+	left = x1 < x2 ? x1 : x2;
+	right = left + abs(x1 - x2);
+	top = y1 < y2 ? y1 : y2;
+	bottom = top + abs(y1 - y2);
+}

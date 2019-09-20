@@ -174,13 +174,16 @@ void Update(DWORD dt)
 	upObjects.push_back(simon);
 	for (int i = 0; i < objects.size(); i++)
 	{
-		if (objects[i]->IsColliable()) {
-			coObjects.push_back(objects[i]);		
-		}
-		if (objects[i]->IsUpdatable()) {
-			upObjects.push_back(objects[i]);
+		if (objects[i]->isAlmostOnCamera()) { //only update and do collision event on objects that are overlapping with camera view
+			if (objects[i]->IsColliable()) {
+				coObjects.push_back(objects[i]);
+			}
+			if (objects[i]->IsUpdatable()) {
+				upObjects.push_back(objects[i]); 
+			}
 		}
 	}
+
 	if (freezer->isActive()) {
 		if (freezer->ShouldSimonFreeze()) 
 		{
