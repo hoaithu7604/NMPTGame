@@ -14,6 +14,8 @@
 #define VAMPIREBAT_ALPHA_Y 70
 #define VAMPIREBAT_SPEED_X 0.15f
 #define VAMPIREBAT_SPEED_Y 0.15f
+#define VAMPIREBAT_FLAME_X 15.f
+#define VAMPIREBAT_FLAME_Y 15.f
 enum class VampireBatAnimID {
 	SLEEP = 3000,
 	FLY
@@ -26,6 +28,8 @@ class CVampireBat : public CMonster
 	bool isSleeping;
 	CTimer attackCDTimer;
 	CTimer attackDLTimer;
+	CGameObject* effect;
+	int rd;
 public:
 	void Wake() { isSleeping = false; }
 	CVampireBat(float x, float y);

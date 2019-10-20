@@ -1,5 +1,6 @@
 #include "VampireBat.h"
 #include "Simon.h"
+#include "CrossFlameEffect.h"
 CVampireBat::CVampireBat(float x, float y)
 	: CMonster(VAMPIREBAT_POINT, VAMPIREBAT_HEALTH_DEFAULT)
 {
@@ -25,7 +26,6 @@ void CVampireBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		//seek for simon when ready to attack
 		if (!attackCDTimer.isActive() || attackCDTimer.hasTicked())
 		{
-			OutputDebugString(L"SEEK TARGET");
 			CSimon::GetInstance()->GetCentralPoint(targetX, targetY);
 			//re-locate target point
 			targetX -= VAMPIREBAT_BBOX_WIDTH / 2;
@@ -35,7 +35,6 @@ void CVampireBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 		if (attackDLTimer.hasTicked())
 		{
-			OutputDebugString(L"START ATTACKING");
 			isAttacking = true;
 		}
 		if (isAttacking)
@@ -46,7 +45,6 @@ void CVampireBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			if (t < 1)
 			{
 				//have not reached
-				OutputDebugString(L"MOVING TO TARGET");
 				float targetV;
 				if (v + VAMPIREBAT_ACCEL * dt > VAMPIREBAT_VELOCITY_MAX)
 					targetV = VAMPIREBAT_VELOCITY_MAX;
@@ -57,7 +55,6 @@ void CVampireBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			}
 			else
 			{
-				OutputDebugString(L"REACHED TARGET");
 				vx = 0;
 				vy = 0;
 				isAttacking = false;
@@ -101,9 +98,25 @@ void CVampireBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		dy = vy * dt;
 		x += dx;
 		y += dy;
+
+		if (invulTimer.isActive() && !invulTimer.hasTicked())
+		{
+			float pos_x = x;
+			if (rd == 0)
+				pos_x += (VAMPIREBAT_BBOX_WIDTH / 2 - VAMPIREBAT_FLAME_X);
+			else
+				pos_x += (VAMPIREBAT_BBOX_WIDTH / 2 + VAMPIREBAT_FLAME_X);
+			float pos_y = y + VAMPIREBAT_FLAME_Y;
+			if (effect == NULL||effect->GetState()==GAMEOBJECT_STATE_INVISIBLE)
+			{
+				rd = rand() % 2;
+				effect = new CCrossFlameEffect(pos_x, pos_y);
+				CGameObject::AddObject(effect);
+			}
+			else effect->SetPosition(pos_x, pos_y);
+		}
 	}
 
 	// update animation
 	currentAnim = isSleeping ? (int)VampireBatAnimID::SLEEP : (int)VampireBatAnimID::FLY;
 }
-

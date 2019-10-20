@@ -457,7 +457,7 @@ void CSimon::StandUp()
 		if (isCrouching)
 		{
 			isCrouching = false;
-			y -= SIMON_IDLE_BBOX_HEIGHT - 54;
+			//y -= SIMON_IDLE_BBOX_HEIGHT - 54;
 		}
 	}
 }
@@ -469,7 +469,7 @@ void CSimon::Jump()
 		isJumping = true;
 		isCrouching = true;
 		this->vy = -SIMON_JUMPING_SPEED;
-		y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
+	//	y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
 	}
 }
 void CSimon::Crouch() {
@@ -477,7 +477,7 @@ void CSimon::Crouch() {
 	{
 		this->isCrouching = true;
 		this->vx = 0;
-		y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
+		//y += SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
 	}
 }
 void CSimon::Focus()
