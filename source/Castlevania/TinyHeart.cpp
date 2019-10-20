@@ -42,6 +42,7 @@ void CTinyHeart::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	else
 	{
 		float min_tx, min_ty, nx = 0, ny;
+		bool should_y_change = true;
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
@@ -53,13 +54,11 @@ void CTinyHeart::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					y += e->t * dy + ny * AVOID_OVERLAPPLING_FORCE;
 					vy = 0;
-				}
-				else
-				{
-					y += dy;
+					should_y_change = false;
 				}
 			}
 		}
+		if (should_y_change) y += dy;
 	}
 	if (vy != 0)
 	{
