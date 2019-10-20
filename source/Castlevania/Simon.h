@@ -4,8 +4,8 @@
 #define SIMON_WALKING_SPEED 0.15f
 #define SIMON_FALLING_SPEED 0.012f 
 #define SIMON_JUMPING_SPEED 0.4f // 
-#define SIMON_JUMPING_FALLING_SPEED 0.0008f // gravity while jumping up
-#define SIMON_JUMPING_FALLING_SPEED_ 0.01f //gravity while falling down after jumping up
+#define SIMON_JUMPING_FALLING_SPEED 0.0012f // gravity while jumping up
+#define SIMON_JUMPING_FALLING_SPEED_ 0.012f //gravity while falling down after jumping up
 #define SIMON_IDLE_BBOX_HEIGHT 64
 #define SIMON_IDLE_BBOX_WIDTH 32
 #define SIMON_CROUCHING_BBOX_HEIGHT 46
@@ -20,6 +20,7 @@
 #define SIMON_KNOCKED_FALLING_SPEED 0.0008f //apply different gravity while being knocked back
 #define SIMON_FORCED_CROUCH_DURATION 300
 #define SIMON_FALLING_SPEED_LIMIT 1.6f
+#define SIMON_JUMP_PEAK 0.26f
 #define NIRENSYA_WEAPON_COOLDOWN 200
 #define SIMON_GRAVITY_ONGROUND 0.2f
 #include "SimonRope.h"

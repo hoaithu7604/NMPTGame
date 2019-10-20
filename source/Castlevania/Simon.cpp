@@ -192,9 +192,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 		if (isJumping)
 		{
 			//jumping gravity
-			if (vy >= 0)
+			if (vy > SIMON_JUMP_PEAK)
 			{
-				isCrouching = false;
+				StandUp();
 				vy += SIMON_JUMPING_FALLING_SPEED_ * dt;
 			}
 			else
@@ -453,7 +453,13 @@ void CSimon::StandUp()
 			y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_CROUCHING_BBOX_HEIGHT;
 		}
 	}
-	else isCrouching = false;
+	else {
+		if (isCrouching)
+		{
+			isCrouching = false;
+			y -= SIMON_IDLE_BBOX_HEIGHT - 54;
+		}
+	}
 }
 void CSimon::Jump()
 {
