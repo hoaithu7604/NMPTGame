@@ -8,7 +8,7 @@ CBrickBreakingEffect::CBrickBreakingEffect(float x, float y)
 	this->x = x - BRICK_BREAKING_EFFECT_BBOX_WIDTH / 2;
 	this->y = y - BRICK_BREAKING_EFFECT_BBOX_HEIGHT / 2;
 
-	vx = BRICK_BREAKING_EFFECT_SPEED * rand() / RAND_MAX;
+	vx = BRICK_BREAKING_EFFECT_SPEED * rand() / RAND_MAX - BRICK_BREAKING_EFFECT_SPEED/2;
 	vy = -sqrt(BRICK_BREAKING_EFFECT_SPEED*BRICK_BREAKING_EFFECT_SPEED - vx * vx);
 
 	CGameObject::AddObject(this);

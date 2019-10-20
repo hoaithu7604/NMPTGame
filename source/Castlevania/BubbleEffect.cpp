@@ -8,7 +8,7 @@ CBubbleEffect::CBubbleEffect(float x, float y)
 	this->x = x - BUBBLE_EFFECT_BBOX_WIDTH / 2;
 	this->y = y - BUBBLE_EFFECT_BBOX_HEIGHT / 2;
 
-	vx = BUBBLE_EFFECT_SPEED * rand() / RAND_MAX;
+	vx = BUBBLE_EFFECT_SPEED * rand() / RAND_MAX - BUBBLE_EFFECT_SPEED/2;
 	vy = -sqrt(BUBBLE_EFFECT_SPEED*BUBBLE_EFFECT_SPEED - vx * vx);
 
 	CGameObject::AddObject(this);

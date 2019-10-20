@@ -27,7 +27,7 @@ void CAutoMover::Update(DWORD dt)
 				simon->ReleaseControl();
 			isActive = false;
 			simon->SetPosition(targetX, targetY);
-			simon->SetSpeed(0, 0);
+			simon->SetSpeed(0.f, 0.f);
 		}
 		else simon->SetSpeed(vx, vy);
 		if (vx > 0)

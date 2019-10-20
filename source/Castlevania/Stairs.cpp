@@ -104,7 +104,9 @@ void CStairs::Up()
 				float x, y;
 				CSimon::GetInstance()->GetPosition(x, y);
 				if (x == x1 && y == y1)
-					CSimon::GetInstance()->SetOnStairs();
+				{
+					CSimon::GetInstance()->SetOnStairs();					
+				}
 				else
 				CSimon::GetInstance()->AutoMove(x1, y1);
 			}

@@ -21,6 +21,7 @@
 #define SIMON_FORCED_CROUCH_DURATION 300
 #define SIMON_FALLING_SPEED_LIMIT 1.6f
 #define NIRENSYA_WEAPON_COOLDOWN 200
+#define SIMON_GRAVITY_ONGROUND 0.2f
 #include "SimonRope.h"
 #include "Timer.h"
 #include "Dagger.h"
@@ -107,7 +108,7 @@ public:
 	void UpgradeWeapon();
 	void AutoMoverSetTime(DWORD t) { automover.SetTime(t); }
 	//action
-	void SetOnStairs(bool b = true) { isOnStairs = b; }
+	void SetOnStairs(bool b = true) { SetSpeed(0, 0); isOnStairs = b; }
 	void GoUpStairs();
 	void GoDownStairs();
 	void ForcedCrouch();
