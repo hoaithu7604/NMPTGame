@@ -65,6 +65,7 @@
 #include "VampireBat.h"
 #include "MagicCrystal.h"
 #include "EventObject.h"
+#include "BubbleEffect.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -156,6 +157,7 @@ void LoadResources()
 	CNirensya::LoadResource(OBJECTCODE_NIRENSYA);
 	CVampireBat::LoadResource(OBJECTCODE_VAMPIREBAT);
 	CMagicCrystal::LoadResource(OBJECTCODE_MAGICCRYSTAL);
+	CBubbleEffect::LoadResource(OBJECTCODE_BUBBLEEFFECT);
 	//
 	board = COverlayBoard::GetInstance();
 	maps = CMaps::GetInstance();

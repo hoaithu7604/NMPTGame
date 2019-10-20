@@ -135,6 +135,7 @@
     <ClInclude Include="BatSpawner.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="BrickBreakingEffect.h" />
+    <ClInclude Include="BubbleEffect.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Candle.h" />
     <ClInclude Include="Cross.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="TinyHeart.h" />
     <ClInclude Include="Torch.h" />
     <ClInclude Include="UnseenForce.h" />
+    <ClInclude Include="UnseenWater.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -217,6 +219,7 @@
     <ClCompile Include="BatSpawner.cpp" />
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="BrickBreakingEffect.cpp" />
+    <ClCompile Include="BubbleEffect.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cross.cpp" />
     <ClCompile Include="CrossEffect.cpp" />
@@ -249,6 +252,7 @@
     <ClCompile Include="Nirensya.cpp" />
     <ClCompile Include="PorkChop.cpp" />
     <ClCompile Include="Stairs.cpp" />
+    <ClCompile Include="UnseenWater.cpp" />
     <ClCompile Include="VampireBat.cpp" />
     <ClCompile Include="VampireBatEvent.cpp" />
     <ClCompile Include="Watch.cpp" />

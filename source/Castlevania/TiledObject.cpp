@@ -15,6 +15,7 @@
 #include "BatSpawner.h"
 #include "FishSpawner.h"
 #include "VampireBatEvent.h"
+#include "UnseenWater.h"
 CTiledObject::CTiledObject(json root)
 {
 	id = root[TILED_OBJECT_ID].get<int>();
@@ -255,5 +256,10 @@ void CTiledObject::Create()
 			}
 		}
 		CGameObject::AddObject(new CVampireBatEvent(x, y, width, height, cameraX, cameraY, batX, batY));
+	}
+	else if (name == OBJECTCODE_UNSEENWATER)
+	{
+		CUnseenWater* obj = new CUnseenWater(x, y, width, height);
+		CGameObject::AddObject(obj);
 	}
 }

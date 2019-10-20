@@ -2,6 +2,8 @@
 #include "UnseenForce.h"
 #include "Simon.h"
 #include "FireBall.h"
+#include "UnseenWater.h"
+#include "BubbleEffect.h"
 CFish::CFish(float x, float y, float vy)
 	: CMonster(FISH_POINT, FISH_HEALTH_DEFAULT)
 {
@@ -73,6 +75,13 @@ void CFish::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					vy = 0;
 					should_y_change = false;
 				}
+			}
+			else if (dynamic_cast<CUnseenWater *>(e->obj))
+			{
+				float pos_x, pos_y;
+				e->obj->GetPosition(pos_x, pos_y);
+				pos_x = this->x + dx + FISH_BBOX_WIDTH / 2;
+				CBubbleEffect::CreateEffect(pos_x, pos_y);
 			}
 		}
 		if (should_x_change) x += dx;

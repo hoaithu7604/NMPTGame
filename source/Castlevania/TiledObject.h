@@ -75,6 +75,8 @@
 #define OBJECTCODE_VAMPIREBATEVENT "vampirebatevent"
 #define OBJECTCODE_VAMPIREBAT "vampirebat"
 #define OBJECTCODE_MAGICCRYSTAL "magiccrystal"
+#define OBJECTCODE_BUBBLEEFFECT "bubble"
+#define OBJECTCODE_UNSEENWATER "unseenwater"
 using json = nlohmann::json;
 using namespace std;
 /*

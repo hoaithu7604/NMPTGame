@@ -12,6 +12,8 @@
 #include "Hound.h"
 #include "ImBrick.h"
 #include "FireBall.h"
+#include "UnseenWater.h"
+#include "BubbleEffect.h"
 CSimon * CSimon::__instance = NULL;
 CSimon* CSimon::GetInstance()
 {
@@ -158,6 +160,15 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 					should_x_change = false;
 				}
 			}
+			else if (dynamic_cast<CUnseenWater *>(e->obj))
+			{
+				float pos_x, pos_y;
+				e->obj->GetPosition(pos_x, pos_y);
+				pos_x = this->x + dx + SIMON_IDLE_BBOX_WIDTH / 2;
+				CBubbleEffect::CreateEffect(pos_x, pos_y);
+				Die();
+				state = GAMEOBJECT_STATE_INVISIBLE;
+			}
 		}
 		if (should_x_change) x += dx;
 		if (should_y_change) y += dy;
@@ -167,6 +178,7 @@ void CSimon::CollisionLogic(DWORD dt, vector<LPGAMEOBJECT>*coObjects)
 }
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *Objects)
 {
+	if (state == GAMEOBJECT_STATE_INVISIBLE) return;
 	if (!isOnStairs) //ignore normal gravity while on stairs
 	{
 		if (isJumping)

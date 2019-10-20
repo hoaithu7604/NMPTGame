@@ -360,6 +360,12 @@
     <ClInclude Include="MagicCrystal.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="BubbleEffect.h">
+      <Filter>Header Files\Objects\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="UnseenWater.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -601,6 +607,12 @@
     </ClCompile>
     <ClCompile Include="MagicCrystal.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleEffect.cpp">
+      <Filter>Source Files\Objects\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="UnseenWater.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

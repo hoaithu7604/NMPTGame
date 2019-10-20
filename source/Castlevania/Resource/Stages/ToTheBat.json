@@ -2149,6 +2149,17 @@
                  "width":44.25,
                  "x":1597.25,
                  "y":317.25
+                }, 
+                {
+                 "height":13.0833333333334,
+                 "id":540,
+                 "name":"unseenwater",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1049.16666666667,
+                 "x":4857.5,
+                 "y":832.375
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2157,7 +2168,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":540,
+ "nextobjectid":541,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
