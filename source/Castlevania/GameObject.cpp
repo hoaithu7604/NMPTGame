@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
-
+#include "EventObject.h"
+#include "Grid.h"
 vector<LPGAMEOBJECT> * CGameObject::objects = NULL;
 CGameObject::CGameObject()
 {
@@ -232,4 +233,15 @@ void CGameObject::RenderBoundingBox()
 CGameObject::~CGameObject()
 {
 
+}
+void CGameObject::AddObject(LPGAMEOBJECT object)
+{ 
+	if (dynamic_cast<CEventObject*>(object))
+	{
+		objects->push_back(object);
+	}
+	else
+	{
+		CGrid* grid = CGrid::GetInstance();
+	}
 }

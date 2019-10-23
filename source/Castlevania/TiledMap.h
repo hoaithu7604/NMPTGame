@@ -44,6 +44,8 @@ public:
 	CTiledMap(LPCWSTR jsonPath);
 	void Draw();
 	void CreateObject();
+	int GetMapHeight() { return height * tileheight; }
+	int getMapWidth() { return width * tilewidth; }
 };
 typedef CTiledMap* LPTILEDMAP;
 

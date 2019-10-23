@@ -66,6 +66,7 @@
 #include "MagicCrystal.h"
 #include "EventObject.h"
 #include "BubbleEffect.h"
+#include "Grid.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -77,7 +78,7 @@
 #define MAX_FRAME_RATE 120
 #define MAP_TO_THE_BAT_PATH L"Resource\\Stages\\ToTheBat.json"
 CGame *game;
-
+CGrid* grid;
 
 vector<LPGAMEOBJECT> objects;
 
@@ -164,6 +165,8 @@ void LoadResources()
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
 	maps->Add(map);
 	maps->GetCurrentMap()->CreateObject();
+	CGrid::SetInstance(new CGrid(maps->GetCurrentMap()->getMapWidth(), maps->GetCurrentMap()->GetMapHeight()));
+	grid = CGrid::GetInstance();
 }
 
 /*

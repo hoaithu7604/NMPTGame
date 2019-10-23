@@ -93,7 +93,7 @@ public:
 	float Distance(CGameObject*obj);
 	//
 	static void Init(vector<LPGAMEOBJECT>*_objects) { objects = _objects; }
-	static void AddObject(LPGAMEOBJECT object) { objects->push_back(object); }
+	static void AddObject(LPGAMEOBJECT object);
 	static void LoadResource(string ObjectName);
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
