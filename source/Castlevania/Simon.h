@@ -23,6 +23,7 @@
 #define SIMON_JUMP_PEAK 0.26f
 #define NIRENSYA_WEAPON_COOLDOWN 200
 #define SIMON_GRAVITY_ONGROUND 0.2f
+#define SIMON_JUMP_CROUCH_DISTANCE 54
 #include "SimonRope.h"
 #include "Timer.h"
 #include "Dagger.h"

@@ -301,7 +301,9 @@ void CSimon::DoAction(Action action)
 			{			
 				this->vx = 0;				
 			}
-			else isCrouching = false;
+			else {
+				StandUp();
+			}
 		}
 		break;
 	case Action::USE_WEAPON:
@@ -457,7 +459,7 @@ void CSimon::StandUp()
 		if (isCrouching)
 		{
 			isCrouching = false;
-			//y -= SIMON_IDLE_BBOX_HEIGHT - 54;
+			y -= SIMON_IDLE_BBOX_HEIGHT - SIMON_JUMP_CROUCH_DISTANCE;
 		}
 	}
 }

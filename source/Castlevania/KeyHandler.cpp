@@ -82,7 +82,9 @@ void CKeyHandler::KeyState(BYTE *states)
 			should_simon_do_nothing = false;
 		}
 	}
-	if (should_simon_do_nothing)
+
+	if (should_simon_do_nothing) {
 		CSimon::GetInstance()->DoAction(Action::IDLE);
+	}
 
 }
