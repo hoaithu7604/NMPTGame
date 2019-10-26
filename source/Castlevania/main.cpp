@@ -50,6 +50,7 @@
 #include "MagicCrystal.h"
 #include "EventObject.h"
 #include "BubbleEffect.h"
+#include "Grid.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -61,9 +62,10 @@
 #define MAX_FRAME_RATE 120
 #define MAP_TO_THE_BAT_PATH L"Resource\\Stages\\ToTheBat.json"
 CGame *game;
-
+CGrid* grid;
 
 vector<LPGAMEOBJECT> objects;
+vector<LPGAMEOBJECT> activeObjects;
 
 CSimon * simon;
 CKeyHandler * keyHandler; 
@@ -147,6 +149,8 @@ void LoadResources()
 	maps = CMaps::GetInstance();
 	LPTILEDMAP map = new CTiledMap(MAP_TO_THE_BAT_PATH);
 	maps->Add(map);
+	grid = new CGrid(maps->GetCurrentMap()->getMapWidth(), maps->GetCurrentMap()->GetMapHeight());
+	CGrid::SetInstance(grid);
 	maps->GetCurrentMap()->CreateObject();
 }
 
@@ -156,29 +160,41 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
+	activeObjects.clear();
+	float left, top, right, bottom;
+	camera->GetViewSize(top, left, bottom, right);
+	grid->UpdateActiveCells(left,top,right,bottom);
+	grid->UpdateActiveObjects();
+	
 	vector<LPGAMEOBJECT> coObjects;
 	vector<LPGAMEOBJECT> upObjects;
 	upObjects.push_back(simon);
+	
+	grid->GetActiveObjects(activeObjects);
+	//add active objects
+	for (int i = 0; i < activeObjects.size(); i++)
+	{
+		if (activeObjects.at(i)->IsUpdatable())
+			upObjects.push_back(activeObjects.at(i));
+		if (activeObjects.at(i)->IsColliable())
+			coObjects.push_back(activeObjects.at(i));
+	}
+	//add event objects
 	for (int i = 0; i < objects.size(); i++)
 	{
-		
-			if (objects[i]->IsColliable()) {
-				coObjects.push_back(objects[i]);
-			}
-			if (objects[i]->IsUpdatable()) {
-				upObjects.push_back(objects[i]); 
-			}
-	
+		if (objects.at(i)->IsUpdatable())
+			upObjects.push_back(objects.at(i));
+		if (objects.at(i)->IsColliable())
+			coObjects.push_back(objects.at(i));
 	}
-
 	if (freezer->isActive()) {
 		if (freezer->ShouldSimonFreeze()) 
 		{
 			simon->FreezeAnimation();
 		}
 		else simon->Update(dt,&coObjects);
-		for (int i = 0; i < objects.size(); i++)
-			objects[i]->FreezeAnimation();
+		for (int i = 0; i < activeObjects.size(); i++)
+			activeObjects[i]->FreezeAnimation();
 	}
 	else 
 	{
@@ -187,6 +203,8 @@ void Update(DWORD dt)
 	}
 	board->Update(dt);
 	camera->Update(dt);
+
+	grid->UpdateCells();
 }
 
 /*
@@ -207,9 +225,9 @@ void Render()
 
 		//render
 		maps->GetCurrentMap()->Draw();		
-		for (int i = 0; i < objects.size(); i++)
+		for (int i = 0; i < activeObjects.size(); i++)
 		{
-			objects[i]->Render();
+			activeObjects[i]->Render();
 		}
 		simon->Render();
 		board->Render();

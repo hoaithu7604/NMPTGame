@@ -18,6 +18,8 @@ CCross::CCross(float x, float y)
 }
 void CCross::GetReward()
 {
-	CGameObject::AddObject(new CCrossEffect());
+	CCrossEffect*effect = new CCrossEffect();
+	effect->SetPosition(x, y);
+	CGameObject::AddObject(effect);
 	CItemObject::GetReward();
 }

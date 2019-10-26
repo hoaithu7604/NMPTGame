@@ -275,8 +275,16 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	top = y;
 	if (isCrouching)
 	{
-		right = x + SIMON_IDLE_BBOX_WIDTH;
-		bottom = y + SIMON_CROUCHING_BBOX_HEIGHT;
+		if (isJumping)
+		{
+			right = x + SIMON_IDLE_BBOX_WIDTH;
+			bottom = y + SIMON_CROUCHING_BBOX_HEIGHT;
+		}
+		else
+		{
+			right = x + SIMON_IDLE_BBOX_WIDTH;
+			bottom = y + SIMON_CROUCHING_BBOX_HEIGHT;
+		}
 	}
 	else
 	{
