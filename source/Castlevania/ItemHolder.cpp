@@ -14,6 +14,7 @@
 #include "MedicineJar.h"
 #include "AxeItem.h"
 #include "Nirensya.h"
+#include "BoomerangItem.h"
 void CItemHolder::Destroy() {
 	float left, top, right, bottom;
 	GetBoundingBox(left, top, right, bottom);
@@ -110,6 +111,11 @@ void CItemHolder::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CNirensya* nirensya = new CNirensya(pos_x, pos_y);
 					CGameObject::AddObject(nirensya);
+				}
+				else if (item[i] == ITEMCODE_BOOMERANG)
+				{
+					CBoomerangItem* bmr = new CBoomerangItem(pos_x, pos_y);
+					CGameObject::AddObject(bmr);
 				}
 			}
 		}

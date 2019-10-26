@@ -134,6 +134,9 @@
     <ClInclude Include="Bat.h" />
     <ClInclude Include="BatSpawner.h" />
     <ClInclude Include="BigHeart.h" />
+    <ClInclude Include="Boomerang.h" />
+    <ClInclude Include="BoomerangItem.h" />
+    <ClInclude Include="BoomerangProjectile.h" />
     <ClInclude Include="BrickBreakingEffect.h" />
     <ClInclude Include="BubbleEffect.h" />
     <ClInclude Include="Camera.h" />
@@ -220,6 +223,9 @@
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="BatSpawner.cpp" />
     <ClCompile Include="BigHeart.cpp" />
+    <ClCompile Include="Boomerang.cpp" />
+    <ClCompile Include="BoomerangItem.cpp" />
+    <ClCompile Include="BoomerangProjectile.cpp" />
     <ClCompile Include="BrickBreakingEffect.cpp" />
     <ClCompile Include="BubbleEffect.cpp" />
     <ClCompile Include="Camera.cpp" />

@@ -77,6 +77,7 @@
 #define OBJECTCODE_MAGICCRYSTAL "magiccrystal"
 #define OBJECTCODE_BUBBLEEFFECT "bubble"
 #define OBJECTCODE_UNSEENWATER "unseenwater"
+#define OBJECTCODE_BOOMERANG "boomerang"
 using json = nlohmann::json;
 using namespace std;
 /*

@@ -115,6 +115,12 @@
     <Filter Include="Source Files\Objects\simon\weapons\axe">
       <UniqueIdentifier>{9952cd63-a027-4f42-ab92-61d753c25692}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\simon\weapons\Boomerang">
+      <UniqueIdentifier>{b79fa7ab-7266-4d3e-84f8-2b31028c0805}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\simon\weapons\Boomerang">
+      <UniqueIdentifier>{e5942f65-368a-4404-a588-127eb77644fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -372,6 +378,15 @@
     <ClInclude Include="Grid.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Boomerang.h">
+      <Filter>Header Files\Objects\simon\weapons\Boomerang</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangProjectile.h">
+      <Filter>Header Files\Objects\simon\weapons\Boomerang</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangItem.h">
+      <Filter>Header Files\Objects\items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -625,6 +640,15 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Boomerang.cpp">
+      <Filter>Source Files\Objects\simon\weapons\Boomerang</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomerangProjectile.cpp">
+      <Filter>Source Files\Objects\simon\weapons\Boomerang</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomerangItem.cpp">
+      <Filter>Source Files\Objects\items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

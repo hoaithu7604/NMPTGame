@@ -18,6 +18,7 @@
 #define ITEMCODE_MEDICINEJAR "medicinejar"
 #define ITEMCODE_AXEITEM "axeitem"
 #define ITEMCODE_NIRENSYA "nirensya"
+#define ITEMCODE_BOOMERANG "boomerang"
 #define ITEM_DEFAULT_SPAWN_DELAY 200 // delay time to spawn item
 using namespace std;
 
