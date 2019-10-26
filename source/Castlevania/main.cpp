@@ -1,21 +1,5 @@
 /* =============================================================
-	INTRODUCTION TO GAME PROGRAMMING SE102
 	
-	SAMPLE 04 - COLLISION
-
-	This sample illustrates how to:
-
-		1/ Implement SweptAABB algorithm between moving objects
-		2/ Implement a simple (yet effective) collision frame work
-
-	Key functions: 
-		CGame::SweptAABB
-		CGameObject::SweptAABBEx
-		CGameObject::CalcPotentialCollisions
-		CGameObject::FilterCollision
-
-		CGameObject::GetBoundingBox
-		
 ================================================================ */
 
 #include <windows.h>
