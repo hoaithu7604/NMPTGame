@@ -10,7 +10,7 @@ CGrid::CGrid(int mapWidth, int mapHeight)
 		mapHeight / CELL_HEIGHT + 1;
 	cells.resize(columns);
 	for (UINT i = 0; i < cells.size(); ++i)
-		cells[i].resize(rows, NULL);
+		cells[i].resize(rows, new CCell());
 }
 void CGrid::Add(LPGAMEOBJECT obj)
 {
@@ -25,8 +25,9 @@ void CGrid::Add(LPGAMEOBJECT obj)
 			cells[column][row]->AddObject(obj);
 		}
 	}
+	activeObjects.insert(obj);
 }
-void CGrid::Update(float left, float top, float right, float bottom)
+void CGrid::UpdateActiveCells(float left, float top, float right, float bottom)
 {
 	staC = (left < 0) ? 0 : left / CELL_WIDTH;
 	staR = (top < 0) ? 0 : top / CELL_HEIGHT;
@@ -36,15 +37,18 @@ void CGrid::Update(float left, float top, float right, float bottom)
 }
 void CGrid::UpdateCells() 
 {
-	vector<LPGAMEOBJECT> objects;
-	
 	for (int column = staC; column <= endC; column++)
 	{
 		for (int row = staR; row <= endR; row++)
 		{
-			
+			cells[column][row]->ClearObjects();
 		}
 	}
+	for (auto obj = activeObjects.begin(); obj != activeObjects.end(); ++obj)
+	{
+		Add(*obj);
+	}
+
 }
 void CGrid::GetCells(float left, float top, float right, float bottom,
 	int&staC, int&staR, int &endC, int &endR)
@@ -62,4 +66,31 @@ CGrid* CGrid::GetInstance()
 void CGrid::SetInstance(CGrid* grid)
 {
 	__instance = grid;
+}
+CGrid* CGrid::__instance = NULL;
+void CGrid::UpdateActiveObjects()
+{
+	activeObjects.clear();
+	for (int column = staC; column <= endC; column++)
+	{
+		for (int row = staR; row <= endR; row++)
+		{
+			this->cells[column][row]->GetObjects(activeObjects);
+		}
+	}
+}
+void CGrid::GetActiveObjects(vector<LPGAMEOBJECT>&objects)
+{
+	for (auto obj = activeObjects.begin(); obj != activeObjects.end(); ++obj)
+		objects.push_back(*obj);
+}
+void CGrid::GetUpdatableObjects(vector<LPGAMEOBJECT>&objects)
+{
+	for (auto obj = activeObjects.begin(); obj != activeObjects.end(); ++obj)
+		if ((*obj)->IsUpdatable()) objects.push_back(*obj);
+}
+void CGrid::GetColliableObjects(vector<LPGAMEOBJECT>&objects)
+{
+	for (auto obj = activeObjects.begin(); obj != activeObjects.end(); ++obj)
+		if ((*obj)->IsColliable()) objects.push_back(*obj);
 }

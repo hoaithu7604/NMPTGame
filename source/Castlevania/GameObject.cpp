@@ -243,5 +243,6 @@ void CGameObject::AddObject(LPGAMEOBJECT object)
 	else
 	{
 		CGrid* grid = CGrid::GetInstance();
+		grid->Add(object);
 	}
 }

@@ -9,6 +9,6 @@ protected:
 public:
 	CEffectObject();
 	CEffectObject(DWORD time);
-	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) {};
+	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom) { left = right = x; top = bottom = y; };
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 };
