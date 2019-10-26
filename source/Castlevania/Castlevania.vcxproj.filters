@@ -387,6 +387,9 @@
     <ClInclude Include="BoomerangItem.h">
       <Filter>Header Files\Objects\items</Filter>
     </ClInclude>
+    <ClInclude Include="PointEffect.h">
+      <Filter>Header Files\Objects\effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -649,6 +652,9 @@
     </ClCompile>
     <ClCompile Include="BoomerangItem.cpp">
       <Filter>Source Files\Objects\items</Filter>
+    </ClCompile>
+    <ClCompile Include="PointEffect.cpp">
+      <Filter>Source Files\Objects\effects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

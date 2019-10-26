@@ -52,6 +52,7 @@
 #include "BubbleEffect.h"
 #include "Grid.h"
 #include "Boomerang.h"
+#include "PointEffect.h"
 #define WINDOW_CLASS_NAME L"Castlevania"
 #define MAIN_WINDOW_TITLE L"Castlevania"
 
@@ -146,6 +147,7 @@ void LoadResources()
 	CMagicCrystal::LoadResource(OBJECTCODE_MAGICCRYSTAL);
 	CBubbleEffect::LoadResource(OBJECTCODE_BUBBLEEFFECT);
 	CBoomerang::LoadResource(OBJECTCODE_BOOMERANG);
+	CPointEffect::LoadResource(OBJECTCODE_POINTEFFECT);
 	//
 	board = COverlayBoard::GetInstance();
 	maps = CMaps::GetInstance();

@@ -1,5 +1,5 @@
 #include "MoneyBag.h"
-
+#include "PointEffect.h"
 CMoneyBag::CMoneyBag(float x, float y, int tier)
 	:CItemObject()
 {
@@ -30,4 +30,11 @@ void CMoneyBag::GetBoundingBox(float &left, float &top, float &right, float &bot
 	top = y;
 	right = left + MONEYBAG_BBOX_WIDTH;
 	bottom = top + MONEYBAG_BBOX_HEIGHT;
+}
+void CMoneyBag::GetReward()
+{
+	CItemObject::GetReward();
+	float pos_x = x + MONEYBAG_BBOX_WIDTH / 2;
+	float pos_y = y + MONEYBAG_BBOX_HEIGHT / 2;
+	CGameObject::AddObject(new CPointEffect(pos_x, pos_y, point));
 }

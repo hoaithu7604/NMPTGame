@@ -21,5 +21,6 @@ class CMoneyBag :public CItemObject
 {
 public:
 	CMoneyBag(float x, float y, int tier);
+	virtual void GetReward();
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };

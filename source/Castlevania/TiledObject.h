@@ -78,6 +78,7 @@
 #define OBJECTCODE_BUBBLEEFFECT "bubble"
 #define OBJECTCODE_UNSEENWATER "unseenwater"
 #define OBJECTCODE_BOOMERANG "boomerang"
+#define OBJECTCODE_POINTEFFECT "pointeffect"
 using json = nlohmann::json;
 using namespace std;
 /*
