@@ -1,6 +1,6 @@
 #pragma once
 #include "EventObject.h"
-#define AUTO_WALK_SPEED 0.02f
+#define AUTO_WALK_SPEED 0.05f
 #define MIN_DISTANCE 5
 class CAutoWalkEvent : public CEventObject
 {

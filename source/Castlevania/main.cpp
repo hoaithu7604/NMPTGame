@@ -187,14 +187,6 @@ void Update(DWORD dt)
 	upObjects.push_back(simon);
 	
 	grid->GetActiveObjects(activeObjects);
-	//add event objects
-	for (int i = 0; i < objects.size(); i++)
-	{
-		if (objects.at(i)->IsUpdatable())
-			upObjects.push_back(objects.at(i));
-		if (objects.at(i)->IsColliable())
-			coObjects.push_back(objects.at(i));
-	}
 	//add active objects
 	for (int i = 0; i < activeObjects.size(); i++)
 	{
@@ -203,7 +195,14 @@ void Update(DWORD dt)
 		if (activeObjects.at(i)->IsColliable())
 			coObjects.push_back(activeObjects.at(i));
 	}
-
+	//add event objects
+	for (int i = 0; i < objects.size(); i++)
+	{
+		if (objects.at(i)->IsUpdatable())
+			upObjects.push_back(objects.at(i));
+		if (objects.at(i)->IsColliable())
+			coObjects.push_back(objects.at(i));
+	}
 	if (freezer->isActive()) {
 		if (freezer->ShouldSimonFreeze()) 
 		{
