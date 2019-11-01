@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "debug.h"
+#include <string>
 
 CGame * CGame::__instance = NULL;
 
